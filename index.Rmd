@@ -34,7 +34,7 @@ biblatexoptions:
 link-citations: yes
 github-repo: "https://github.com/Jeshua-Romero-Guadarrama/R_grupo_de_estudios_economicos"
 description: "Los estudiantes con poca experiencia en el análisis avanzado de estadísticas a menudo tienen dificultades para entender los beneficios de desarrollar habilidades de programación al momento de aplicar diversos métodos descriptivos e inferenciales. 'Análisis estadístico con R para principiantes' por Jeshua Romero Guadarrama (2021), ofrece una introducción interactiva a los aspectos esenciales de la programación por medio del lenguaje y software estadístico R, así como una guía para la aplicación de la teoría económica y econométrica en entornos específicos. En otras palabras, el objetivo es que los estudiantes se adentren al mundo de la economía aplicada mediante ejemplos empíricos presentados en la vida diaria y haciendo uso de las habilidades de programación recién adquiridas. Dicho objetivo se encuentra respaldado por ejercicios de programación interactivos y la incorporación de visualizaciones dinámicas de conceptos fundamentales mediante la flexibilidad de JavaScript, a través de la biblioteca D3.js."
-url: 'https://jeshua-romero-guadarrama.github.io/R_grupo_de_estudios_economicos/'
+url: 'https\://rgrupodeestudioseconomicos.jeshuanomics.com'
 tags: [Academia, Modelos lineales, Econoalgoritmia, Estadística avanzada, Análisis causal, Programación R]
 favicon: "images/logo.png"
 ---

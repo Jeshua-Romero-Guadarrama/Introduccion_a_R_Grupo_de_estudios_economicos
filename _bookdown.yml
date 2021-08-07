@@ -3,4 +3,4 @@ language:
   ui:
     chapter_name: "Capítulo "
 delete_merged_file: true
-edit: https://github.com/jboscomendoza/R_grupo_de_estudios_economicos-bookdown/edit/master/%s
+edit: https://github.com/jeshua-romero-guadarrama/R_grupo_de_estudios_economicos-bookdown/edit/master/%s
