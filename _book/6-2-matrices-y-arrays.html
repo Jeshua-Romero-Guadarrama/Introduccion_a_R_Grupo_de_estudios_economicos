@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.2 Matrices y arrays | R Grupo de estudios económicos</title>
+  <meta name="description" content="Los estudiantes con poca experiencia en el análisis avanzado de estadísticas a menudo tienen dificultades para entender los beneficios de desarrollar habilidades de programación al momento de aplicar diversos métodos descriptivos e inferenciales. ‘Análisis estadístico con R para principiantes’ por Jeshua Romero Guadarrama (2021), ofrece una introducción interactiva a los aspectos esenciales de la programación por medio del lenguaje y software estadístico R, así como una guía para la aplicación de la teoría económica y econométrica en entornos específicos. En otras palabras, el objetivo es que los estudiantes se adentren al mundo de la economía aplicada mediante ejemplos empíricos presentados en la vida diaria y haciendo uso de las habilidades de programación recién adquiridas. Dicho objetivo se encuentra respaldado por ejercicios de programación interactivos y la incorporación de visualizaciones dinámicas de conceptos fundamentales mediante la flexibilidad de JavaScript, a través de la biblioteca D3.js." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.2 Matrices y arrays | R Grupo de estudios económicos" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://jeshua-romero-guadarrama.github.io/R_grupo_de_estudios_economicos/" />
+  <meta property="og:image" content="https://jeshua-romero-guadarrama.github.io/R_grupo_de_estudios_economicos//images/cover.png" />
+  <meta property="og:description" content="Los estudiantes con poca experiencia en el análisis avanzado de estadísticas a menudo tienen dificultades para entender los beneficios de desarrollar habilidades de programación al momento de aplicar diversos métodos descriptivos e inferenciales. ‘Análisis estadístico con R para principiantes’ por Jeshua Romero Guadarrama (2021), ofrece una introducción interactiva a los aspectos esenciales de la programación por medio del lenguaje y software estadístico R, así como una guía para la aplicación de la teoría económica y econométrica en entornos específicos. En otras palabras, el objetivo es que los estudiantes se adentren al mundo de la economía aplicada mediante ejemplos empíricos presentados en la vida diaria y haciendo uso de las habilidades de programación recién adquiridas. Dicho objetivo se encuentra respaldado por ejercicios de programación interactivos y la incorporación de visualizaciones dinámicas de conceptos fundamentales mediante la flexibilidad de JavaScript, a través de la biblioteca D3.js." />
+  <meta name="github-repo" content="https://github.com/Jeshua-Romero-Guadarrama/R_grupo_de_estudios_economicos" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.2 Matrices y arrays | R Grupo de estudios económicos" />
+  
+  <meta name="twitter:description" content="Los estudiantes con poca experiencia en el análisis avanzado de estadísticas a menudo tienen dificultades para entender los beneficios de desarrollar habilidades de programación al momento de aplicar diversos métodos descriptivos e inferenciales. ‘Análisis estadístico con R para principiantes’ por Jeshua Romero Guadarrama (2021), ofrece una introducción interactiva a los aspectos esenciales de la programación por medio del lenguaje y software estadístico R, así como una guía para la aplicación de la teoría económica y econométrica en entornos específicos. En otras palabras, el objetivo es que los estudiantes se adentren al mundo de la economía aplicada mediante ejemplos empíricos presentados en la vida diaria y haciendo uso de las habilidades de programación recién adquiridas. Dicho objetivo se encuentra respaldado por ejercicios de programación interactivos y la incorporación de visualizaciones dinámicas de conceptos fundamentales mediante la flexibilidad de JavaScript, a través de la biblioteca D3.js." />
+  <meta name="twitter:image" content="https://jeshua-romero-guadarrama.github.io/R_grupo_de_estudios_economicos//images/cover.png" />
+
+<meta name="author" content="Jeshua Romero Guadarrama, Kevin Fernández, Apocryfo, Jenn, Daniel, Tifany Jiménez, Ernesto, Ezequiel, Rich Conejo, Angiebaram, Jesmarth, Adolfo Robles, Isaac Flores, Abdeel, Roberto Daniel" />
+
+
+<meta name="date" content="2021-08-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
+<link rel="prev" href="6-1-vectores.html"/>
+<link rel="next" href="6-3-data-frames.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<!-- font families -->
+
+<link href="https://fonts.googleapis.com/css?family=PT+Sans|Pacifico|Source+Sans+Pro" rel="stylesheet">
+
+<script src="js/hideOutput.js"></script>
+
+<!-- Mathjax -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/default.js"></script>
+
+ <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: ["tex2jax.js", "TeX/AMSmath.js"],
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+        jax: ["input/TeX","output/CommonHTML"]
+      });
+      MathJax.Hub.processSectionDelay = 0;
+  </script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110299877-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-110299877-1');
+</script>
+
+<!-- open review block -->
+
+<script async defer src="https://hypothes.is/embed.js"></script>
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="toc.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><center><img src="images/logo.png" alt="logo" width="50%" height="50%"style="margin: 15px 0 0 0"></center></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="" data-path="contenido.html"><a href="contenido.html"><i class="fa fa-check"></i>Contenido</a></li>
+<li class="chapter" data-level="" data-path="índice-de-contenido.html"><a href="índice-de-contenido.html"><i class="fa fa-check"></i>Índice de contenido</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="1-introducción-qué-es-r-y-para-qué-es-usado.html"><a href="1-introducción-qué-es-r-y-para-qué-es-usado.html"><i class="fa fa-check"></i><b>1</b> Introducción: ¿Qué es R y para qué es usado?</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="1-1-un-poco-de-historia.html"><a href="1-1-un-poco-de-historia.html"><i class="fa fa-check"></i><b>1.1</b> Un poco de historia</a></li>
+<li class="chapter" data-level="1.2" data-path="1-2-quién-usa-r.html"><a href="1-2-quién-usa-r.html"><i class="fa fa-check"></i><b>1.2</b> ¿Quién usa R?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-instalación.html"><a href="2-instalación.html"><i class="fa fa-check"></i><b>2</b> Instalación</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="2-1-windows.html"><a href="2-1-windows.html"><i class="fa fa-check"></i><b>2.1</b> Windows</a></li>
+<li class="chapter" data-level="2.2" data-path="2-2-osx.html"><a href="2-2-osx.html"><i class="fa fa-check"></i><b>2.2</b> OSX</a></li>
+<li class="chapter" data-level="2.3" data-path="2-3-linux.html"><a href="2-3-linux.html"><i class="fa fa-check"></i><b>2.3</b> Linux</a></li>
+<li class="chapter" data-level="2.4" data-path="2-4-rstudio-un-ide-para-r.html"><a href="2-4-rstudio-un-ide-para-r.html"><i class="fa fa-check"></i><b>2.4</b> RStudio - un IDE para R</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-conceptos-básicos.html"><a href="3-conceptos-básicos.html"><i class="fa fa-check"></i><b>3</b> Conceptos básicos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="3-1-la-consola-de-r.html"><a href="3-1-la-consola-de-r.html"><i class="fa fa-check"></i><b>3.1</b> La consola de R</a></li>
+<li class="chapter" data-level="3.2" data-path="3-2-ejecutar-llamar-correr-y-devolver.html"><a href="3-2-ejecutar-llamar-correr-y-devolver.html"><i class="fa fa-check"></i><b>3.2</b> Ejecutar, llamar, correr y devolver</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-objetos.html"><a href="3-3-objetos.html"><i class="fa fa-check"></i><b>3.3</b> Objetos</a></li>
+<li class="chapter" data-level="3.4" data-path="3-4-constantes-y-variables.html"><a href="3-4-constantes-y-variables.html"><i class="fa fa-check"></i><b>3.4</b> Constantes y variables</a></li>
+<li class="chapter" data-level="3.5" data-path="3-5-funciones-introducción-básica.html"><a href="3-5-funciones-introducción-básica.html"><i class="fa fa-check"></i><b>3.5</b> Funciones (introducción básica)</a></li>
+<li class="chapter" data-level="3.6" data-path="3-6-documentación.html"><a href="3-6-documentación.html"><i class="fa fa-check"></i><b>3.6</b> Documentación</a></li>
+<li class="chapter" data-level="3.7" data-path="3-7-directorio-de-trabajo.html"><a href="3-7-directorio-de-trabajo.html"><i class="fa fa-check"></i><b>3.7</b> Directorio de trabajo</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="3-7-directorio-de-trabajo.html"><a href="3-7-directorio-de-trabajo.html#sesión"><i class="fa fa-check"></i><b>3.7.1</b> Sesión</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="3-8-paquetes.html"><a href="3-8-paquetes.html"><i class="fa fa-check"></i><b>3.8</b> Paquetes</a></li>
+<li class="chapter" data-level="3.9" data-path="3-9-scripts.html"><a href="3-9-scripts.html"><i class="fa fa-check"></i><b>3.9</b> Scripts</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-tipos-de-datos.html"><a href="4-tipos-de-datos.html"><i class="fa fa-check"></i><b>4</b> Tipos de datos</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="4-1-datos-más-comunes.html"><a href="4-1-datos-más-comunes.html"><i class="fa fa-check"></i><b>4.1</b> Datos más comunes</a></li>
+<li class="chapter" data-level="4.2" data-path="4-2-entero-y-numérico.html"><a href="4-2-entero-y-numérico.html"><i class="fa fa-check"></i><b>4.2</b> Entero y numérico</a></li>
+<li class="chapter" data-level="4.3" data-path="4-3-cadena-de-texto.html"><a href="4-3-cadena-de-texto.html"><i class="fa fa-check"></i><b>4.3</b> Cadena de texto</a></li>
+<li class="chapter" data-level="4.4" data-path="4-4-factor.html"><a href="4-4-factor.html"><i class="fa fa-check"></i><b>4.4</b> Factor</a></li>
+<li class="chapter" data-level="4.5" data-path="4-5-lógico.html"><a href="4-5-lógico.html"><i class="fa fa-check"></i><b>4.5</b> Lógico</a></li>
+<li class="chapter" data-level="4.6" data-path="4-6-na-y-null.html"><a href="4-6-na-y-null.html"><i class="fa fa-check"></i><b>4.6</b> <code>NA</code> y <code>NULL</code></a></li>
+<li class="chapter" data-level="4.7" data-path="4-7-coerción.html"><a href="4-7-coerción.html"><i class="fa fa-check"></i><b>4.7</b> Coerción</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="4-7-coerción.html"><a href="4-7-coerción.html#coerción-explícita-con-la-familia-as"><i class="fa fa-check"></i><b>4.7.1</b> Coerción explícita con la familia <code>as()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="4-8-verificar-el-tipo-de-un-dato.html"><a href="4-8-verificar-el-tipo-de-un-dato.html"><i class="fa fa-check"></i><b>4.8</b> Verificar el tipo de un dato</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="4-8-verificar-el-tipo-de-un-dato.html"><a href="4-8-verificar-el-tipo-de-un-dato.html#verificación-con-la-familia-de-funciones-is"><i class="fa fa-check"></i><b>4.8.1</b> Verificación con la familia de funciones <code>is()</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-operadores.html"><a href="5-operadores.html"><i class="fa fa-check"></i><b>5</b> Operadores</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="5-1-operadores-aritméticos.html"><a href="5-1-operadores-aritméticos.html"><i class="fa fa-check"></i><b>5.1</b> Operadores aritméticos</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="5-1-operadores-aritméticos.html"><a href="5-1-operadores-aritméticos.html#la-división-entera"><i class="fa fa-check"></i><b>5.1.1</b> La división entera</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="5-2-operadores-relacionales.html"><a href="5-2-operadores-relacionales.html"><i class="fa fa-check"></i><b>5.2</b> Operadores relacionales</a></li>
+<li class="chapter" data-level="5.3" data-path="5-3-operadores-lógicos.html"><a href="5-3-operadores-lógicos.html"><i class="fa fa-check"></i><b>5.3</b> Operadores lógicos</a></li>
+<li class="chapter" data-level="5.4" data-path="5-4-operadores-de-asignación.html"><a href="5-4-operadores-de-asignación.html"><i class="fa fa-check"></i><b>5.4</b> Operadores de asignación</a></li>
+<li class="chapter" data-level="5.5" data-path="5-5-orden-de-operaciones.html"><a href="5-5-orden-de-operaciones.html"><i class="fa fa-check"></i><b>5.5</b> Orden de operaciones</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="6-estructuras-de-datos.html"><a href="6-estructuras-de-datos.html"><i class="fa fa-check"></i><b>6</b> Estructuras de datos</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="6-1-vectores.html"><a href="6-1-vectores.html"><i class="fa fa-check"></i><b>6.1</b> Vectores</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="6-1-vectores.html"><a href="6-1-vectores.html#creación-de-vectores"><i class="fa fa-check"></i><b>6.1.1</b> Creación de vectores</a></li>
+<li class="chapter" data-level="6.1.2" data-path="6-1-vectores.html"><a href="6-1-vectores.html#vectorización-de-operaciones"><i class="fa fa-check"></i><b>6.1.2</b> Vectorización de operaciones</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="6-2-matrices-y-arrays.html"><a href="6-2-matrices-y-arrays.html"><i class="fa fa-check"></i><b>6.2</b> Matrices y arrays</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="6-2-matrices-y-arrays.html"><a href="6-2-matrices-y-arrays.html#creación-de-matrices"><i class="fa fa-check"></i><b>6.2.1</b> Creación de matrices</a></li>
+<li class="chapter" data-level="6.2.2" data-path="6-2-matrices-y-arrays.html"><a href="6-2-matrices-y-arrays.html#propiedades-de-las-matrices"><i class="fa fa-check"></i><b>6.2.2</b> Propiedades de las matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="6-3-data-frames.html"><a href="6-3-data-frames.html"><i class="fa fa-check"></i><b>6.3</b> Data frames</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="6-3-data-frames.html"><a href="6-3-data-frames.html#propiedades-de-un-data-frame"><i class="fa fa-check"></i><b>6.3.1</b> Propiedades de un data frame</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="6-4-listas.html"><a href="6-4-listas.html"><i class="fa fa-check"></i><b>6.4</b> Listas</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="6-4-listas.html"><a href="6-4-listas.html#propiedades-de-una-lista"><i class="fa fa-check"></i><b>6.4.1</b> Propiedades de una lista</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="6-5-coerción-1.html"><a href="6-5-coerción-1.html"><i class="fa fa-check"></i><b>6.5</b> Coerción</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="7-subconjuntos.html"><a href="7-subconjuntos.html"><i class="fa fa-check"></i><b>7</b> Subconjuntos</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="7-1-índices.html"><a href="7-1-índices.html"><i class="fa fa-check"></i><b>7.1</b> Índices</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="7-1-índices.html"><a href="7-1-índices.html#vectores-1"><i class="fa fa-check"></i><b>7.1.1</b> Vectores</a></li>
+<li class="chapter" data-level="7.1.2" data-path="7-1-índices.html"><a href="7-1-índices.html#data-frames-1"><i class="fa fa-check"></i><b>7.1.2</b> Data frames</a></li>
+<li class="chapter" data-level="7.1.3" data-path="7-1-índices.html"><a href="7-1-índices.html#matrices"><i class="fa fa-check"></i><b>7.1.3</b> Matrices</a></li>
+<li class="chapter" data-level="7.1.4" data-path="7-1-índices.html"><a href="7-1-índices.html#arrays"><i class="fa fa-check"></i><b>7.1.4</b> Arrays</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="7-2-nombres.html"><a href="7-2-nombres.html"><i class="fa fa-check"></i><b>7.2</b> Nombres</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="7-2-nombres.html"><a href="7-2-nombres.html#data-frames-2"><i class="fa fa-check"></i><b>7.2.1</b> Data frames</a></li>
+<li class="chapter" data-level="7.2.2" data-path="7-2-nombres.html"><a href="7-2-nombres.html#listas-1"><i class="fa fa-check"></i><b>7.2.2</b> Listas</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="7-3-subconjuntos-por-índice-y-nombre.html"><a href="7-3-subconjuntos-por-índice-y-nombre.html"><i class="fa fa-check"></i><b>7.3</b> Subconjuntos por índice y nombre</a></li>
+<li class="chapter" data-level="7.4" data-path="7-4-el-signo-de-dolar-y-los-corchetes-dobles.html"><a href="7-4-el-signo-de-dolar-y-los-corchetes-dobles.html"><i class="fa fa-check"></i><b>7.4</b> El signo de dolar <code>$</code> y los corchetes dobles <code>[[]]</code></a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="7-4-el-signo-de-dolar-y-los-corchetes-dobles.html"><a href="7-4-el-signo-de-dolar-y-los-corchetes-dobles.html#los-data-frames-y-listas-son-como-cajas-de-manzanas"><i class="fa fa-check"></i><b>7.4.1</b> Los data frames y listas son como cajas de manzanas</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="7-5-condicionales.html"><a href="7-5-condicionales.html"><i class="fa fa-check"></i><b>7.5</b> Condicionales</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="7-5-condicionales.html"><a href="7-5-condicionales.html#usando-condicionales"><i class="fa fa-check"></i><b>7.5.1</b> Usando condicionales</a></li>
+<li class="chapter" data-level="7.5.2" data-path="7-5-condicionales.html"><a href="7-5-condicionales.html#la-función-subset"><i class="fa fa-check"></i><b>7.5.2</b> La función <code>subset()</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="8-funciones.html"><a href="8-funciones.html"><i class="fa fa-check"></i><b>8</b> Funciones</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="8-1-por-qué-necesitamos-crear-nuestrar-propias-funciones.html"><a href="8-1-por-qué-necesitamos-crear-nuestrar-propias-funciones.html"><i class="fa fa-check"></i><b>8.1</b> ¿Por qué necesitamos crear nuestrar propias funciones?</a></li>
+<li class="chapter" data-level="8.2" data-path="8-2-funciones-definidas-por-el-usuario.html"><a href="8-2-funciones-definidas-por-el-usuario.html"><i class="fa fa-check"></i><b>8.2</b> Funciones definidas por el usuario</a></li>
+<li class="chapter" data-level="8.3" data-path="8-3-nuestra-primera-función.html"><a href="8-3-nuestra-primera-función.html"><i class="fa fa-check"></i><b>8.3</b> Nuestra primera función</a></li>
+<li class="chapter" data-level="8.4" data-path="8-4-definiendo-la-función-crear-histograma.html"><a href="8-4-definiendo-la-función-crear-histograma.html"><i class="fa fa-check"></i><b>8.4</b> Definiendo la función <code>crear_histograma()</code></a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="8-4-definiendo-la-función-crear-histograma.html"><a href="8-4-definiendo-la-función-crear-histograma.html#ejecutando"><i class="fa fa-check"></i><b>8.4.1</b> Ejecutando</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="9-estructuras-de-control.html"><a href="9-estructuras-de-control.html"><i class="fa fa-check"></i><b>9</b> Estructuras de control</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="9-1-if-else.html"><a href="9-1-if-else.html"><i class="fa fa-check"></i><b>9.1</b> if, else</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="9-1-if-else.html"><a href="9-1-if-else.html#usando-if-y-else"><i class="fa fa-check"></i><b>9.1.1</b> Usando if y else</a></li>
+<li class="chapter" data-level="9.1.2" data-path="9-1-if-else.html"><a href="9-1-if-else.html#ifelse"><i class="fa fa-check"></i><b>9.1.2</b> ifelse</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="9-2-for.html"><a href="9-2-for.html"><i class="fa fa-check"></i><b>9.2</b> for</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="9-2-for.html"><a href="9-2-for.html#usando-for"><i class="fa fa-check"></i><b>9.2.1</b> Usando for</a></li>
+<li class="chapter" data-level="9.2.2" data-path="9-2-for.html"><a href="9-2-for.html#for-y-vectorización"><i class="fa fa-check"></i><b>9.2.2</b> for y vectorización</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="9-3-while.html"><a href="9-3-while.html"><i class="fa fa-check"></i><b>9.3</b> while</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="9-3-while.html"><a href="9-3-while.html#usando-while"><i class="fa fa-check"></i><b>9.3.1</b> Usando while</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="9-4-break-y-next.html"><a href="9-4-break-y-next.html"><i class="fa fa-check"></i><b>9.4</b> break y next</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="9-4-break-y-next.html"><a href="9-4-break-y-next.html#usando-break"><i class="fa fa-check"></i><b>9.4.1</b> Usando break</a></li>
+<li class="chapter" data-level="9.4.2" data-path="9-4-break-y-next.html"><a href="9-4-break-y-next.html#usando-next"><i class="fa fa-check"></i><b>9.4.2</b> Usando next</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="9-5-repeat.html"><a href="9-5-repeat.html"><i class="fa fa-check"></i><b>9.5</b> repeat</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="10-la-familia-apply.html"><a href="10-la-familia-apply.html"><i class="fa fa-check"></i><b>10</b> La familia apply</a>
+<ul>
+<li class="chapter" data-level="10.0.1" data-path="10-la-familia-apply.html"><a href="10-la-familia-apply.html#un-recordatorio-sobre-vectorización"><i class="fa fa-check"></i><b>10.0.1</b> Un recordatorio sobre vectorización</a></li>
+<li class="chapter" data-level="10.0.2" data-path="10-la-familia-apply.html"><a href="10-la-familia-apply.html#las-funciones-de-la-familia-apply"><i class="fa fa-check"></i><b>10.0.2</b> Las funciones de la familia apply</a></li>
+<li class="chapter" data-level="10.1" data-path="10-1-apply.html"><a href="10-1-apply.html"><i class="fa fa-check"></i><b>10.1</b> apply</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="10-1-apply.html"><a href="10-1-apply.html#qué-es-x"><i class="fa fa-check"></i><b>10.1.1</b> ¿Qué es X</a></li>
+<li class="chapter" data-level="10.1.2" data-path="10-1-apply.html"><a href="10-1-apply.html#qué-es-margin"><i class="fa fa-check"></i><b>10.1.2</b> ¿Qué es MARGIN?</a></li>
+<li class="chapter" data-level="10.1.3" data-path="10-1-apply.html"><a href="10-1-apply.html#qué-es-fun"><i class="fa fa-check"></i><b>10.1.3</b> ¿Qué es FUN?</a></li>
+<li class="chapter" data-level="10.1.4" data-path="10-1-apply.html"><a href="10-1-apply.html#cómo-sabe-fun-cuáles-son-sus-argumentos"><i class="fa fa-check"></i><b>10.1.4</b> ¿Cómo sabe FUN cuáles son sus argumentos?</a></li>
+<li class="chapter" data-level="10.1.5" data-path="10-1-apply.html"><a href="10-1-apply.html#qué-pasa-si-deseamos-utilizar-los-demás-argumentos-de-una-función-con-apply"><i class="fa fa-check"></i><b>10.1.5</b> ¿Qué pasa si deseamos utilizar los demás argumentos de una función con apply?</a></li>
+<li class="chapter" data-level="10.1.6" data-path="10-1-apply.html"><a href="10-1-apply.html#qué-tipo-de-resultados-devuelve-apply"><i class="fa fa-check"></i><b>10.1.6</b> ¿Qué tipo de resultados devuelve apply?</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="10-2-lapply.html"><a href="10-2-lapply.html"><i class="fa fa-check"></i><b>10.2</b> lapply</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="10-2-lapply.html"><a href="10-2-lapply.html#usando-lapply"><i class="fa fa-check"></i><b>10.2.1</b> Usando lapply()</a></li>
+<li class="chapter" data-level="10.2.2" data-path="10-2-lapply.html"><a href="10-2-lapply.html#usando-lapply-en-lugar-de-un-bucle-for"><i class="fa fa-check"></i><b>10.2.2</b> Usando lapply() en lugar de un bucle for</a></li>
+<li class="chapter" data-level="10.2.3" data-path="10-2-lapply.html"><a href="10-2-lapply.html#usando-lapply-con-listas"><i class="fa fa-check"></i><b>10.2.3</b> Usando lapply con listas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="11-importar-y-exportar-datos.html"><a href="11-importar-y-exportar-datos.html"><i class="fa fa-check"></i><b>11</b> Importar y exportar datos</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="11-1-descargando-datos.html"><a href="11-1-descargando-datos.html"><i class="fa fa-check"></i><b>11.1</b> Descargando datos</a></li>
+<li class="chapter" data-level="11.2" data-path="11-2-tablas-datos-rectangulares.html"><a href="11-2-tablas-datos-rectangulares.html"><i class="fa fa-check"></i><b>11.2</b> Tablas (datos rectangulares)</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="11-2-tablas-datos-rectangulares.html"><a href="11-2-tablas-datos-rectangulares.html#archivos-csv"><i class="fa fa-check"></i><b>11.2.1</b> Archivos CSV</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="11-3-archivos-con-una-estructura-desconocida.html"><a href="11-3-archivos-con-una-estructura-desconocida.html"><i class="fa fa-check"></i><b>11.3</b> Archivos con una estructura desconocida</a></li>
+<li class="chapter" data-level="11.4" data-path="11-4-exportar-datos.html"><a href="11-4-exportar-datos.html"><i class="fa fa-check"></i><b>11.4</b> Exportar datos</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="11-4-exportar-datos.html"><a href="11-4-exportar-datos.html#data-frames-y-matrices"><i class="fa fa-check"></i><b>11.4.1</b> Data frames y matrices</a></li>
+<li class="chapter" data-level="11.4.2" data-path="11-4-exportar-datos.html"><a href="11-4-exportar-datos.html#listas-2"><i class="fa fa-check"></i><b>11.4.2</b> Listas</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="11-5-hojas-de-cálculo-de-excel.html"><a href="11-5-hojas-de-cálculo-de-excel.html"><i class="fa fa-check"></i><b>11.5</b> Hojas de cálculo de Excel</a></li>
+<li class="chapter" data-level="11.6" data-path="11-6-datos-de-paquetes-estadísticos-comerciales-spss-sas-y-stata.html"><a href="11-6-datos-de-paquetes-estadísticos-comerciales-spss-sas-y-stata.html"><i class="fa fa-check"></i><b>11.6</b> Datos de paquetes estadísticos comerciales (SPSS, SAS y STATA)</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="12-gráficas.html"><a href="12-gráficas.html"><i class="fa fa-check"></i><b>12</b> Gráficas</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="12-1-datos-usados-en-el-capítulo.html"><a href="12-1-datos-usados-en-el-capítulo.html"><i class="fa fa-check"></i><b>12.1</b> Datos usados en el capítulo</a></li>
+<li class="chapter" data-level="12.2" data-path="12-2-la-función-plot.html"><a href="12-2-la-función-plot.html"><i class="fa fa-check"></i><b>12.2</b> La función <code>plot()</code></a></li>
+<li class="chapter" data-level="12.3" data-path="12-3-histogramas.html"><a href="12-3-histogramas.html"><i class="fa fa-check"></i><b>12.3</b> Histogramas</a></li>
+<li class="chapter" data-level="12.4" data-path="12-4-gráficas-de-barras.html"><a href="12-4-gráficas-de-barras.html"><i class="fa fa-check"></i><b>12.4</b> Gráficas de barras</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="12-4-gráficas-de-barras.html"><a href="12-4-gráficas-de-barras.html#la-función-barplot"><i class="fa fa-check"></i><b>12.4.1</b> La función <code>barplot()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="12-5-leyendas.html"><a href="12-5-leyendas.html"><i class="fa fa-check"></i><b>12.5</b> Leyendas</a></li>
+<li class="chapter" data-level="12.6" data-path="12-6-diagramas-de-dispersión.html"><a href="12-6-diagramas-de-dispersión.html"><i class="fa fa-check"></i><b>12.6</b> Diagramas de dispersión</a></li>
+<li class="chapter" data-level="12.7" data-path="12-7-diagramas-de-caja.html"><a href="12-7-diagramas-de-caja.html"><i class="fa fa-check"></i><b>12.7</b> Diagramas de caja</a></li>
+<li class="chapter" data-level="12.8" data-path="12-8-gráficos-de-mosaico.html"><a href="12-8-gráficos-de-mosaico.html"><i class="fa fa-check"></i><b>12.8</b> Gráficos de mosaico</a></li>
+<li class="chapter" data-level="12.9" data-path="12-9-exportar-gráficos.html"><a href="12-9-exportar-gráficos.html"><i class="fa fa-check"></i><b>12.9</b> Exportar gráficos</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="13-conclusión.html"><a href="13-conclusión.html"><i class="fa fa-check"></i><b>13</b> Conclusión</a></li>
+<li class="divider"></li>
+<li><a href="https://www.jeshuanomics.com/" target="blank">Publicado por JeshuaNomics</a></li>
+<li><a href="https://github.com/JeshuaNomics" class="fa fa-github"><span class="label">  Git Hub</span></a></li>	
+<li><a href="https://www.facebook.com/JeshuaNomics/" class="fa fa-facebook"><span class="label">  Facebook</span></a></li>
+<li><a href="https://twitter.com/JeshuaNomics" class="fa fa-twitter"><span class="label">  Twitter</span></a></li>
+<li><a href="https://www.linkedin.com/in/jeshua-romero-guadarrama/" class="fa fa-linkedin"><span class="label">  Linkedin</span></a></li>
+<li><a href="https://vk.com/jeshuanomics" class="fa fa-vk"><span class="label">  Vkontakte</span></a></li>
+<li><a href="https://jeshuanomics.tumblr.com/" class="fa fa-tumblr"><span class="label">  Tumblr</span></a></li>
+<li><a href="https://www.youtube.com/channel/UCY7f84mJGvMN7TF7XI4-Jgg?view_as=subscriber/" class="fa fa-youtube-play"><span class="label">  YouTube</span></a></li>	
+<li><a href="https://www.instagram.com/JeshuaNomics/" class="fa fa-instagram"><span class="label">  Instagram</span></a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Grupo de estudios económicos</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="matrices-y-arrays" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Matrices y arrays</h2>
+<p>Las matrices y arrays pueden ser descritas como <strong>vectores multidimensionales</strong>. Al igual que un vector, únicamente pueden contener datos de un sólo tipo, pero además de largo, tienen más dimensiones.</p>
+<p>En un sentido estricto, las matrices son una caso especial de un array, que se distingue por tener <strong>específicamente dos dimensiones</strong>, un “largo”" y un “alto.” Las matrices son, por lo tanto, una estructura con forma rectangular, con renglones y columnas.</p>
+<p>Como las matrices son usadas de manera regular en matemáticas y estadística, es una estructura de datos de uso común en R común y en la que nos enfocaremos en este libro.</p>
+<p>Los arrays, por su parte, pueden tener un número arbitrario de dimensiones. Pueden ser cubos, hipercubos y otras formas. Su uso no es muy común en R, aunque a veces es deseable contar con objetos n-dimensionales para manipular datos. Como los arrays tienen la restricción de que todos sus datos deben ser del mismo tipo, no importando en cuántas dimensiones se encuentren, esto limita sus usos prácticos.</p>
+<p>En general, es preferible usar listas en lugar de arrays, una estructura de datos que además tienen ciertas ventajas que veremos más adelante.</p>
+<div id="creación-de-matrices" class="section level3" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Creación de matrices</h3>
+<p>Creamos matrices en R con la función <code>matrix()</code>. La función <code>matrix()</code> acepta dos argumentos, <code>nrow</code> y <code>ncol</code>. Con ellos especificamos el número de renglones y columnas que tendrá nuestra matriz.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="6-2-matrices-y-arrays.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Un vector numérico del uno al doce</span></span>
+<span id="cb56-2"><a href="6-2-matrices-y-arrays.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">12</span></span>
+<span id="cb56-3"><a href="6-2-matrices-y-arrays.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10 11 12</span></span>
+<span id="cb56-4"><a href="6-2-matrices-y-arrays.html#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-5"><a href="6-2-matrices-y-arrays.html#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="co"># matrix() sin especificar renglones ni columnas</span></span>
+<span id="cb56-6"><a href="6-2-matrices-y-arrays.html#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>)</span>
+<span id="cb56-7"><a href="6-2-matrices-y-arrays.html#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       [,1]</span></span>
+<span id="cb56-8"><a href="6-2-matrices-y-arrays.html#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1,]    1</span></span>
+<span id="cb56-9"><a href="6-2-matrices-y-arrays.html#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [2,]    2</span></span>
+<span id="cb56-10"><a href="6-2-matrices-y-arrays.html#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [3,]    3</span></span>
+<span id="cb56-11"><a href="6-2-matrices-y-arrays.html#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [4,]    4</span></span>
+<span id="cb56-12"><a href="6-2-matrices-y-arrays.html#cb56-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5,]    5</span></span>
+<span id="cb56-13"><a href="6-2-matrices-y-arrays.html#cb56-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [6,]    6</span></span>
+<span id="cb56-14"><a href="6-2-matrices-y-arrays.html#cb56-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7,]    7</span></span>
+<span id="cb56-15"><a href="6-2-matrices-y-arrays.html#cb56-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [8,]    8</span></span>
+<span id="cb56-16"><a href="6-2-matrices-y-arrays.html#cb56-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9,]    9</span></span>
+<span id="cb56-17"><a href="6-2-matrices-y-arrays.html#cb56-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10,]   10</span></span>
+<span id="cb56-18"><a href="6-2-matrices-y-arrays.html#cb56-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11,]   11</span></span>
+<span id="cb56-19"><a href="6-2-matrices-y-arrays.html#cb56-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [12,]   12</span></span>
+<span id="cb56-20"><a href="6-2-matrices-y-arrays.html#cb56-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-21"><a href="6-2-matrices-y-arrays.html#cb56-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Tres renglones y cuatro columnas</span></span>
+<span id="cb56-22"><a href="6-2-matrices-y-arrays.html#cb56-22" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb56-23"><a href="6-2-matrices-y-arrays.html#cb56-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb56-24"><a href="6-2-matrices-y-arrays.html#cb56-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    4    7   10</span></span>
+<span id="cb56-25"><a href="6-2-matrices-y-arrays.html#cb56-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    2    5    8   11</span></span>
+<span id="cb56-26"><a href="6-2-matrices-y-arrays.html#cb56-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    3    6    9   12</span></span>
+<span id="cb56-27"><a href="6-2-matrices-y-arrays.html#cb56-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-28"><a href="6-2-matrices-y-arrays.html#cb56-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Cuatro columnas y tres columnas</span></span>
+<span id="cb56-29"><a href="6-2-matrices-y-arrays.html#cb56-29" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb56-30"><a href="6-2-matrices-y-arrays.html#cb56-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb56-31"><a href="6-2-matrices-y-arrays.html#cb56-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    5    9</span></span>
+<span id="cb56-32"><a href="6-2-matrices-y-arrays.html#cb56-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    2    6   10</span></span>
+<span id="cb56-33"><a href="6-2-matrices-y-arrays.html#cb56-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    3    7   11</span></span>
+<span id="cb56-34"><a href="6-2-matrices-y-arrays.html#cb56-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,]    4    8   12</span></span>
+<span id="cb56-35"><a href="6-2-matrices-y-arrays.html#cb56-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-36"><a href="6-2-matrices-y-arrays.html#cb56-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Dos renglones y seis columnas</span></span>
+<span id="cb56-37"><a href="6-2-matrices-y-arrays.html#cb56-37" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb56-38"><a href="6-2-matrices-y-arrays.html#cb56-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb56-39"><a href="6-2-matrices-y-arrays.html#cb56-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    5    9</span></span>
+<span id="cb56-40"><a href="6-2-matrices-y-arrays.html#cb56-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    2    6   10</span></span>
+<span id="cb56-41"><a href="6-2-matrices-y-arrays.html#cb56-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    3    7   11</span></span>
+<span id="cb56-42"><a href="6-2-matrices-y-arrays.html#cb56-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,]    4    8   12</span></span></code></pre></div>
+<p>Los datos que intentemos agrupar en una matriz serán acomodados en orden, de arriba a abajo, y de izquierda a derecha, hasta formar un rectángulo.</p>
+<p>Si multiplicamos el número de renglones por el número de columnas, obtendremos el número de celdas de la matriz. En los ejemplo anteriores, el número de celdas es igual al número de elementos que queremos acomodar, así que la operación ocurre sin problemas.</p>
+<p>Cuando intentamos acomodar un número diferente de elementos y celdas, ocurren dos cosas diferentes.</p>
+<p>Si el número de elementos es mayor al número de celdas, se acomodarán todos los datos que sean posibles y los demás se omitirán.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="6-2-matrices-y-arrays.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb57-2"><a href="6-2-matrices-y-arrays.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb57-3"><a href="6-2-matrices-y-arrays.html#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    4    7</span></span>
+<span id="cb57-4"><a href="6-2-matrices-y-arrays.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    2    5    8</span></span>
+<span id="cb57-5"><a href="6-2-matrices-y-arrays.html#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    3    6    9</span></span></code></pre></div>
+<p>Si, por el contrario, el número de celdas es mayor que el número de elementos, estos se <strong>reciclaran</strong>. En cuanto los elementos sean insuficientes para acomodarse en las celdas, R nos devolverá una advertencia y se empezaran a usar los elementos a partir del primero de ellos</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="6-2-matrices-y-arrays.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb58-2"><a href="6-2-matrices-y-arrays.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb58-3"><a href="6-2-matrices-y-arrays.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    6   11    4</span></span>
+<span id="cb58-4"><a href="6-2-matrices-y-arrays.html#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    2    7   12    5</span></span>
+<span id="cb58-5"><a href="6-2-matrices-y-arrays.html#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    3    8    1    6</span></span>
+<span id="cb58-6"><a href="6-2-matrices-y-arrays.html#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,]    4    9    2    7</span></span>
+<span id="cb58-7"><a href="6-2-matrices-y-arrays.html#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,]    5   10    3    8</span></span></code></pre></div>
+<p>Otro procedimiento para crear matrices es la unión vectores con las siguientes funciones:</p>
+<ul>
+<li><code>cbind()</code> para unir vectores, usando cada uno como una columna.</li>
+<li><code>rbind()</code> para unir vectores, usando cada uno como un renglón.</li>
+</ul>
+<p>De este modo podemos crear cuatro vectores y unirlos para formar una matriz. Cada vector será un renglón en esta matriz.</p>
+<p>Creamos cuatro vectores, cada uno de largo igual a cuatro.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="6-2-matrices-y-arrays.html#cb59-1" aria-hidden="true" tabindex="-1"></a>vector_1 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb59-2"><a href="6-2-matrices-y-arrays.html#cb59-2" aria-hidden="true" tabindex="-1"></a>vector_2 <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">8</span></span>
+<span id="cb59-3"><a href="6-2-matrices-y-arrays.html#cb59-3" aria-hidden="true" tabindex="-1"></a>vector_3 <span class="ot">&lt;-</span> <span class="dv">9</span><span class="sc">:</span><span class="dv">12</span></span>
+<span id="cb59-4"><a href="6-2-matrices-y-arrays.html#cb59-4" aria-hidden="true" tabindex="-1"></a>vector_4 <span class="ot">&lt;-</span> <span class="dv">13</span><span class="sc">:</span><span class="dv">16</span></span></code></pre></div>
+<p>Usamos <code>rbind()</code> para crear un matriz, en la que cada vector será un renglón.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="6-2-matrices-y-arrays.html#cb60-1" aria-hidden="true" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> <span class="fu">rbind</span>(vector_1, vector_2, vector_3, vector_4)</span>
+<span id="cb60-2"><a href="6-2-matrices-y-arrays.html#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="6-2-matrices-y-arrays.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Resultado</span></span>
+<span id="cb60-4"><a href="6-2-matrices-y-arrays.html#cb60-4" aria-hidden="true" tabindex="-1"></a>matriz</span>
+<span id="cb60-5"><a href="6-2-matrices-y-arrays.html#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          [,1] [,2] [,3] [,4]</span></span>
+<span id="cb60-6"><a href="6-2-matrices-y-arrays.html#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; vector_1    1    2    3    4</span></span>
+<span id="cb60-7"><a href="6-2-matrices-y-arrays.html#cb60-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; vector_2    5    6    7    8</span></span>
+<span id="cb60-8"><a href="6-2-matrices-y-arrays.html#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; vector_3    9   10   11   12</span></span>
+<span id="cb60-9"><a href="6-2-matrices-y-arrays.html#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; vector_4   13   14   15   16</span></span></code></pre></div>
+<p>Si utilizamos <code>cbind()</code>, entonces cada vector será una columna.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="6-2-matrices-y-arrays.html#cb61-1" aria-hidden="true" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> <span class="fu">cbind</span>(vector_1, vector_2, vector_3, vector_4)</span>
+<span id="cb61-2"><a href="6-2-matrices-y-arrays.html#cb61-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-3"><a href="6-2-matrices-y-arrays.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Resultado</span></span>
+<span id="cb61-4"><a href="6-2-matrices-y-arrays.html#cb61-4" aria-hidden="true" tabindex="-1"></a>matriz</span>
+<span id="cb61-5"><a href="6-2-matrices-y-arrays.html#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      vector_1 vector_2 vector_3 vector_4</span></span>
+<span id="cb61-6"><a href="6-2-matrices-y-arrays.html#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]        1        5        9       13</span></span>
+<span id="cb61-7"><a href="6-2-matrices-y-arrays.html#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]        2        6       10       14</span></span>
+<span id="cb61-8"><a href="6-2-matrices-y-arrays.html#cb61-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]        3        7       11       15</span></span>
+<span id="cb61-9"><a href="6-2-matrices-y-arrays.html#cb61-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,]        4        8       12       16</span></span></code></pre></div>
+<p>Al igual que con <code>matrix()</code>, los elementos de los vectores son reciclados para formar una estructura rectangular y se nos muestra un mensaje de advertencia.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="6-2-matrices-y-arrays.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Elementos de largo diferente</span></span>
+<span id="cb62-2"><a href="6-2-matrices-y-arrays.html#cb62-2" aria-hidden="true" tabindex="-1"></a>vector_1 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span></span>
+<span id="cb62-3"><a href="6-2-matrices-y-arrays.html#cb62-3" aria-hidden="true" tabindex="-1"></a>vector_2 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb62-4"><a href="6-2-matrices-y-arrays.html#cb62-4" aria-hidden="true" tabindex="-1"></a>vector_3 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb62-5"><a href="6-2-matrices-y-arrays.html#cb62-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-6"><a href="6-2-matrices-y-arrays.html#cb62-6" aria-hidden="true" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> <span class="fu">cbind</span>(vector_1, vector_2, vector_3)</span>
+<span id="cb62-7"><a href="6-2-matrices-y-arrays.html#cb62-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-8"><a href="6-2-matrices-y-arrays.html#cb62-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Resultado</span></span>
+<span id="cb62-9"><a href="6-2-matrices-y-arrays.html#cb62-9" aria-hidden="true" tabindex="-1"></a>matriz</span>
+<span id="cb62-10"><a href="6-2-matrices-y-arrays.html#cb62-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      vector_1 vector_2 vector_3</span></span>
+<span id="cb62-11"><a href="6-2-matrices-y-arrays.html#cb62-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]        1        1        1</span></span>
+<span id="cb62-12"><a href="6-2-matrices-y-arrays.html#cb62-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]        2        2        2</span></span>
+<span id="cb62-13"><a href="6-2-matrices-y-arrays.html#cb62-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]        1        3        3</span></span>
+<span id="cb62-14"><a href="6-2-matrices-y-arrays.html#cb62-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,]        2        1        4</span></span>
+<span id="cb62-15"><a href="6-2-matrices-y-arrays.html#cb62-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,]        1        2        5</span></span></code></pre></div>
+<p>Finalmente, las matrices pueden contener <code>NA</code>s.</p>
+<p>Creamos dos vectores con un <code>NA</code> en ellos.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="6-2-matrices-y-arrays.html#cb63-1" aria-hidden="true" tabindex="-1"></a>vector_1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb63-2"><a href="6-2-matrices-y-arrays.html#cb63-2" aria-hidden="true" tabindex="-1"></a>vector_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,  <span class="dv">4</span>, <span class="cn">NA</span>)</span></code></pre></div>
+<p>Creamos una matriz con <code>rbind()</code>.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="6-2-matrices-y-arrays.html#cb64-1" aria-hidden="true" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> <span class="fu">rbind</span>(vector_1, vector_2)</span>
+<span id="cb64-2"><a href="6-2-matrices-y-arrays.html#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="6-2-matrices-y-arrays.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Resultados</span></span>
+<span id="cb64-4"><a href="6-2-matrices-y-arrays.html#cb64-4" aria-hidden="true" tabindex="-1"></a>matriz</span>
+<span id="cb64-5"><a href="6-2-matrices-y-arrays.html#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          [,1] [,2] [,3]</span></span>
+<span id="cb64-6"><a href="6-2-matrices-y-arrays.html#cb64-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; vector_1   NA    1    2</span></span>
+<span id="cb64-7"><a href="6-2-matrices-y-arrays.html#cb64-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; vector_2    3    4   NA</span></span></code></pre></div>
+<p>Como <code>NA</code> representa datos perdidos, puede estar presente en compañía de todo tipo de de datos.</p>
+</div>
+<div id="propiedades-de-las-matrices" class="section level3" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Propiedades de las matrices</h3>
+<p>No obstante que las matrices y arrays son estructuras que sólo pueden contener un tipo de datos, no son atómicas. Su clase es igual a <strong>matriz (matrix)</strong> o <strong>array</strong> según corresponda.</p>
+<p>Verificamos esto usando la función <code>class()</code>.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="6-2-matrices-y-arrays.html#cb65-1" aria-hidden="true" tabindex="-1"></a>mi_matriz <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb65-2"><a href="6-2-matrices-y-arrays.html#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="6-2-matrices-y-arrays.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mi_matriz)</span>
+<span id="cb65-4"><a href="6-2-matrices-y-arrays.html#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;matrix&quot; &quot;array&quot;</span></span></code></pre></div>
+<p>Las matrices y arrays pueden tener más de una dimensión.</p>
+<p>Obtenemos el número de dimensiones de una matriz o array con la función <code>dim()</code>. Esta función nos devolverá varios números, cada uno de ellos indica la cantidad de elementos que tiene una dimensión.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="6-2-matrices-y-arrays.html#cb66-1" aria-hidden="true" tabindex="-1"></a>mi_matriz <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb66-2"><a href="6-2-matrices-y-arrays.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(mi_matriz)</span>
+<span id="cb66-3"><a href="6-2-matrices-y-arrays.html#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4 3</span></span></code></pre></div>
+<p>Cabe señalar que si usamos <code>dim()</code> con un vector, obtenemos <code>NULL</code>. Esto ocurre con todos los objetos unidimensionales</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="6-2-matrices-y-arrays.html#cb67-1" aria-hidden="true" tabindex="-1"></a>mi_vector <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span></span>
+<span id="cb67-2"><a href="6-2-matrices-y-arrays.html#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-3"><a href="6-2-matrices-y-arrays.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(mi_vector)</span>
+<span id="cb67-4"><a href="6-2-matrices-y-arrays.html#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span></code></pre></div>
+<p>Finalmente, las operaciones aritméticas también son vectorizadas al aplicarlas a una matriz. La operación es aplicada a cada uno de los elementos de la matriz.</p>
+<p>Creamos una matriz.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="6-2-matrices-y-arrays.html#cb68-1" aria-hidden="true" tabindex="-1"></a>mi_matriz <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb68-2"><a href="6-2-matrices-y-arrays.html#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-3"><a href="6-2-matrices-y-arrays.html#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Resultado</span></span>
+<span id="cb68-4"><a href="6-2-matrices-y-arrays.html#cb68-4" aria-hidden="true" tabindex="-1"></a>mi_matriz</span>
+<span id="cb68-5"><a href="6-2-matrices-y-arrays.html#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb68-6"><a href="6-2-matrices-y-arrays.html#cb68-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    4    7</span></span>
+<span id="cb68-7"><a href="6-2-matrices-y-arrays.html#cb68-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    2    5    8</span></span>
+<span id="cb68-8"><a href="6-2-matrices-y-arrays.html#cb68-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    3    6    9</span></span></code></pre></div>
+<p>Intentemos sumar, multiplicar y elevar a la tercera potencia.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="6-2-matrices-y-arrays.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Suma</span></span>
+<span id="cb69-2"><a href="6-2-matrices-y-arrays.html#cb69-2" aria-hidden="true" tabindex="-1"></a>mi_matriz <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb69-3"><a href="6-2-matrices-y-arrays.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb69-4"><a href="6-2-matrices-y-arrays.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    2    5    8</span></span>
+<span id="cb69-5"><a href="6-2-matrices-y-arrays.html#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    3    6    9</span></span>
+<span id="cb69-6"><a href="6-2-matrices-y-arrays.html#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    4    7   10</span></span>
+<span id="cb69-7"><a href="6-2-matrices-y-arrays.html#cb69-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-8"><a href="6-2-matrices-y-arrays.html#cb69-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiplicación</span></span>
+<span id="cb69-9"><a href="6-2-matrices-y-arrays.html#cb69-9" aria-hidden="true" tabindex="-1"></a>mi_matriz <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb69-10"><a href="6-2-matrices-y-arrays.html#cb69-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb69-11"><a href="6-2-matrices-y-arrays.html#cb69-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    2    8   14</span></span>
+<span id="cb69-12"><a href="6-2-matrices-y-arrays.html#cb69-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    4   10   16</span></span>
+<span id="cb69-13"><a href="6-2-matrices-y-arrays.html#cb69-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    6   12   18</span></span>
+<span id="cb69-14"><a href="6-2-matrices-y-arrays.html#cb69-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-15"><a href="6-2-matrices-y-arrays.html#cb69-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Potenciación</span></span>
+<span id="cb69-16"><a href="6-2-matrices-y-arrays.html#cb69-16" aria-hidden="true" tabindex="-1"></a>mi_matriz <span class="sc">^</span> <span class="dv">3</span></span>
+<span id="cb69-17"><a href="6-2-matrices-y-arrays.html#cb69-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb69-18"><a href="6-2-matrices-y-arrays.html#cb69-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1   64  343</span></span>
+<span id="cb69-19"><a href="6-2-matrices-y-arrays.html#cb69-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    8  125  512</span></span>
+<span id="cb69-20"><a href="6-2-matrices-y-arrays.html#cb69-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]   27  216  729</span></span></code></pre></div>
+<p>Si intentamos vectorizar una operación utilizando una matriz con <code>NA</code>s, esta se aplicará para los elementos válidos, devolviendo <code>NA</code> cuando corresponda.</p>
+<p>Creamos una matriz con <code>NA</code>s.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="6-2-matrices-y-arrays.html#cb70-1" aria-hidden="true" tabindex="-1"></a>vector_1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb70-2"><a href="6-2-matrices-y-arrays.html#cb70-2" aria-hidden="true" tabindex="-1"></a>vector_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="cn">NA</span>)</span>
+<span id="cb70-3"><a href="6-2-matrices-y-arrays.html#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="6-2-matrices-y-arrays.html#cb70-4" aria-hidden="true" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> <span class="fu">rbind</span>(vector_1, vector_2)</span>
+<span id="cb70-5"><a href="6-2-matrices-y-arrays.html#cb70-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-6"><a href="6-2-matrices-y-arrays.html#cb70-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Resultado</span></span>
+<span id="cb70-7"><a href="6-2-matrices-y-arrays.html#cb70-7" aria-hidden="true" tabindex="-1"></a>matriz</span>
+<span id="cb70-8"><a href="6-2-matrices-y-arrays.html#cb70-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          [,1] [,2] [,3]</span></span>
+<span id="cb70-9"><a href="6-2-matrices-y-arrays.html#cb70-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; vector_1   NA    2    3</span></span>
+<span id="cb70-10"><a href="6-2-matrices-y-arrays.html#cb70-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; vector_2    4    5   NA</span></span></code></pre></div>
+<p>Intentamos dividir sus elementos entre dos.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="6-2-matrices-y-arrays.html#cb71-1" aria-hidden="true" tabindex="-1"></a>matriz <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb71-2"><a href="6-2-matrices-y-arrays.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          [,1] [,2] [,3]</span></span>
+<span id="cb71-3"><a href="6-2-matrices-y-arrays.html#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; vector_1   NA  1.0  1.5</span></span>
+<span id="cb71-4"><a href="6-2-matrices-y-arrays.html#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; vector_2    2  2.5   NA</span></span></code></pre></div>
+<p>Finalmente, podemos usar la función <code>t()</code> para transponer una matriz, es decir, rotarla 90°.</p>
+<p>Creamos una matriz con tres renglones y dos columnas.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="6-2-matrices-y-arrays.html#cb72-1" aria-hidden="true" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb72-2"><a href="6-2-matrices-y-arrays.html#cb72-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-3"><a href="6-2-matrices-y-arrays.html#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Resultado</span></span>
+<span id="cb72-4"><a href="6-2-matrices-y-arrays.html#cb72-4" aria-hidden="true" tabindex="-1"></a>matriz</span>
+<span id="cb72-5"><a href="6-2-matrices-y-arrays.html#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb72-6"><a href="6-2-matrices-y-arrays.html#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    4</span></span>
+<span id="cb72-7"><a href="6-2-matrices-y-arrays.html#cb72-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    2    5</span></span>
+<span id="cb72-8"><a href="6-2-matrices-y-arrays.html#cb72-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    3    6</span></span></code></pre></div>
+<p>Usamos <code>t()</code> para transponer.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="6-2-matrices-y-arrays.html#cb73-1" aria-hidden="true" tabindex="-1"></a>matriz_t <span class="ot">&lt;-</span> <span class="fu">t</span>(matriz)</span>
+<span id="cb73-2"><a href="6-2-matrices-y-arrays.html#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="6-2-matrices-y-arrays.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Resultado</span></span>
+<span id="cb73-4"><a href="6-2-matrices-y-arrays.html#cb73-4" aria-hidden="true" tabindex="-1"></a>matriz_t</span>
+<span id="cb73-5"><a href="6-2-matrices-y-arrays.html#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb73-6"><a href="6-2-matrices-y-arrays.html#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    2    3</span></span>
+<span id="cb73-7"><a href="6-2-matrices-y-arrays.html#cb73-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    4    5    6</span></span></code></pre></div>
+<p>Obtenemos una matriz con dos renglones y dos columnas.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="6-1-vectores.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="6-3-data-frames.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": true,
+"weibo": false,
+"instapaper": false,
+"vk": true,
+"whatsapp": false,
+"all": ["vk", "linkedin", "twitter", "facebook"],
+"tumblr": false,
+"youtube": false,
+"instagram": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "serif",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/Jeshua-Romero-Guadarrama/CienciaPolitica/edit/master/06-estructuras-datos.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R_grupo_de_estudios_economicos.pdf", "R_grupo_de_estudios_economicos.epub"],
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
