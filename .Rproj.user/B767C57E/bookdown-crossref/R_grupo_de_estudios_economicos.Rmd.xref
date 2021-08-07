@@ -1,0 +1,125 @@
+h1:prefacio Prefacio
+h4:las-convenciones-usadas-en-el-presente-curso Las convenciones usadas en el presente curso
+h4:reconocimiento Reconocimiento
+h2:contenido Contenido
+h2:índice-de-contenido Índice de contenido
+h1:introducción-qué-es-r-y-para-qué-es-usado Introducción: ¿Qué es R y para qué es usado?
+h2:un-poco-de-historia Un poco de historia
+h2:quién-usa-r ¿Quién usa R?
+h1:instalación Instalación
+h2:windows Windows
+h2:osx OSX
+h2:linux Linux
+h2:rstudio---un-ide-para-r RStudio - un IDE para R
+h1:conceptos-básicos Conceptos básicos
+h2:la-consola-de-r La consola de R
+h2:ejecutar-llamar-correr-y-devolver Ejecutar, llamar, correr y devolver
+h2:objetos Objetos
+h2:constantes-y-variables Constantes y variables
+h2:funciones-introducción-básica Funciones (introducción básica)
+h2:documentación Documentación
+h2:directorio-de-trabajo Directorio de trabajo
+h3:sesión Sesión
+h2:paquetes Paquetes
+h2:scripts Scripts
+h1:tipos-de-datos Tipos de datos
+h2:datos-más-comunes Datos más comunes
+h2:entero-y-numérico Entero y numérico
+h2:cadena-de-texto Cadena de texto
+h2:factor Factor
+h2:lógico Lógico
+h2:na-y-null  y 
+h2:coerción Coerción
+h3:coerción-explícita-con-la-familia-as Coerción explícita con la familia 
+h2:verificar-el-tipo-de-un-dato Verificar el tipo de un dato
+h3:verificación-con-la-familia-de-funciones-is Verificación con la familia de funciones 
+h1:operadores Operadores
+h2:operadores-aritméticos Operadores aritméticos
+h3:la-división-entera La división entera
+h2:operadores-relacionales Operadores relacionales
+h2:operadores-lógicos Operadores lógicos
+h2:operadores-de-asignación Operadores de asignación
+h2:orden-de-operaciones Orden de operaciones
+h1:estructuras-de-datos Estructuras de datos
+h2:vectores Vectores
+h3:creación-de-vectores Creación de vectores
+h3:vectorización-de-operaciones Vectorización de operaciones
+h2:matrices-y-arrays Matrices y arrays
+h3:creación-de-matrices Creación de matrices
+h3:propiedades-de-las-matrices Propiedades de las matrices
+h2:data-frames Data frames
+h3:propiedades-de-un-data-frame Propiedades de un data frame
+h2:listas Listas
+h3:propiedades-de-una-lista Propiedades de una lista
+h2:coerción-1 Coerción
+h1:subconjuntos Subconjuntos
+h2:índices Índices
+h3:vectores-1 Vectores
+h3:data-frames-1 Data frames
+h3:matrices Matrices
+h3:arrays Arrays
+h2:nombres Nombres
+h3:data-frames-2 Data frames
+h3:listas-1 Listas
+h2:subconjuntos-por-índice-y-nombre Subconjuntos por índice y nombre
+h2:el-signo-de-dolar-y-los-corchetes-dobles El signo de dolar  y los corchetes dobles 
+h3:los-data-frames-y-listas-son-como-cajas-de-manzanas Los data frames y listas son como cajas de manzanas
+h2:condicionales Condicionales
+h3:usando-condicionales Usando condicionales
+h3:la-función-subset La función 
+h1:funciones Funciones
+h2:por-qué-necesitamos-crear-nuestrar-propias-funciones ¿Por qué necesitamos crear nuestrar propias funciones?
+h2:funciones-definidas-por-el-usuario Funciones definidas por el usuario
+h2:nuestra-primera-función Nuestra primera función
+h2:definiendo-la-función-crear_histograma Definiendo la función 
+h3:ejecutando Ejecutando
+h1:estructuras-de-control Estructuras de control
+h2:if-else if, else
+h3:usando-if-y-else Usando if y else
+h3:ifelse ifelse
+h2:for for
+h3:usando-for Usando for
+h3:for-y-vectorización for y vectorización
+h2:while while
+h3:usando-while Usando while
+h2:break-y-next break y next
+h3:usando-break Usando break
+h3:usando-next Usando next
+h2:repeat repeat
+h1:la-familia-apply La familia apply
+h3:un-recordatorio-sobre-vectorización Un recordatorio sobre vectorización
+h3:las-funciones-de-la-familia-apply Las funciones de la familia apply
+h2:apply apply
+h3:qué-es-x ¿Qué es X
+h3:qué-es-margin ¿Qué es MARGIN?
+h3:qué-es-fun ¿Qué es FUN?
+h3:cómo-sabe-fun-cuáles-son-sus-argumentos ¿Cómo sabe FUN cuáles son sus argumentos?
+h3:qué-pasa-si-deseamos-utilizar-los-demás-argumentos-de-una-función-con-apply ¿Qué pasa si deseamos utilizar los demás argumentos de una función con apply?
+h3:qué-tipo-de-resultados-devuelve-apply ¿Qué tipo de resultados devuelve apply?
+h2:lapply lapply
+h3:usando-lapply Usando lapply()
+h3:usando-lapply-en-lugar-de-un-bucle-for Usando lapply() en lugar de un bucle for
+h3:usando-lapply-con-listas Usando lapply con listas
+h1:importar-y-exportar-datos Importar y exportar datos
+h2:descargando-datos Descargando datos
+h2:tablas-datos-rectangulares Tablas (datos rectangulares)
+h3:archivos-csv Archivos CSV
+h2:archivos-con-una-estructura-desconocida Archivos con una estructura desconocida
+h2:exportar-datos Exportar datos
+h3:data-frames-y-matrices Data frames y matrices
+h3:listas-2 Listas
+h2:hojas-de-cálculo-de-excel Hojas de cálculo de Excel
+h2:datos-de-paquetes-estadísticos-comerciales-spss-sas-y-stata Datos de paquetes estadísticos comerciales (SPSS, SAS y STATA)
+h1:gráficas Gráficas
+h2:datos-usados-en-el-capítulo Datos usados en el capítulo
+h2:la-función-plot La función 
+h2:histogramas Histogramas
+h2:gráficas-de-barras Gráficas de barras
+h3:la-función-barplot La función 
+h2:leyendas Leyendas
+h2:diagramas-de-dispersión Diagramas de dispersión
+h2:diagramas-de-caja Diagramas de caja
+h2:gráficos-de-mosaico Gráficos de mosaico
+h2:exportar-gráficos Exportar gráficos
+h1:conclusión Conclusión
+
