@@ -1,0 +1,4 @@
+"0","tipo <- c(""A"", ""B"", ""C"")"
+"0","longitud <- c(120.34, 99.45, 115.67)"
+"0","datos <- data.frame(tipo, longitud)"
+"0","datos"

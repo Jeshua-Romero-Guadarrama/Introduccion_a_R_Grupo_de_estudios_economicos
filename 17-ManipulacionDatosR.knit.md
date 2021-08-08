@@ -453,6 +453,10 @@ La transformación que permite pasar millas a kilómetros es
 cars$speed/0.62137
 ```
 
+```
+## numeric(0)
+```
+
  Finalmente, incluimos la nueva variable que llamaremos
 `velocidad` en `cars`:
 
@@ -463,16 +467,68 @@ variable `distancia` (en metros). Ahora la transformación deseada es
 
 
 
+ Ahora, eliminaremos las variables originales `speed` y
+`dist`, y guardaremos el data.frame resultante con el nombre `coches`.
+En primer lugar, veamos varias formas de acceder a las variables de
+interés:
+
+```r
+cars[, c(3, 4)]
+cars[, c("velocidad", "distancia")]
+cars[, -c(1, 2)]
+```
+
+Utilizando alguna de las opciones anteriores se obtiene el `data.frame`
+deseado:
 
 
+Finalmente los datos anteriores podrían ser guardados en un fichero
+exportable a Excel con el siguiente comando:
 
+```r
+write.csv2(coches, file = "coches.csv")
+```
 
+### Operaciones con casos
 
+#### Ordenación
 
+Continuemos con el data.frame `cars`. 
+Se puede comprobar que los datos disponibles están ordenados por
+los valores de `speed`. A continuación haremos la ordenación utilizando
+los valores de `dist`. Para ello utilizaremos el conocido como vector de
+índices de ordenación.
+Este vector establece el orden en que tienen que ser elegidos los
+elementos para obtener la ordenación deseada. 
+Veamos un ejemplo sencillo:
 
+```r
+x <- c(2.5, 4.3, 1.2, 3.1, 5.0) # valores originales
+ii <- order(x)
+ii    # vector de ordenación
+```
 
+```
+## [1] 3 1 4 2 5
+```
 
+```r
+x[ii] # valores ordenados
+```
 
+```
+## [1] 1.2 2.5 3.1 4.3 5.0
+```
+En el caso de vectores, el procedimiento anterior se podría
+hacer directamente con: 
+
+```r
+sort(x)
+```
+
+Sin embargo, para ordenar data.frames será necesario la utilización del
+vector de índices de ordenación. A continuación, los datos de `cars`
+ordenados por `dist`:
 
 
 

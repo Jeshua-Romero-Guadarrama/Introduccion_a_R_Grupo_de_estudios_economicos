@@ -1,0 +1,2 @@
+"0","ii <- cars$dist > 85"
+"0","cars[ii, ]   # dis>85"
