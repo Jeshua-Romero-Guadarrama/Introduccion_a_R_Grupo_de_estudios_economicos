@@ -6,7 +6,8 @@
 Los estudiantes con poca experiencia en el análisis avanzado de estadísticas a menudo tienen dificultades para entender los beneficios de desarrollar habilidades de programación al momento de aplicar diversos métodos descriptivos e inferenciales. <i>Introducción a R: Grupo de estudios económicos</i> por Jeshua Romero Guadarrama (2021), ofrece una introducción interactiva a los aspectos esenciales de la programación por medio del lenguaje y software estadístico R, así como una guía para la aplicación de la teoría económica y econométrica en entornos específicos. En otras palabras, el objetivo es que los estudiantes se adentren al mundo de la economía aplicada mediante ejemplos empíricos presentados en la vida diaria y haciendo uso de las habilidades de programación recién adquiridas en la probabilidad y estadística. Dicho objetivo se encuentra respaldado por ejercicios de programación interactivos y la incorporación de visualizaciones dinámicas de conceptos fundamentales mediante la flexibilidad de JavaScript, a través de la biblioteca D3.js.</p>
 
 El curso se puede consultar aquí: [Introducción a R: Grupo de estudios económicos](http://rgrupodeestudioseconomicos.jeshuanomics.com/)
-___
+
+## 📦 Paquetería necesaria
 
 Para ejecutar los ejemplos mostrados en el libro será necesario tener instalados los siguientes paquetes:
 
@@ -21,7 +22,7 @@ Para ejecutar los ejemplos mostrados en el libro será necesario tener instalado
 [`glmnet`](https://cran.r-project.org/web/packages/glmnet/index.html), 
 [`mgcv`](https://cran.r-project.org/web/packages/mgcv/index.html), 
 [`rmarkdown`](https://cran.r-project.org/web/packages/rmarkdown/index.html), 
-[`knitr`](https://cran.r-project.org/web/packages/knitr/index.html), 
+[`knitr`](https://cran.r-project.org/web/packages/knitr/index.html) y 
 [`dplyr`](https://cran.r-project.org/web/packages/dplyr/index.html).
 
 Por ejemplo, ejecutando el siguiente comando:
@@ -31,11 +32,10 @@ pkgs <- c("lattice", "ggplot2", "foreign", "car", "leaps", "MASS", "RcmdrMisc",
 
 install.packages(setdiff(pkgs, installed.packages()[,"Package"]), dependencies = TRUE)
 ```
+
+## 📖 Referencia bibliográfica
+
+Romero, G. J. (2021). *Introducción a R: Grupo de estudios económicos*. JeshuaNomics.
 ___
 
 <p align="center"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.eu.svg"/></a></p><br/>Esta obra está autorizada bajo la <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
-
-![](https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png)
-
-#### Referencias bibliográficas
-Romero, G. J. (2021). *Introducción a R: Grupo de estudios económicos*. JeshuaNomics.
