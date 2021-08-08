@@ -8,6 +8,11 @@ Los estudiantes con poca experiencia en el análisis avanzado de estadísticas a
 El curso se puede consultar aquí: [Introducción a R: Grupo de estudios económicos](http://rgrupodeestudioseconomicos.jeshuanomics.com/)
 
 
+## ✍🏻 Referencia bibliográfica
+
+Romero, G. J. (2021). *Introducción a R: Grupo de estudios económicos*. JeshuaNomics.
+
+
 ## 📦 Paquetería necesaria
 
 Para ejecutar los ejemplos mostrados en el libro será necesario tener instalados los siguientes paquetes:
@@ -33,11 +38,6 @@ pkgs <- c("lattice", "ggplot2", "foreign", "car", "leaps", "MASS", "RcmdrMisc",
 
 install.packages(setdiff(pkgs, installed.packages()[,"Package"]), dependencies = TRUE)
 ```
-
-
-## ✍🏻 Referencia bibliográfica
-
-Romero, G. J. (2021). *Introducción a R: Grupo de estudios económicos*. JeshuaNomics.
 ___
 
 
