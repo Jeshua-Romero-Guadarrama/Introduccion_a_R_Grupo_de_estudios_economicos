@@ -1,8 +1,5 @@
 <p align="center"><img align="center" src="https://github.com/Jeshua-Romero-Guadarrama/R_grupo_de_estudios_economicos/blob/main/docs/images/R_grupo_de_estudios_economicos.png" width="30%" height="30%"></p>
 
-<br/>
-<br/>
-
 ## 📖 Sobre el curso
 
 <p><img src="https://github.com/Jeshua-Romero-Guadarrama/Econoalgoritmia/blob/Econoalgoritmia/docs/images/logo.png" alt="logo" align="right" width="20%" height="20%"> 
@@ -45,6 +42,9 @@ install.packages(setdiff(pkgs, installed.packages()[,"Package"]), dependencies =
 ## ✍🏻 Referencia bibliográfica
 
 Romero, G. J. (2021). *Introducción a R: Grupo de estudios económicos*. JeshuaNomics.
+
+<br/>
+<br/>
 
 ___
 
