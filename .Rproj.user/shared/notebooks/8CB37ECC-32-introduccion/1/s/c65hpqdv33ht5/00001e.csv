@@ -1,0 +1,3 @@
+"0","# Límite superior ""oneSE rule"" y complejidad mínima por debajo de ese valor"
+"0","upper.cv.mse <- cv.mse[imin.mse] + cv.mse.sd[imin.mse]"
+"0","abline(h = upper.cv.mse, lty = 2)"

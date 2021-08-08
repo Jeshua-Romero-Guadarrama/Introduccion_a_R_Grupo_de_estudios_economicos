@@ -1,0 +1,1 @@
+"0","lines(newdata$lstat, predict(fit.1se, newdata = newdata), lty = 2)"

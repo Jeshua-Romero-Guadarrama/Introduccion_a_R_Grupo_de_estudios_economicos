@@ -1,0 +1,4 @@
+"0","cv.lm <- function(formula, datos) {"
+"0","    modelo <- lm(formula, datos)"
+"0","    return(rstandard(modelo, type = ""predictive""))"
+"0","}"

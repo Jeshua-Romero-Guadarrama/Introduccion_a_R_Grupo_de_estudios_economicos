@@ -1,0 +1,2 @@
+"0","y.new <- mu + rnorm(n, 0, sd)"
+"0","plot(x, y) "

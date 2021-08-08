@@ -2,7 +2,7 @@
 title: "R Grupo de estudios económicos"
 cover-image: "images/cover.png"
 author: "Jeshua Romero Guadarrama, Kevin Fernández, Apocryfo, Jenn, Daniel, Tifany Jiménez, Ernesto, Ezequiel, Rich Conejo, Angiebaram, Jesmarth, Adolfo Robles, Isaac Flores, Abdeel, Roberto Daniel"
-date: "2021-08-07"
+date: "2021-08-08"
 site: bookdown::bookdown_site
 output:
   bookdown::word_document2: default 
@@ -72,7 +72,7 @@ favicon: "images/logo.png"
 
 <br> Jeshua Romero Guadarrama es economista y actuario por la <a href="http://www.economia.unam.mx/">Universidad Nacional Autónoma de México</a>, quien ha construido el presente proyecto en colaboración con <a href="https://www.jeshuanomics.com">JeshuaNomics</a>, ubicado en la Ciudad de México, se puede contactar mediante el siguiente correo electrónico: jeshuanomics@gmail.com.
 <br>
-<br> Última actualización el sábado 07 del 08 de 2021
+<br> Última actualización el domingo 08 del 08 de 2021
 <br>
 
 <hr style="background-color:#03193b;height:2px">

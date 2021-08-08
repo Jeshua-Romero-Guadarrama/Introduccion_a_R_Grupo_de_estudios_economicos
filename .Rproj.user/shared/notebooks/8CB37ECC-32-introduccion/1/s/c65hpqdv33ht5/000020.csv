@@ -1,0 +1,3 @@
+"0","imin.1se <- min(which(cv.mse <= upper.cv.mse))"
+"0","grado.1se <- grados[imin.1se]"
+"0","points(grado.1se, cv.mse[imin.1se], pch = 16)"

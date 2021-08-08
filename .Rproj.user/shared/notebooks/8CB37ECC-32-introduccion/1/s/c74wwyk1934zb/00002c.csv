@@ -1,0 +1,2 @@
+"0","fit2 <- lm(y ~ poly(x, 4))"
+"0","lines(x, fitted(fit2), lty = 2)"

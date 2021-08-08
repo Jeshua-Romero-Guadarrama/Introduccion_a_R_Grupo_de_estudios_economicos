@@ -1,0 +1,4 @@
+"0","cars$distancia <- cars$dis / 3.2808"
+"2","Error in `$<-.data.frame`(`*tmp*`, distancia, value = numeric(0)) : 
+  replacement has 0 rows, data has 804
+"

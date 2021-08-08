@@ -1,0 +1,2 @@
+"0","legend(""topright"", legend = c(paste(""Grado óptimo:"", grado.op), paste(""oneSE rule:"", grado.1se)), "
+"0","       lty = c(1, 2))"

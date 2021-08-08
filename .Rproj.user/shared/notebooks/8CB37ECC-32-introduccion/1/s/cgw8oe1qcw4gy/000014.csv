@@ -1,0 +1,5 @@
+"0","obs <- test$medv"
+"0","pred <- predict(fit.op, newdata = test)"
+"0",""
+"0","plot(pred, obs, main = ""Observado frente a predicciones"","
+"0","     xlab = ""Predicción"", ylab = ""Observado"")"

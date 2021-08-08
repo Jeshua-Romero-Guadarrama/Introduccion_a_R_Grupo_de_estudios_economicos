@@ -1,0 +1,3 @@
+"0","res <- lm(obs ~ pred)"
+"0","# summary(res)"
+"0","abline(res, lty = 2)"

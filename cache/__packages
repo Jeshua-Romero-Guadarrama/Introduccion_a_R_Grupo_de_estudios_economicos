@@ -5,3 +5,10 @@ foreign
 carData
 car
 dplyr
+pROC
+caret
+rpart
+Formula
+plotrix
+TeachingDemos
+plotmo

@@ -1,0 +1,3 @@
+"0","# Ajuste de los modelos"
+"0","fit1 <- lm(y ~ x)"
+"0","lines(x, fitted(fit1))"

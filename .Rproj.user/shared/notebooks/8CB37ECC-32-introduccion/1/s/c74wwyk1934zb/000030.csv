@@ -1,0 +1,3 @@
+"0","legend(""topright"", legend = c(""Verdadero"", ""Ajuste con grado 1"", "
+"0","                              ""Ajuste con grado 4"", ""Ajuste con grado 20""), "
+"0","       lty = c(1, 1, 2, 3), lwd = c(2, 1, 1, 1))"
