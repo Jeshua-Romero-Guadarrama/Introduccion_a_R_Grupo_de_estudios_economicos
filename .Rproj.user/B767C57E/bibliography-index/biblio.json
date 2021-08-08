@@ -361,6 +361,822 @@
             "type": "book"
         },
         {
+            "URL": "http://yihui.name/knitr/",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "edition": "2nd",
+            "id": "xie2015",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1498716963",
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "Dynamic documents with R and knitr",
+            "type": "book"
+        },
+        {
+            "URL": "https://bookdown.org/yihui/rmarkdown/",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                },
+                {
+                    "family": "Allaire",
+                    "given": "JJ"
+                },
+                {
+                    "family": "Grolemund",
+                    "given": "Garrett"
+                }
+            ],
+            "id": "xie2018r",
+            "issued": {
+                "date-parts": [
+                    [
+                        2018
+                    ]
+                ]
+            },
+            "publisher": "CRC Press",
+            "title": "R markdown: The definitive guide",
+            "title-short": "R markdown",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "id": "xie2016bookdown",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016
+                    ]
+                ]
+            },
+            "publisher": "Chapman; Hall/CRC",
+            "title": "Bookdown: Authoring books and technical documents with r markdown",
+            "title-short": "Bookdown",
+            "type": "book"
+        },
+        {
+            "URL": "https://www.R-project.org/",
+            "author": [
+                {
+                    "literal": "R Core Team"
+                }
+            ],
+            "id": "R-base",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "publisher": "R Foundation for Statistical Computing",
+            "publisher-place": "Vienna, Austria",
+            "title": "R: A language and environment for statistical computing",
+            "title-short": "R",
+            "type": "book"
+        },
+        {
+            "URL": "https://CRAN.R-project.org/package=bookdown",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "id": "R-bookdown",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "note": "R package version 0.18",
+            "title": "Bookdown: Authoring books and technical documents with r markdown",
+            "title-short": "Bookdown",
+            "type": "book"
+        },
+        {
+            "URL": "https://CRAN.R-project.org/package=copula",
+            "author": [
+                {
+                    "family": "Hofert",
+                    "given": "Marius"
+                },
+                {
+                    "family": "Kojadinovic",
+                    "given": "Ivan"
+                },
+                {
+                    "family": "Maechler",
+                    "given": "Martin"
+                },
+                {
+                    "family": "Yan",
+                    "given": "Jun"
+                }
+            ],
+            "id": "R-copula",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "note": "R package version 0.999-20",
+            "title": "Copula: Multivariate dependence with copulas",
+            "title-short": "Copula",
+            "type": "book"
+        },
+        {
+            "URL": "https://CRAN.R-project.org/package=DEoptim",
+            "author": [
+                {
+                    "family": "Ardia",
+                    "given": "David"
+                },
+                {
+                    "family": "Mullen",
+                    "given": "Katharine"
+                },
+                {
+                    "family": "Peterson",
+                    "given": "Brian"
+                },
+                {
+                    "family": "Ulrich",
+                    "given": "Joshua"
+                }
+            ],
+            "id": "R-DEoptim",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "note": "R package version 2.2-5",
+            "title": "DEoptim: Global optimization by differential evolution",
+            "title-short": "DEoptim",
+            "type": "book"
+        },
+        {
+            "URL": "https://CRAN.R-project.org/package=geoR",
+            "author": [
+                {
+                    "family": "Ribeiro Jr",
+                    "given": "Paulo J."
+                },
+                {
+                    "family": "Diggle",
+                    "given": "Peter J."
+                },
+                {
+                    "family": "Schlather",
+                    "given": "Martin"
+                },
+                {
+                    "family": "Bivand",
+                    "given": "Roger"
+                },
+                {
+                    "family": "Ripley",
+                    "given": "Brian"
+                }
+            ],
+            "id": "R-geoR",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "note": "R package version 1.8-1",
+            "title": "geoR: Analysis of geostatistical data",
+            "title-short": "geoR",
+            "type": "book"
+        },
+        {
+            "URL": "https://CRAN.R-project.org/package=knitr",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "id": "R-knitr",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "note": "R package version 1.28",
+            "title": "Knitr: A general-purpose package for dynamic report generation in r",
+            "title-short": "Knitr",
+            "type": "book"
+        },
+        {
+            "URL": "https://CRAN.R-project.org/package=MASS",
+            "author": [
+                {
+                    "family": "Ripley",
+                    "given": "Brian"
+                }
+            ],
+            "id": "R-MASS",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019
+                    ]
+                ]
+            },
+            "note": "R package version 7.3-51.5",
+            "title": "MASS: Support functions and datasets for venables and ripley’s MASS",
+            "title-short": "MASS",
+            "type": "book"
+        },
+        {
+            "URL": "https://CRAN.R-project.org/package=nortest",
+            "author": [
+                {
+                    "family": "Gross",
+                    "given": "Juergen"
+                },
+                {
+                    "family": "Ligges",
+                    "given": "Uwe"
+                }
+            ],
+            "id": "R-nortest",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015
+                    ]
+                ]
+            },
+            "note": "R package version 1.0-4",
+            "title": "Nortest: Tests for normality",
+            "title-short": "Nortest",
+            "type": "book"
+        },
+        {
+            "URL": "https://CRAN.R-project.org/package=rmarkdown",
+            "author": [
+                {
+                    "family": "Allaire",
+                    "given": "JJ"
+                },
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                },
+                {
+                    "family": "McPherson",
+                    "given": "Jonathan"
+                },
+                {
+                    "family": "Luraschi",
+                    "given": "Javier"
+                },
+                {
+                    "family": "Ushey",
+                    "given": "Kevin"
+                },
+                {
+                    "family": "Atkins",
+                    "given": "Aron"
+                },
+                {
+                    "family": "Wickham",
+                    "given": "Hadley"
+                },
+                {
+                    "family": "Cheng",
+                    "given": "Joe"
+                },
+                {
+                    "family": "Chang",
+                    "given": "Winston"
+                },
+                {
+                    "family": "Iannone",
+                    "given": "Richard"
+                }
+            ],
+            "id": "R-rmarkdown",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "note": "R package version 2.1",
+            "title": "Rmarkdown: Dynamic documents for r",
+            "title-short": "Rmarkdown",
+            "type": "book"
+        },
+        {
+            "URL": "https://CRAN.R-project.org/package=sm",
+            "author": [
+                {
+                    "family": "Bowman",
+                    "given": "Adrian"
+                },
+                {
+                    "dropping-particle": "to",
+                    "family": "R by B. D. Ripley up to version 2.0",
+                    "given": "Adelchi Azzalini. Ported"
+                },
+                {
+                    "dropping-particle": "version 2.1 by",
+                    "family": "Adrian Bowman"
+                },
+                {
+                    "family": "Azzalini",
+                    "given": "Adelchi"
+                },
+                {
+                    "dropping-particle": "version 2.2 by",
+                    "family": "Adrian Bowman."
+                }
+            ],
+            "id": "R-sm",
+            "issued": {
+                "date-parts": [
+                    [
+                        2018
+                    ]
+                ]
+            },
+            "note": "R package version 2.2-5.6",
+            "title": "Sm: Smoothing methods for nonparametric regression and density estimation",
+            "title-short": "Sm",
+            "type": "book"
+        },
+        {
+            "URL": "https://CRAN.R-project.org/package=tseries",
+            "author": [
+                {
+                    "family": "Trapletti",
+                    "given": "Adrian"
+                },
+                {
+                    "family": "Hornik",
+                    "given": "Kurt"
+                }
+            ],
+            "id": "R-tseries",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019
+                    ]
+                ]
+            },
+            "note": "R package version 0.10-47",
+            "title": "Tseries: Time series analysis and computational finance",
+            "title-short": "Tseries",
+            "type": "book"
+        },
+        {
+            "URL": "https://github.com/rstudio/bookdown",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "id": "bookdown2016",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1138700109",
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "Bookdown: Authoring books and technical documents with R markdown",
+            "title-short": "Bookdown",
+            "type": "book"
+        },
+        {
+            "URL": "http://www.jstatsoft.org/v21/i04/",
+            "author": [
+                {
+                    "literal": "Jun Yan"
+                }
+            ],
+            "container-title": "Journal of Statistical Software",
+            "id": "copula2007",
+            "issue": "4",
+            "issued": {
+                "date-parts": [
+                    [
+                        2007
+                    ]
+                ]
+            },
+            "page": "1-21",
+            "title": "Enjoy the joy of copulas: With a package copula",
+            "title-short": "Enjoy the joy of copulas",
+            "type": "article-journal",
+            "volume": "21"
+        },
+        {
+            "URL": "http://www.jstatsoft.org/v34/i09/",
+            "author": [
+                {
+                    "literal": "Ivan Kojadinovic"
+                },
+                {
+                    "literal": "Jun Yan"
+                }
+            ],
+            "container-title": "Journal of Statistical Software",
+            "id": "copula2010",
+            "issue": "9",
+            "issued": {
+                "date-parts": [
+                    [
+                        2010
+                    ]
+                ]
+            },
+            "page": "1-20",
+            "title": "Modeling multivariate distributions with continuous margins using the copula R package",
+            "type": "article-journal",
+            "volume": "34"
+        },
+        {
+            "URL": "http://www.jstatsoft.org/v39/i09/",
+            "author": [
+                {
+                    "literal": "Marius Hofert"
+                },
+                {
+                    "literal": "Martin Mächler"
+                }
+            ],
+            "container-title": "Journal of Statistical Software",
+            "id": "copula2011",
+            "issue": "9",
+            "issued": {
+                "date-parts": [
+                    [
+                        2011
+                    ]
+                ]
+            },
+            "page": "1-20",
+            "title": "Nested archimedean copulas meet R: The nacopula package",
+            "title-short": "Nested archimedean copulas meet R",
+            "type": "article-journal",
+            "volume": "39"
+        },
+        {
+            "URL": "https://CRAN.R-project.org/package=DEoptim",
+            "author": [
+                {
+                    "family": "Ardia",
+                    "given": "David"
+                },
+                {
+                    "family": "Mullen",
+                    "given": "Katharine M."
+                },
+                {
+                    "family": "Peterson",
+                    "given": "Brian G."
+                },
+                {
+                    "family": "Ulrich",
+                    "given": "Joshua"
+                }
+            ],
+            "id": "DEoptim2020a",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "note": "version 2.2-5",
+            "title": "DEoptim: Differential evolution in R",
+            "title-short": "DEoptim",
+            "type": "book"
+        },
+        {
+            "URL": "http://www.jstatsoft.org/v40/i06/",
+            "author": [
+                {
+                    "family": "Mullen",
+                    "given": "Katharine"
+                },
+                {
+                    "family": "Ardia",
+                    "given": "David"
+                },
+                {
+                    "family": "Gil",
+                    "given": "David"
+                },
+                {
+                    "family": "Windover",
+                    "given": "Donald"
+                },
+                {
+                    "family": "Cline",
+                    "given": "James"
+                }
+            ],
+            "container-title": "Journal of Statistical Software",
+            "id": "DEoptim2011a",
+            "issue": "6",
+            "issued": {
+                "date-parts": [
+                    [
+                        2011
+                    ]
+                ]
+            },
+            "page": "1-26",
+            "title": "DEoptim: An R package for global optimization by differential evolution",
+            "title-short": "DEoptim",
+            "type": "article-journal",
+            "volume": "40"
+        },
+        {
+            "URL": "https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Ardia~et~al.pdf",
+            "author": [
+                {
+                    "family": "Ardia",
+                    "given": "David"
+                },
+                {
+                    "family": "Boudt",
+                    "given": "Kris"
+                },
+                {
+                    "family": "Carl",
+                    "given": "Peter"
+                },
+                {
+                    "family": "Mullen",
+                    "given": "Katharine M."
+                },
+                {
+                    "family": "Peterson",
+                    "given": "Brian G."
+                }
+            ],
+            "container-title": "The R Journal",
+            "id": "DEoptim2011b",
+            "issue": "1",
+            "issued": {
+                "date-parts": [
+                    [
+                        2011
+                    ]
+                ]
+            },
+            "page": "27-34",
+            "title": "Differential Evolution with DEoptim: An application to non-convex portfolio optimization",
+            "title-short": "Differential Evolution with DEoptim",
+            "type": "article-journal",
+            "volume": "3"
+        },
+        {
+            "URL": "http://www.wilmott.com/",
+            "author": [
+                {
+                    "family": "Ardia",
+                    "given": "David"
+                },
+                {
+                    "family": "Arango",
+                    "given": "Juan Ospina"
+                },
+                {
+                    "family": "Gomez",
+                    "given": "Norman Giraldo"
+                }
+            ],
+            "container-title": "Wilmott Magazine",
+            "id": "DEoptim2011c",
+            "issued": {
+                "date-parts": [
+                    [
+                        2011
+                    ]
+                ]
+            },
+            "page": "76-79",
+            "title": "Jump-diffusion calibration using Differential Evolution",
+            "type": "article-journal",
+            "volume": "55"
+        },
+        {
+            "author": [
+                {
+                    "family": "Price",
+                    "given": "Kenneth V."
+                },
+                {
+                    "family": "Storn",
+                    "given": "Rainer M."
+                },
+                {
+                    "family": "Lampinen",
+                    "given": "Jouni A."
+                }
+            ],
+            "collection-title": "Natural computing",
+            "id": "DEoptim2006a",
+            "issued": {
+                "date-parts": [
+                    [
+                        2006
+                    ]
+                ]
+            },
+            "note": "ISBN 540209506",
+            "publisher": "Springer-Verlag",
+            "title": "Differential Evolution - a practical approach to global optimization",
+            "type": "book"
+        },
+        {
+            "URL": "https://yihui.org/knitr/",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "edition": "2nd",
+            "id": "knitr2015",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1498716963",
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "Dynamic documents with R and knitr",
+            "type": "book"
+        },
+        {
+            "URL": "http://www.crcpress.com/product/isbn/9781466561595",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "container-title": "Implementing reproducible computational research",
+            "editor": [
+                {
+                    "family": "Stodden",
+                    "given": "Victoria"
+                },
+                {
+                    "family": "Leisch",
+                    "given": "Friedrich"
+                },
+                {
+                    "family": "Peng",
+                    "given": "Roger D."
+                }
+            ],
+            "id": "knitr2014",
+            "issued": {
+                "date-parts": [
+                    [
+                        2014
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1466561595",
+            "publisher": "Chapman; Hall/CRC",
+            "title": "Knitr: A comprehensive tool for reproducible research in R",
+            "title-short": "Knitr",
+            "type": "chapter"
+        },
+        {
+            "URL": "http://www.stats.ox.ac.uk/pub/MASS4",
+            "author": [
+                {
+                    "family": "Venables",
+                    "given": "W. N."
+                },
+                {
+                    "family": "Ripley",
+                    "given": "B. D."
+                }
+            ],
+            "edition": "Fourth",
+            "id": "MASS2002",
+            "issued": {
+                "date-parts": [
+                    [
+                        2002
+                    ]
+                ]
+            },
+            "note": "ISBN 0-387-95457-0",
+            "publisher": "Springer",
+            "publisher-place": "New York",
+            "title": "Modern applied statistics with s",
+            "type": "book"
+        },
+        {
+            "URL": "https://bookdown.org/yihui/rmarkdown",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                },
+                {
+                    "family": "Allaire",
+                    "given": "J. J."
+                },
+                {
+                    "family": "Grolemund",
+                    "given": "Garrett"
+                }
+            ],
+            "id": "rmarkdown2018",
+            "issued": {
+                "date-parts": [
+                    [
+                        2018
+                    ]
+                ]
+            },
+            "note": "ISBN 9781138359338",
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "R markdown: The definitive guide",
+            "title-short": "R markdown",
+            "type": "book"
+        },
+        {
+            "URL": "http://www.stats.gla.ac.uk/~adrian/sm/",
+            "author": [
+                {
+                    "family": "Bowman",
+                    "given": "A. W."
+                },
+                {
+                    "family": "Azzalini",
+                    "given": "A."
+                }
+            ],
+            "id": "sm2018",
+            "issued": {
+                "date-parts": [
+                    [
+                        2018
+                    ]
+                ]
+            },
+            "publisher-place": "University of Glasgow, UK; Università di Padova, Italia",
+            "title": "R package sm: Nonparametric smoothing methods (version 2.2-5.6)",
+            "title-short": "R package sm",
+            "type": "book"
+        },
+        {
             "URL": "https://www.R-project.org/",
             "author": [
                 {

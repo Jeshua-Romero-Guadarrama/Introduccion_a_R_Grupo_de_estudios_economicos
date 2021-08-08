@@ -1,5 +1,10 @@
 <p align="center"><img align="center" src="https://github.com/Jeshua-Romero-Guadarrama/R_grupo_de_estudios_economicos/blob/main/docs/images/R_grupo_de_estudios_economicos.png" width="30%" height="30%"></p>
 
+# Introducción a R: Grupo de estudios económicos
+
+<br/>
+<br/>
+
 ## 📖 Sobre el curso
 
 <p><img src="https://github.com/Jeshua-Romero-Guadarrama/Econoalgoritmia/blob/Econoalgoritmia/docs/images/logo.png" alt="logo" align="right" width="20%" height="20%"> 
@@ -31,7 +36,8 @@ Para ejecutar los ejemplos mostrados en el libro será necesario tener instalado
 Por ejemplo, ejecutando el siguiente comando:
 ```{r eval=FALSE}
 pkgs <- c("lattice", "ggplot2", "foreign", "car", "leaps", "MASS", "RcmdrMisc", 
-          "lmtest", "glmnet", "mgcv", "rmarkdown", "knitr", "dplyr")
+          "lmtest", "glmnet", "mgcv", "rmarkdown", "knitr", "dplyr",
+          "caret", "rattle", "car", "AppliedPredictiveModeling", "ISLR")
 
 install.packages(setdiff(pkgs, installed.packages()[,"Package"]), dependencies = TRUE)
 ```
