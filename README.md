@@ -35,7 +35,7 @@ install.packages(setdiff(pkgs, installed.packages()[,"Package"]), dependencies =
 ```
 
 
-## 👨‍🎓 Referencia bibliográfica
+## ✍🏻 Referencia bibliográfica
 
 Romero, G. J. (2021). *Introducción a R: Grupo de estudios económicos*. JeshuaNomics.
 ___
