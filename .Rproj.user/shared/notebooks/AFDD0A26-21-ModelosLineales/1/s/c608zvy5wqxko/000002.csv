@@ -1,0 +1,1 @@
+"0","plot(salario ~ salini, data = empleados, col = 'darkgray')"

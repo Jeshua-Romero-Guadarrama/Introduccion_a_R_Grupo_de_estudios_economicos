@@ -1,0 +1,2 @@
+"0","# Ajuste lineal"
+"0","abline(lm(prestige ~ income, data = Prestige))"

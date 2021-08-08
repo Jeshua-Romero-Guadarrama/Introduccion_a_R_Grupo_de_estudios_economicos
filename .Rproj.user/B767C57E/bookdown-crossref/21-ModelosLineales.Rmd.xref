@@ -1,0 +1,28 @@
+h1:modelos-lineales Modelos lineales
+h2:ejemplo Ejemplo
+h2:ajuste-función-lm Ajuste: función 
+h3:extracción-de-información Extracción de información
+h2:predicción Predicción
+h2:selección-de-variables-explicativas Selección de variables explicativas
+h3:búsqueda-exhaustiva Búsqueda exhaustiva
+h3:selección-por-pasos Selección por pasos
+h2:regresión-con-variables-categóricas Regresión con variables categóricas
+h2:interacciones Interacciones
+h2:diagnosis-del-modelo Diagnosis del modelo
+h3:gráficas-básicas-de-diagnóstico Gráficas básicas de diagnóstico
+h3:gráficos-parciales-de-residuos Gráficos parciales de residuos
+h3:estadísticos Estadísticos
+h3:contrastes Contrastes
+h4:normalidad Normalidad
+h4:homocedasticidad Homocedasticidad
+h4:autocorrelación Autocorrelación
+h2:métodos-de-regularización Métodos de regularización
+h3:datos Datos
+h3:ridge-regression Ridge Regression
+h3:lasso Lasso
+h2:alternativas Alternativas
+h3:transformación-modelos-linealizables Transformación (modelos linealizables)
+h4:ejemplo-1 Ejemplo:
+h3:ajuste-polinómico Ajuste polinómico
+h3:ajuste-polinómico-local-robusto Ajuste polinómico local (robusto)
+

@@ -1,0 +1,2 @@
+"0","load(""datos/hatco.RData"")"
+"0","as.data.frame(attr(hatco, ""variable.labels""))"

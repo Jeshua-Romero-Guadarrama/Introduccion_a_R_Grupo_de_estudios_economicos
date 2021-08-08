@@ -1,0 +1,10 @@
+h1:generación-de-informes Generación de informes
+h2:r-markdown R Markdown
+h3:introducción Introducción
+h3:inclusión-de-código-r Inclusión de código R
+h3:inclusión-de-gráficos Inclusión de gráficos
+h3:inclusión-de-tablas Inclusión de tablas
+tab:kable Una kable knitr
+h3:extracción-del-código-r Extracción del código R
+h2:spin Spin
+

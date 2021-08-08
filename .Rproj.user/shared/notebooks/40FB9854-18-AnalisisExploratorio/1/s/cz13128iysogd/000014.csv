@@ -1,0 +1,5 @@
+"0",""
+"0","iris.color<-c(""red"",""green"",""blue"")[iris$Species]"
+"0","plot(iris[,3],iris[,4],col=iris.color,main=""Longitud y anchura"
+"0","     de pétalo según especies"",xlab=""Longitud de pétalo"","
+"0","     ylab=""Anchura de pétalo"")"

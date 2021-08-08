@@ -1,0 +1,2 @@
+"0","cars$velocidad <- cars$speed / 0.62137"
+"0","head(cars)"

@@ -1,0 +1,28 @@
+h1:introducción Introducción
+fig:esquema Etapas del proceso
+h2:el-lenguaje-y-entorno-estadístico-r El lenguaje y entorno estadístico 
+h3:principales-características Principales características
+fig:rexer Rexer Data Miner Survey 2007-2015
+fig:ieee [IEEE Spectrum](https://spectrum.ieee.org) Top Programming Languages, 2019
+h3:interfaces-gráficas Interfaces gráficas
+h2:entorno-de-trabajo Entorno de trabajo
+h3:ventana-de-consola Ventana de Consola
+fig:consola Consola de `R` en Windows (modo MDI).
+h3:ventana-de-script Ventana de Script
+fig:script Ventanas de la consola y de *script* en Windows (modo MDI).
+h3:ayuda-dentro-del-programa Ayuda dentro del programa
+h2:librerías Librerías
+h3:paquetes Paquetes
+h3:instalacion-pkg Instalación
+h3:carga Carga
+h2:una-primera-sesión Una primera sesión
+h3:inicio-de-una-sesión Inicio de una sesión
+h2:objetos-básicos Objetos básicos
+h3:objetos-numéricos Objetos numéricos
+h3:objetos-tipo-carácter Objetos tipo carácter
+h3:objetos-lógicos Objetos lógicos
+h3:operadores-lógicos Operadores lógicos
+h2:área-de-trabajo Área de trabajo
+h3:guardar-y-cargar-resultados Guardar y cargar resultados
+h3:directorio-de-trabajo Directorio de trabajo
+

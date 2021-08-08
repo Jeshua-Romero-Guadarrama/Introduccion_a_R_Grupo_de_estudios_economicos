@@ -1,0 +1,1 @@
+"0","barplot(100*prop.table(table(catlab)),main=""frecuencia relativa (%)"")"

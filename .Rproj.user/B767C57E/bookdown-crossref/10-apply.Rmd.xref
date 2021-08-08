@@ -1,0 +1,15 @@
+h1:la-familia-apply La familia apply
+h3:un-recordatorio-sobre-vectorización Un recordatorio sobre vectorización
+h3:las-funciones-de-la-familia-apply Las funciones de la familia apply
+h2:apply apply
+h3:qué-es-x ¿Qué es X
+h3:qué-es-margin ¿Qué es MARGIN?
+h3:qué-es-fun ¿Qué es FUN?
+h3:cómo-sabe-fun-cuáles-son-sus-argumentos ¿Cómo sabe FUN cuáles son sus argumentos?
+h3:qué-pasa-si-deseamos-utilizar-los-demás-argumentos-de-una-función-con-apply ¿Qué pasa si deseamos utilizar los demás argumentos de una función con apply?
+h3:qué-tipo-de-resultados-devuelve-apply ¿Qué tipo de resultados devuelve apply?
+h2:lapply lapply
+h3:usando-lapply Usando lapply()
+h3:usando-lapply-en-lugar-de-un-bucle-for Usando lapply() en lugar de un bucle for
+h3:usando-lapply-con-listas Usando lapply con listas
+

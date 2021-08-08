@@ -1,0 +1,1 @@
+"0","plot(log(salario) ~ log(salini), data = empleados)"

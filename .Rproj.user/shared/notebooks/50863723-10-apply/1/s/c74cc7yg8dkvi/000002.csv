@@ -1,0 +1,8 @@
+"0","mat_cuant <- apply(matriz, 1, quantile)"
+"0",""
+"0","class(mat_cuant)"
+"1","[1]"
+"1"," ""matrix"""
+"1"," ""array"" "
+"1","
+"

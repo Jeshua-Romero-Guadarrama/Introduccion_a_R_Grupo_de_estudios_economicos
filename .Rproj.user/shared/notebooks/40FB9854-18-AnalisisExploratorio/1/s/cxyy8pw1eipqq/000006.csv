@@ -1,0 +1,2 @@
+"0","tt <- table(cut(expprev, breaks=c(0,40,80,150,250,400)))"
+"0","barplot(tt,xlab=""Experiencia previa"", main=""Categorización en 5 clases"")"

@@ -1,0 +1,2 @@
+"0","load(""datos/empleados.RData"")"
+"0","data.frame(Etiquetas = attr(empleados, ""variable.labels""))  # Listamos las etiquetas"

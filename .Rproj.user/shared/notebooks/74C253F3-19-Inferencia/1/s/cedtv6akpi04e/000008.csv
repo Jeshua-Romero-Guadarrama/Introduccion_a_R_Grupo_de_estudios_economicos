@@ -1,0 +1,2 @@
+"0","# segments(hatco$fidelida, fitted(modelo), hatco$fidelida, hatco$satisfac)"
+"0","with(hatco, segments(fidelida, fitted(modelo), fidelida, satisfac))"

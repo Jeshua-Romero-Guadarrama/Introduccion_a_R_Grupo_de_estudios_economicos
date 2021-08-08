@@ -1,0 +1,4 @@
+"0","knitr::kable("
+"0","  head(mtcars), "
+"0","  caption = ""Una kable knitr"""
+"0",")"

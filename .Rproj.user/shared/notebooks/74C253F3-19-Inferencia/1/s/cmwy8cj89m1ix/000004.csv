@@ -1,0 +1,3 @@
+"0","# with(hatco, plot(fidelida, satisfac))   # Alternativa empleando with"
+"0","# plot(satisfac ~ fidelida, data = hatco) # Alternativa empleando fórmulas"
+"0","abline(modelo)"

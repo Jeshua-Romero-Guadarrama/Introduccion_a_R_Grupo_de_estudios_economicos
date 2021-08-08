@@ -1,0 +1,4 @@
+"0","bandas.frame <- data.frame(fidelida=24:66)"
+"0","bc <- predict(modelo, interval = 'confidence', newdata = bandas.frame)"
+"0","bp <- predict(modelo, interval = 'prediction', newdata = bandas.frame)"
+"0","plot(hatco$fidelida, hatco$satisfac, ylim = range(hatco$satisfac, bp, na.rm = TRUE))"

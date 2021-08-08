@@ -1,0 +1,12 @@
+h1:tipos-de-datos Tipos de datos
+h2:datos-más-comunes Datos más comunes
+h2:entero-y-numérico Entero y numérico
+h2:cadena-de-texto Cadena de texto
+h2:factor Factor
+h2:lógico Lógico
+h2:na-y-null  y 
+h2:coerción Coerción
+h3:coerción-explícita-con-la-familia-as Coerción explícita con la familia 
+h2:verificar-el-tipo-de-un-dato Verificar el tipo de un dato
+h3:verificación-con-la-familia-de-funciones-is Verificación con la familia de funciones 
+

@@ -1,0 +1,13 @@
+h1:manipulación-de-datos-con-dplyr Manipulación de datos con dplyr
+h2:el-paquete-dplyr El paquete 
+h3:datos-de-ejemplo Datos de ejemplo
+h2:operaciones-con-variables-columnas Operaciones con variables (columnas)
+h3:seleccionar-variables-con-select Seleccionar variables con 
+h3:generar-nuevas-variables-con-mutate Generar nuevas variables con 
+h2:operaciones-con-casos-filas Operaciones con casos (filas)
+h3:seleccionar-casos-con-filter Seleccionar casos con 
+h3:organizar-casos-con-arrange Organizar casos con 
+h2:resumir-valores-con-summarise Resumir valores con 
+h2:agrupar-casos-con-group_by Agrupar casos con 
+h2:operador-pipe-tubería-redirección Operador  (tubería, redirección)
+

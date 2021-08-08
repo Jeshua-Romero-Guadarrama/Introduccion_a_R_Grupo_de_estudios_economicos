@@ -1,0 +1,24 @@
+"0","attach(empleados)"
+"2","The following object is masked _by_ .GlobalEnv:
+
+    id
+
+"
+"2","The following objects are masked from empleados (pos = 3):
+
+    catlab, educ, expprev, fechnac, id, minoria,
+    salario, salini, sexo, sexoraza, tiempemp
+
+"
+"2","The following objects are masked from empleados (pos = 17):
+
+    catlab, educ, expprev, fechnac, id, minoria,
+    salario, salini, sexo, sexoraza, tiempemp
+
+"
+"2","The following objects are masked from empleados (pos = 18):
+
+    catlab, educ, expprev, fechnac, id, minoria,
+    salario, salini, sexo, sexoraza, tiempemp
+
+"

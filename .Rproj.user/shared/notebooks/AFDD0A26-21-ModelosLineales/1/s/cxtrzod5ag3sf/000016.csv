@@ -1,0 +1,2 @@
+"0","pred2 <- predict(modelo, newdata = newdata, interval = c(""prediction""))"
+"0","matlines(valores, pred2[, -1], lty = 3, col = 1)"

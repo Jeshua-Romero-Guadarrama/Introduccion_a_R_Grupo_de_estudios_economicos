@@ -1,0 +1,2 @@
+"0","# contour(inc, ed, pred, xlab = ""Income"", ylab = ""Education"")"
+"0","filled.contour(inc, ed, pred, xlab = ""Income"", ylab = ""Education"", key.title = title(""Prestige""))"

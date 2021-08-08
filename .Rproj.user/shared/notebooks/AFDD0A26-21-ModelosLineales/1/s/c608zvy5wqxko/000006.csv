@@ -1,0 +1,5 @@
+"0",""
+"0","# Modelo exponencial"
+"0","modelo1 <- lm(log(salario) ~ salini, data = empleados)"
+"0","parest <- coef(modelo1)"
+"0","curve(exp(parest[1] + parest[2]*x), lty = 2, add = TRUE)"

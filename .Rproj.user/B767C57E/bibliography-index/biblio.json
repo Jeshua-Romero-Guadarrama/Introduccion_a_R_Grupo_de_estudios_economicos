@@ -1,6 +1,102 @@
 {
     "sources": [
         {
+            "URL": "https://www.jeshuanomics.com/",
+            "author": [
+                {
+                    "family": "Guadarrama",
+                    "given": "Jeshua Romero"
+                }
+            ],
+            "edition": "1st",
+            "id": "JeshuaRG2021",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021
+                    ]
+                ]
+            },
+            "note": "ISBN",
+            "publisher": "JeshuaNomics",
+            "publisher-place": "Ciudad de México, México",
+            "title": "Introducción a R: Grupo de estudios económicos",
+            "title-short": "Introducción a R",
+            "type": "book"
+        },
+        {
+            "URL": "http://yihui.name/knitr/",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "edition": "2nd",
+            "id": "xie2015",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1498716963",
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "Dynamic documents with R and knitr",
+            "type": "book"
+        },
+        {
+            "URL": "https://bookdown.org/yihui/rmarkdown/",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                },
+                {
+                    "family": "Allaire",
+                    "given": "JJ"
+                },
+                {
+                    "family": "Grolemund",
+                    "given": "Garrett"
+                }
+            ],
+            "id": "xie2018r",
+            "issued": {
+                "date-parts": [
+                    [
+                        2018
+                    ]
+                ]
+            },
+            "publisher": "CRC Press",
+            "title": "R markdown: The definitive guide",
+            "title-short": "R markdown",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "id": "xie2016bookdown",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016
+                    ]
+                ]
+            },
+            "publisher": "Chapman; Hall/CRC",
+            "title": "Bookdown: Authoring books and technical documents with r markdown",
+            "title-short": "Bookdown",
+            "type": "book"
+        },
+        {
             "URL": "https://www.R-project.org/",
             "author": [
                 {
@@ -17,7 +113,8 @@
             },
             "publisher": "R Foundation for Statistical Computing",
             "publisher-place": "Vienna, Austria",
-            "title": "R: A Language and Environment for Statistical Computing",
+            "title": "R: A language and environment for statistical computing",
+            "title-short": "R",
             "type": "book"
         },
         {
@@ -36,9 +133,10 @@
                     ]
                 ]
             },
-            "title": "bookdown: Authoring Books and Technical Documents with R Markdown",
-            "type": "book",
-            "version": "0.22"
+            "note": "R package version 0.22",
+            "title": "Bookdown: Authoring books and technical documents with r markdown",
+            "title-short": "Bookdown",
+            "type": "book"
         },
         {
             "URL": "https://yihui.org/knitr/",
@@ -56,9 +154,10 @@
                     ]
                 ]
             },
-            "title": "knitr: A General-Purpose Package for Dynamic Report Generation in R",
-            "type": "book",
-            "version": "1.33"
+            "note": "R package version 1.33",
+            "title": "Knitr: A general-purpose package for dynamic report generation in r",
+            "title-short": "Knitr",
+            "type": "book"
         },
         {
             "URL": "https://CRAN.R-project.org/package=rmarkdown",
@@ -112,9 +211,10 @@
                     ]
                 ]
             },
-            "title": "rmarkdown: Dynamic Documents for R",
-            "type": "book",
-            "version": "2.8"
+            "note": "R package version 2.9",
+            "title": "Rmarkdown: Dynamic documents for r",
+            "title-short": "Rmarkdown",
+            "type": "book"
         },
         {
             "URL": "https://bookdown.org/yihui/bookdown",
@@ -132,11 +232,12 @@
                     ]
                 ]
             },
+            "note": "ISBN 978-1138700109",
             "publisher": "Chapman; Hall/CRC",
             "publisher-place": "Boca Raton, Florida",
-            "title": "bookdown: Authoring Books and Technical Documents with R Markdown",
-            "type": "book",
-            "version": "ISBN 978-1138700109"
+            "title": "Bookdown: Authoring books and technical documents with R markdown",
+            "title-short": "Bookdown",
+            "type": "book"
         },
         {
             "URL": "https://yihui.org/knitr/",
@@ -155,11 +256,11 @@
                     ]
                 ]
             },
+            "note": "ISBN 978-1498716963",
             "publisher": "Chapman; Hall/CRC",
             "publisher-place": "Boca Raton, Florida",
-            "title": "Dynamic Documents with R and knitr",
-            "type": "book",
-            "version": "ISBN 978-1498716963"
+            "title": "Dynamic documents with R and knitr",
+            "type": "book"
         },
         {
             "URL": "http://www.crcpress.com/product/isbn/9781466561595",
@@ -169,7 +270,7 @@
                     "given": "Yihui"
                 }
             ],
-            "container-title": "Implementing Reproducible Computational Research",
+            "container-title": "Implementing reproducible computational research",
             "editor": [
                 {
                     "family": "Stodden",
@@ -192,10 +293,11 @@
                     ]
                 ]
             },
+            "note": "ISBN 978-1466561595",
             "publisher": "Chapman; Hall/CRC",
-            "title": "knitr: A Comprehensive Tool for Reproducible Research in R",
-            "type": "chapter",
-            "version": "ISBN 978-1466561595"
+            "title": "Knitr: A comprehensive tool for reproducible research in R",
+            "title-short": "Knitr",
+            "type": "chapter"
         },
         {
             "URL": "https://bookdown.org/yihui/rmarkdown",
@@ -221,11 +323,12 @@
                     ]
                 ]
             },
+            "note": "ISBN 9781138359338",
             "publisher": "Chapman; Hall/CRC",
             "publisher-place": "Boca Raton, Florida",
-            "title": "R Markdown: The Definitive Guide",
-            "type": "book",
-            "version": "ISBN 9781138359338"
+            "title": "R markdown: The definitive guide",
+            "title-short": "R markdown",
+            "type": "book"
         },
         {
             "URL": "https://bookdown.org/yihui/rmarkdown-cookbook",
@@ -251,11 +354,11 @@
                     ]
                 ]
             },
+            "note": "ISBN 9780367563837",
             "publisher": "Chapman; Hall/CRC",
             "publisher-place": "Boca Raton, Florida",
-            "title": "R Markdown Cookbook",
-            "type": "book",
-            "version": "ISBN 9780367563837"
+            "title": "R markdown cookbook",
+            "type": "book"
         },
         {
             "URL": "https://www.R-project.org/",
@@ -265,6 +368,218 @@
                 }
             ],
             "id": "R-base",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021
+                    ]
+                ]
+            },
+            "publisher": "R Foundation for Statistical Computing",
+            "publisher-place": "Vienna, Austria",
+            "title": "R: A language and environment for statistical computing",
+            "title-short": "R",
+            "type": "book"
+        },
+        {
+            "URL": "https://CRAN.R-project.org/package=bookdown",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "id": "R-bookdown",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021
+                    ]
+                ]
+            },
+            "note": "R package version 0.22",
+            "title": "Bookdown: Authoring books and technical documents with r markdown",
+            "title-short": "Bookdown",
+            "type": "book"
+        },
+        {
+            "URL": "https://yihui.org/knitr/",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "id": "R-knitr",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021
+                    ]
+                ]
+            },
+            "note": "R package version 1.33",
+            "title": "Knitr: A general-purpose package for dynamic report generation in r",
+            "title-short": "Knitr",
+            "type": "book"
+        },
+        {
+            "URL": "https://CRAN.R-project.org/package=rmarkdown",
+            "author": [
+                {
+                    "family": "Allaire",
+                    "given": "JJ"
+                },
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                },
+                {
+                    "family": "McPherson",
+                    "given": "Jonathan"
+                },
+                {
+                    "family": "Luraschi",
+                    "given": "Javier"
+                },
+                {
+                    "family": "Ushey",
+                    "given": "Kevin"
+                },
+                {
+                    "family": "Atkins",
+                    "given": "Aron"
+                },
+                {
+                    "family": "Wickham",
+                    "given": "Hadley"
+                },
+                {
+                    "family": "Cheng",
+                    "given": "Joe"
+                },
+                {
+                    "family": "Chang",
+                    "given": "Winston"
+                },
+                {
+                    "family": "Iannone",
+                    "given": "Richard"
+                }
+            ],
+            "id": "R-rmarkdown",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021
+                    ]
+                ]
+            },
+            "note": "R package version 2.9",
+            "title": "Rmarkdown: Dynamic documents for r",
+            "title-short": "Rmarkdown",
+            "type": "book"
+        },
+        {
+            "URL": "https://bookdown.org/yihui/bookdown",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "id": "bookdown2016",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1138700109",
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "Bookdown: Authoring books and technical documents with R markdown",
+            "title-short": "Bookdown",
+            "type": "book"
+        },
+        {
+            "URL": "https://yihui.org/knitr/",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "edition": "2nd",
+            "id": "knitr2015",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1498716963",
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "Dynamic documents with R and knitr",
+            "type": "book"
+        },
+        {
+            "URL": "http://www.crcpress.com/product/isbn/9781466561595",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "container-title": "Implementing reproducible computational research",
+            "editor": [
+                {
+                    "family": "Stodden",
+                    "given": "Victoria"
+                },
+                {
+                    "family": "Leisch",
+                    "given": "Friedrich"
+                },
+                {
+                    "family": "Peng",
+                    "given": "Roger D."
+                }
+            ],
+            "id": "knitr2014",
+            "issued": {
+                "date-parts": [
+                    [
+                        2014
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1466561595",
+            "publisher": "Chapman; Hall/CRC",
+            "title": "Knitr: A comprehensive tool for reproducible research in R",
+            "title-short": "Knitr",
+            "type": "chapter"
+        },
+        {
+            "URL": "https://bookdown.org/yihui/rmarkdown",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                },
+                {
+                    "family": "Allaire",
+                    "given": "J. J."
+                },
+                {
+                    "family": "Grolemund",
+                    "given": "Garrett"
+                }
+            ],
+            "id": "rmarkdown2018",
             "issued": {
                 "date-parts": [
                     [
@@ -272,229 +587,41 @@
                     ]
                 ]
             },
-            "publisher": "R Foundation for Statistical Computing",
-            "publisher-place": "Vienna, Austria",
-            "title": "R: A language and environment for statistical computing",
-            "title-short": "R",
+            "note": "ISBN 9781138359338",
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "R markdown: The definitive guide",
+            "title-short": "R markdown",
             "type": "book"
         },
         {
-            "URL": "https://CRAN.R-project.org/package=bookdown",
+            "URL": "https://bookdown.org/yihui/rmarkdown-cookbook",
             "author": [
                 {
                     "family": "Xie",
                     "given": "Yihui"
+                },
+                {
+                    "family": "Dervieux",
+                    "given": "Christophe"
+                },
+                {
+                    "family": "Riederer",
+                    "given": "Emily"
                 }
             ],
-            "id": "R-bookdown",
+            "id": "rmarkdown2020",
             "issued": {
                 "date-parts": [
                     [
-                        2019
+                        2020
                     ]
                 ]
             },
-            "note": "R package version 0.10",
-            "title": "Bookdown: Authoring books and technical documents with r markdown",
-            "title-short": "Bookdown",
-            "type": "book"
-        },
-        {
-            "URL": "https://CRAN.R-project.org/package=knitr",
-            "author": [
-                {
-                    "family": "Xie",
-                    "given": "Yihui"
-                }
-            ],
-            "id": "R-knitr",
-            "issued": {
-                "date-parts": [
-                    [
-                        2019
-                    ]
-                ]
-            },
-            "note": "R package version 1.22",
-            "title": "Knitr: A general-purpose package for dynamic report generation in r",
-            "title-short": "Knitr",
-            "type": "book"
-        },
-        {
-            "URL": "https://CRAN.R-project.org/package=rmarkdown",
-            "author": [
-                {
-                    "family": "Allaire",
-                    "given": "JJ"
-                },
-                {
-                    "family": "Xie",
-                    "given": "Yihui"
-                },
-                {
-                    "family": "McPherson",
-                    "given": "Jonathan"
-                },
-                {
-                    "family": "Luraschi",
-                    "given": "Javier"
-                },
-                {
-                    "family": "Ushey",
-                    "given": "Kevin"
-                },
-                {
-                    "family": "Atkins",
-                    "given": "Aron"
-                },
-                {
-                    "family": "Wickham",
-                    "given": "Hadley"
-                },
-                {
-                    "family": "Cheng",
-                    "given": "Joe"
-                },
-                {
-                    "family": "Chang",
-                    "given": "Winston"
-                },
-                {
-                    "family": "Iannone",
-                    "given": "Richard"
-                }
-            ],
-            "id": "R-rmarkdown",
-            "issued": {
-                "date-parts": [
-                    [
-                        2019
-                    ]
-                ]
-            },
-            "note": "R package version 1.12",
-            "title": "Rmarkdown: Dynamic documents for r",
-            "title-short": "Rmarkdown",
-            "type": "book"
-        },
-        {
-            "URL": "https://www.R-project.org/",
-            "author": [
-                {
-                    "literal": "R Core Team"
-                }
-            ],
-            "id": "R-base",
-            "issued": {
-                "date-parts": [
-                    [
-                        2019
-                    ]
-                ]
-            },
-            "publisher": "R Foundation for Statistical Computing",
-            "publisher-place": "Vienna, Austria",
-            "title": "R: A language and environment for statistical computing",
-            "title-short": "R",
-            "type": "book"
-        },
-        {
-            "URL": "https://CRAN.R-project.org/package=bookdown",
-            "author": [
-                {
-                    "family": "Xie",
-                    "given": "Yihui"
-                }
-            ],
-            "id": "R-bookdown",
-            "issued": {
-                "date-parts": [
-                    [
-                        2019
-                    ]
-                ]
-            },
-            "note": "R package version 0.12",
-            "title": "Bookdown: Authoring books and technical documents with r markdown",
-            "title-short": "Bookdown",
-            "type": "book"
-        },
-        {
-            "URL": "https://CRAN.R-project.org/package=knitr",
-            "author": [
-                {
-                    "family": "Xie",
-                    "given": "Yihui"
-                }
-            ],
-            "id": "R-knitr",
-            "issued": {
-                "date-parts": [
-                    [
-                        2019
-                    ]
-                ]
-            },
-            "note": "R package version 1.23",
-            "title": "Knitr: A general-purpose package for dynamic report generation in r",
-            "title-short": "Knitr",
-            "type": "book"
-        },
-        {
-            "URL": "https://CRAN.R-project.org/package=rmarkdown",
-            "author": [
-                {
-                    "family": "Allaire",
-                    "given": "JJ"
-                },
-                {
-                    "family": "Xie",
-                    "given": "Yihui"
-                },
-                {
-                    "family": "McPherson",
-                    "given": "Jonathan"
-                },
-                {
-                    "family": "Luraschi",
-                    "given": "Javier"
-                },
-                {
-                    "family": "Ushey",
-                    "given": "Kevin"
-                },
-                {
-                    "family": "Atkins",
-                    "given": "Aron"
-                },
-                {
-                    "family": "Wickham",
-                    "given": "Hadley"
-                },
-                {
-                    "family": "Cheng",
-                    "given": "Joe"
-                },
-                {
-                    "family": "Chang",
-                    "given": "Winston"
-                },
-                {
-                    "family": "Iannone",
-                    "given": "Richard"
-                }
-            ],
-            "id": "R-rmarkdown",
-            "issued": {
-                "date-parts": [
-                    [
-                        2019
-                    ]
-                ]
-            },
-            "note": "R package version 1.13",
-            "title": "Rmarkdown: Dynamic documents for r",
-            "title-short": "Rmarkdown",
+            "note": "ISBN 9780367563837",
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "R markdown cookbook",
             "type": "book"
         }
     ],

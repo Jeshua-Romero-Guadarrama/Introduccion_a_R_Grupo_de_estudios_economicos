@@ -1,0 +1,2 @@
+"0","datos <- hatco[, 6:13]  # Nota: realmente no copia el objeto..."
+"0","plot(datos)"

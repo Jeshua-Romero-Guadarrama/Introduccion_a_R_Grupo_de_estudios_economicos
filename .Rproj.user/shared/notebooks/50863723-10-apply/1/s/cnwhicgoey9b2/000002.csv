@@ -1,0 +1,7 @@
+"0","arboles <- lapply(X = trees, FUN = mean)"
+"0",""
+"0","class(arboles)"
+"1","[1]"
+"1"," ""list"""
+"1","
+"

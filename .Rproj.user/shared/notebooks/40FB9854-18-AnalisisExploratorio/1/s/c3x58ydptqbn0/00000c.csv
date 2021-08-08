@@ -1,0 +1,1 @@
+"0","stripchart(salario~sexo, method='jitter')"

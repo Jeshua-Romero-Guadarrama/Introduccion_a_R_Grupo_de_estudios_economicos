@@ -122,4 +122,149 @@ h2:diagramas-de-caja Diagramas de caja
 h2:gráficos-de-mosaico Gráficos de mosaico
 h2:exportar-gráficos Exportar gráficos
 h1:conclusión Conclusión
+fig:esquema Etapas del proceso
+h2:el-lenguaje-y-entorno-estadístico-r El lenguaje y entorno estadístico 
+h3:principales-características Principales características
+fig:rexer Rexer Data Miner Survey 2007-2015
+fig:ieee [IEEE Spectrum](https://spectrum.ieee.org) Top Programming Languages, 2019
+h3:interfaces-gráficas Interfaces gráficas
+h3:ventana-de-consola Ventana de Consola
+fig:consola Consola de `R` en Windows (modo MDI).
+h3:ventana-de-script Ventana de Script
+fig:script Ventanas de la consola y de *script* en Windows (modo MDI).
+h3:ayuda-dentro-del-programa Ayuda dentro del programa
+h3:paquetes-1 Paquetes
+h3:instalacion-pkg Instalación
+h3:carga Carga
+h3:inicio-de-una-sesión Inicio de una sesión
+h3:objetos-numéricos Objetos numéricos
+h3:objetos-tipo-carácter Objetos tipo carácter
+h3:objetos-lógicos Objetos lógicos
+h3:operadores-lógicos-1 Operadores lógicos
+h3:guardar-y-cargar-resultados Guardar y cargar resultados
+h3:directorio-de-trabajo-1 Directorio de trabajo
+h3:generación-de-secuencias Generación de secuencias
+h3:generación-secuencias-aleatorias Generación secuencias aleatorias
+h3:selección-de-elementos-de-un-vector Selección de elementos de un vector
+h3:ordenación-de-vectores Ordenación de vectores
+h3:valores-perdidos Valores perdidos
+h3:vectores-no-numéricos Vectores no numéricos
+h3:factores Factores
+h3:matrices-1 Matrices
+h3:nombres-en-matrices Nombres en matrices
+h3:acceso-a-los-elementos-de-una-matriz Acceso a los elementos de una matriz
+h3:ordenación-por-filas-y-columnas Ordenación por filas y columnas
+h3:operaciones-con-matrices-y-arrays Operaciones con Matrices y Arrays
+h3:ejemplos Ejemplos
+h3:inversión-de-una-matriz Inversión de una matriz
+fig:cars1 Gráfico de dispersión de distancia frente a velocidad
+fig:cars2 Gráfico de dispersión de distancia frente a velocidad, especificando título y etiquetas de los ejes
+fig:cars3 Gráfico de dispersión de distancia frente a velocidad, cambiando el color y el tipo de símbolo
+h2:funciones-gráficas-de-bajo-nivel Funciones gráficas de bajo nivel
+h2:ejemplos-1 Ejemplos
+h2:parámetros-gráficos Parámetros gráficos
+h3:ejemplos-2 Ejemplos
+h3:formato-de-datos-de-r Formato de datos de R
+h3:acceso-a-datos-en-paquetes Acceso a datos en paquetes
+h3:cap4-texto Lectura de archivos de texto
+h3:alternativa-tidyverse Alternativa 
+h3:importación-desde-spss Importación desde SPSS
+h3:importación-desde-excel Importación desde Excel
+h3:exportación-de-datos Exportación de datos
+h3:operaciones-con-variables Operaciones con variables
+h4:creación-y-eliminación-de-variables Creación (y eliminación) de variables
+h3:operaciones-con-casos Operaciones con casos
+h4:ordenación Ordenación
+h4:filtrado Filtrado
+h3:datos-de-ejemplo Datos de ejemplo
+h3:tablas-de-frecuencias Tablas de frecuencias
+h3:media-y-varianza Media y varianza
+h3:mediana-y-cuantiles Mediana y cuantiles
+h3:summary 
+h3:diagrama-de-barras-y-gráfico-de-sectores Diagrama de barras y gráfico de sectores
+h3:gráfico-de-puntos Gráfico de puntos
+h3:árbol-de-tallo-y-hojas Árbol de tallo y hojas
+h3:histograma Histograma
+h3:gráfico-de-densidad Gráfico de densidad
+h3:diagrama-de-cajas Diagrama de cajas
+h3:gráfica-de-dispersión Gráfica de dispersión
+h3:una-muestra Una muestra
+h3:dos-muestras Dos muestras
+h3:regresión-lineal-simple Regresión lineal simple
+h3:correlación Correlación
+h3:anova-con-un-factor ANOVA con un factor
+h3:test-de-kruskal-wallis Test de Kruskal-Wallis
+h3:herramientas-disponibles-en-r Herramientas disponibles en 
+h3:extracción-de-información Extracción de información
+h3:búsqueda-exhaustiva Búsqueda exhaustiva
+h3:selección-por-pasos Selección por pasos
+h3:gráficas-básicas-de-diagnóstico Gráficas básicas de diagnóstico
+h3:gráficos-parciales-de-residuos Gráficos parciales de residuos
+h3:estadísticos Estadísticos
+h3:contrastes Contrastes
+h4:normalidad Normalidad
+h4:homocedasticidad Homocedasticidad
+h4:autocorrelación Autocorrelación
+h3:datos Datos
+h3:ridge-regression Ridge Regression
+h3:lasso Lasso
+h3:transformación-modelos-linealizables Transformación (modelos linealizables)
+h4:ejemplo Ejemplo:
+h3:ajuste-polinómico Ajuste polinómico
+h3:ajuste-polinómico-local-robusto Ajuste polinómico local (robusto)
+h3:ejemplo-1 Ejemplo
+h3:ajuste-de-un-modelo-de-regresión-logística Ajuste de un modelo de regresión logística
+h3:selección-por-pasos-1 Selección por pasos
+h3:gráficas-básicas-de-diagnóstico-1 Gráficas básicas de diagnóstico
+h3:gráficos-parciales-de-residuos-1 Gráficos parciales de residuos
+h3:estadísticos-1 Estadísticos
+h3:ajuste-función-gam Ajuste: función 
+h3:ejemplo-2 Ejemplo
+h3:superficie-de-predicción Superficie de predicción
+h3:comparación-de-modelos Comparación de modelos
+h3:diagnosis-del-modelo Diagnosis del modelo
+h3:ejemplo-progresión-geométrica Ejemplo: progresión geométrica
+h3:argumentos-de-entrada Argumentos de entrada
+h4:argumentos-por-defecto Argumentos por defecto
+h4:el-argumento-... El argumento 
+h3:salida Salida
+h3:otros-ejemplos Otros ejemplos
+h4:ejemplo-letra-del-dni Ejemplo: letra del DNI
+h4:ejemplo-simulación-del-lanzamiento-de-un-dado Ejemplo: simulación del lanzamiento de un dado
+h3:variables-locales-y-globales Variables locales y globales
+h3:bucles Bucles
+h4:el-bucle-for El bucle 
+h4:el-bucle-while El bucle 
+h3:vectorización Vectorización
+h3:funciones-apply Funciones 
+h4:la-función-apply La función 
+h4:la-función-tapply La función 
+h3:primer-ejemplo Primer ejemplo
+h3:segundo-ejemplo Segundo ejemplo
+h3:introducción Introducción
+h3:inclusión-de-código-r Inclusión de código R
+h3:inclusión-de-gráficos Inclusión de gráficos
+h3:inclusión-de-tablas Inclusión de tablas
+tab:kable Una kable knitr
+h3:extracción-del-código-r Extracción del código R
+h1:referencias Referencias
+h2:bibliografía-complementaria Bibliografía complementaria
+h1:appendix-apendices (APPENDIX) Apendices
+h1:links Enlaces
+h2:rstudio-links RStudio
+h1:instalacion Instalación de R
+h3:asistente-de-instalación Asistente de instalación
+h3:instalación-de-paquetes Instalación de paquetes
+h1:interfaces Interfaces gráficas
+h2:rstudio RStudio
+h2:rcmdr RCommander
+h3:instalación-de-r-commander Instalación de R-Commander
+h3:datos-de-ejemplo-1 Datos de ejemplo
+h3:seleccionar-variables-con-select Seleccionar variables con 
+h3:generar-nuevas-variables-con-mutate Generar nuevas variables con 
+h3:seleccionar-casos-con-filter Seleccionar casos con 
+h3:organizar-casos-con-arrange Organizar casos con 
+h1:compañías-que-usan-r Compañías que usan 
+h2:microsoft Microsoft
+h2:rstudio-com RStudio
 

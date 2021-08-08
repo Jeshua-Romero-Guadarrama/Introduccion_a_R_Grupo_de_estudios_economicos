@@ -1,0 +1,2 @@
+"0","library(car)"
+"0","plot(prestige ~ income, data = Prestige, col = 'darkgray')"
