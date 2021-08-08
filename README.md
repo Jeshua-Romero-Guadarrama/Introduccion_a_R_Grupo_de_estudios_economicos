@@ -1,5 +1,8 @@
 <p align="center"><img align="center" src="https://github.com/Jeshua-Romero-Guadarrama/R_grupo_de_estudios_economicos/blob/main/docs/images/R_grupo_de_estudios_economicos.png" width="30%" height="30%"></p>
 
+<br/>
+<br/>
+
 ## 📖 Sobre el curso
 
 <p><img src="https://github.com/Jeshua-Romero-Guadarrama/Econoalgoritmia/blob/Econoalgoritmia/docs/images/logo.png" alt="logo" align="right" width="20%" height="20%"> 
