@@ -1,0 +1,25 @@
+h1:reg-np Regresión no paramétrica
+h2:reg-local Regresión local
+h3:reg-knn Vecinos más próximos
+fig:np-knnfit Predicciones con el método KNN y distintos vecindarios
+h3:reg-locpol Regresión polinómica local
+h3:regresión-polinómica-local-robusta Regresión polinómica local robusta
+h2:splines Splines
+h3:reg-splines Regression splines
+h3:smoothing-splines Smoothing splines
+h3:splines-penalizados Splines penalizados
+h2:modelos-aditivos Modelos aditivos
+h3:ajuste-función-gam Ajuste: función 
+h3:ejemplo Ejemplo
+h3:superficies-de-predicción Superficies de predicción
+h3:comparación-y-selección-de-modelos Comparación y selección de modelos
+h3:mgcv-diagnosis Diagnosis del modelo
+h3:gam-en-caret GAM en 
+h3:ejercicios Ejercicios
+h2:mars Regresión spline adaptativa multivariante
+h3:mars-con-el-paquete-earth MARS con el paquete 
+h3:mars-con-el-paquete-caret MARS con el paquete 
+h2:projection-pursuit Projection pursuit
+h3:ppr Regresión por 
+h3:implementación-en-r Implementación en R
+

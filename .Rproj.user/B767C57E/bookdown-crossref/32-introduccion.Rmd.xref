@@ -1,0 +1,28 @@
+h1:part-aprendizaje-estadístico-con-r (PART) Aprendizaje estadístico con R
+h1:intro-AE Introducción al Aprendizaje Estadístico
+fig:esquema Etapas del proceso
+h2:aprendizaje-estadístico-vs.-aprendizaje-automático Aprendizaje Estadístico vs. Aprendizaje Automático
+h3:machine-learning-vs.-data-mining Machine Learning vs. Data Mining
+h3:las-dos-culturas-breiman-2001 Las dos culturas (Breiman, 2001)
+h3:machine-learning-vs.-estadística-dunson-2018 Machine Learning vs. Estadística (Dunson, 2018)
+h2:métodos-de-aprendizaje-estadístico Métodos de Aprendizaje Estadístico
+h3:notacion Notación y terminología
+h3:metodos-pkgs Métodos (de aprendizaje supervisado) y paquetes de R
+h2:const-eval Construcción y evaluación de los modelos
+h3:bias-variance Equilibrio entre sesgo y varianza: infraajuste y sobreajuste
+fig:polyfit Muestra (simulada) y ajustes polinómicos con distinta complejidad.
+fig:polyfit2 Muestra con ajustes polinómicos con distinta complejidad y nuevas observaciones.
+fig:polyfitsim Precisiones (errores cuadráticos medios) de ajustes polinómicos variando la complejidad, en las muestras empleadas en el ajuste y en nuevas observaciones (simulados).
+h3:entrenamiento-test Datos de entrenamiento y datos de test
+h3:cv Validación cruzada
+h3:eval-reg Evaluación de un método de regresión
+exr:train-validate-test
+h3:eval-class Evaluación de un método de clasificación
+fig:ROC-curve Curva ROC correspondiente al modelo de regresión logística.
+h2:dimen-curse La maldición de la dimensionalidad
+fig:simdat100 Muestra simulada y tendencia teórica.
+fig:knnfit2 Predicciones con el método KNN y distintos vecindarios
+h2:analisis-modelos Análisis e interpretación de los modelos
+h2:caret Introducción al paquete 
+fig:methods-caret Listado de los métodos disponiles en `caret::train()`.
+

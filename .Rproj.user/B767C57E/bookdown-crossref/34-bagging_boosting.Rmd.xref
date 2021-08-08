@@ -1,0 +1,13 @@
+h1:bagging-boosting Bagging y Boosting
+h2:bagging Bagging
+h2:bosques-aleatorios Bosques aleatorios
+h2:bagging-rf-r Bagging y bosques aleatorios en R
+h3:ejemplo-clasificación-con-bagging Ejemplo: Clasificación con bagging
+h3:ejemplo-clasificación-con-bosques-aleatorios Ejemplo: Clasificación con bosques aleatorios
+h3:ejemplo-bosques-aleatorios-con-caret Ejemplo: bosques aleatorios con 
+h2:boosting Boosting
+h2:boosting-en-r Boosting en R
+h3:ejemplo-clasificación-con-el-paquete-ada Ejemplo: clasificación con el paquete 
+h3:ejemplo-regresión-con-el-paquete-gbm Ejemplo: regresión con el paquete 
+h3:ejemplo-xgboost-con-el-paquete-caret Ejemplo: XGBoost con el paquete 
+
