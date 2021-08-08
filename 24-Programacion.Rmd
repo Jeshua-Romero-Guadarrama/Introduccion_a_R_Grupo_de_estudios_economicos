@@ -166,8 +166,8 @@ y serán utilizados por la función `plot`.
 
 ```{r}
 data(cars)
-Density.Plot(cars$speed)
-Density.Plot(cars$speed, col = 'red', xlab = "velocidad", ylab = "distancia")
+Density.Plot(cars[,1])
+Density.Plot(cars[,1], col = 'red', xlab = "velocidad", ylab = "distancia")
 ```
 
 Los argumentos de entrada de una función se obtienen ejecutando `args(funcion)`:

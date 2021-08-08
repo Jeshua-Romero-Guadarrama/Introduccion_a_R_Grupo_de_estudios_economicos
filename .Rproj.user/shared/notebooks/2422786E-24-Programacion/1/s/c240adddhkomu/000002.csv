@@ -1,2 +1,4 @@
 "0","library(car)"
+"2","Loading required package: carData
+"
 "0","plot(prestige ~ income, data = Prestige, col = 'darkgray')"

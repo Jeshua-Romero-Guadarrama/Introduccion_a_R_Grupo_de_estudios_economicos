@@ -1,5 +1,3 @@
-h1:programacion Programación
-h2:funciones Funciones
 h3:ejemplo-progresión-geométrica Ejemplo: progresión geométrica
 h3:argumentos-de-entrada Argumentos de entrada
 h4:argumentos-por-defecto Argumentos por defecto
@@ -9,8 +7,6 @@ h3:otros-ejemplos Otros ejemplos
 h4:ejemplo-letra-del-dni Ejemplo: letra del DNI
 h4:ejemplo-simulación-del-lanzamiento-de-un-dado Ejemplo: simulación del lanzamiento de un dado
 h3:variables-locales-y-globales Variables locales y globales
-h2:ejecución-condicional Ejecución condicional
-h2:bucles-y-vectorización Bucles y vectorización
 h3:bucles Bucles
 h4:el-bucle-for El bucle 
 h4:el-bucle-while El bucle 
@@ -18,7 +14,6 @@ h3:vectorización Vectorización
 h3:funciones-apply Funciones 
 h4:la-función-apply La función 
 h4:la-función-tapply La función 
-h2:aplicación-validación-cruzada Aplicación: validación cruzada
 h3:primer-ejemplo Primer ejemplo
 h3:segundo-ejemplo Segundo ejemplo
 

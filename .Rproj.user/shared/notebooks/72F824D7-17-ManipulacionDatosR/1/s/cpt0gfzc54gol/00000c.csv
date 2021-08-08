@@ -1,1 +1,0 @@
-"0","subset(cars, speed > 10 & speed < 15 & dist > 45) # speed en (10,15) y dist>45"

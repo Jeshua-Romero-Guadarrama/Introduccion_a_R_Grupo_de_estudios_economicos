@@ -1,2 +1,0 @@
-"0","ii <- cars$speed > 10 & cars$speed < 15 & cars$dist > 45"
-"0","cars[ii, ]  # speed en (10,15) y dist>45"

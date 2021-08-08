@@ -1155,13 +1155,13 @@ coef(cv.lasso)
 ```
 ## 8 x 1 sparse Matrix of class "dgCMatrix"
 ##                    s1
-## (Intercept) 5.5514217
-## velocida    0.1044538
+## (Intercept) 6.7318222
+## velocida    0.1070413
 ## precio      .        
-## flexprec    2.6524703
+## flexprec    2.5781037
 ## imgfabri    .        
-## servconj    6.3120283
-## imgfvent    0.3600231
+## servconj    6.2106583
+## imgfvent    0.2446890
 ## calidadp    .
 ```
 

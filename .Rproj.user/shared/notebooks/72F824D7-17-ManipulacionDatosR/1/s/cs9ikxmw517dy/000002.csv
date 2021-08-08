@@ -1,4 +1,0 @@
-"0","read.table(file, header = FALSE, sep = """", dec = ""."")  "
-"2","Error in read.table(file, header = FALSE, sep = """", dec = ""."") : 
-  'file' must be a character string or connection
-"

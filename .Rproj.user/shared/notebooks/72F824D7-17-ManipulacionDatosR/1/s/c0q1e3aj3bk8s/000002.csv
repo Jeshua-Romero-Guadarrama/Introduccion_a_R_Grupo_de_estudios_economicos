@@ -1,4 +1,0 @@
-"0","coches <- cars[, c(""velocidad"", ""distancia"")]"
-"2","Error in `[.data.frame`(cars, , c(""velocidad"", ""distancia"")) : 
-  undefined columns selected
-"

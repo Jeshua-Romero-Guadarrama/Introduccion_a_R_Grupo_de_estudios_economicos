@@ -268,13 +268,13 @@ y serán utilizados por la función `plot`.
 
 ```r
 data(cars)
-Density.Plot(cars$speed)
+Density.Plot(cars[,1])
 ```
 
 <img src="24-Programacion_files/figure-html/unnamed-chunk-14-1.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
-Density.Plot(cars$speed, col = 'red', xlab = "velocidad", ylab = "distancia")
+Density.Plot(cars[,1], col = 'red', xlab = "velocidad", ylab = "distancia")
 ```
 
 <img src="24-Programacion_files/figure-html/unnamed-chunk-14-2.png" width="80%" style="display: block; margin: auto;" />
@@ -318,7 +318,7 @@ an
 ## function(a1, r, n) {
 ##         a1 * r^(n - 1)
 ##       }
-## <bytecode: 0x00000000187c6cb0>
+## <bytecode: 0x000000002a59e400>
 ```
 
 
@@ -481,7 +481,7 @@ dado(100)
 ```
 ## lanzamientos
 ##    1    2    3    4    5    6 
-## 0.19 0.15 0.18 0.07 0.24 0.17
+## 0.19 0.11 0.16 0.18 0.25 0.11
 ```
 
 ```r
@@ -493,7 +493,7 @@ dado(500)
 ```
 ## lanzamientos
 ##     1     2     3     4     5     6 
-## 0.174 0.156 0.148 0.168 0.176 0.178
+## 0.212 0.138 0.162 0.150 0.204 0.134
 ```
 
 ```r
@@ -505,7 +505,7 @@ dado(10000)
 ```
 ## lanzamientos
 ##      1      2      3      4      5      6 
-## 0.1661 0.1655 0.1739 0.1682 0.1549 0.1714
+## 0.1657 0.1652 0.1642 0.1644 0.1683 0.1722
 ```
 
 Se puede comprobar que al aumentar el valor de $n$ las frecuencias se
@@ -893,6 +893,7 @@ head(ChickWeight)
 ```
 
 ```
+## Grouped Data: weight ~ Time | Chick
 ##   weight Time Chick Diet
 ## 1     42    0     1    1
 ## 2     51    2     1    1

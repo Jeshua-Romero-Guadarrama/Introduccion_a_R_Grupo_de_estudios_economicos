@@ -36,7 +36,7 @@ res
 ls()
 ```
 y para guardar [`save()`](https://www.rdocumentation.org/packages/base/versions/3.6.1/topics/save):
-```{r}
+```{r eval=FALSE}
 # Guardar
 save(empleados, file = "datos/empleados_new.RData")
 ```
@@ -256,14 +256,15 @@ hora) y añadir esta nueva variable al data.frame `cars`.
 La transformación que permite pasar millas a kilómetros es
 `kilómetros=millas/0.62137` que en R se hace directamente con:
 
-```{r}
+```{r, eval=FALSE}
 cars$speed/0.62137
 ```
 
  Finalmente, incluimos la nueva variable que llamaremos
 `velocidad` en `cars`:
-```{r, eval=FALSE, include=FALSE}
-cars$velocidad <- cars$speed/0.62137
+
+```{r}
+cars[, c("velocidad")] <- cars[, 1]/0.62137
 head(cars)
 ```
 
@@ -271,8 +272,8 @@ También transformaremos la variable `dist` (en pies) en una nueva
 variable `distancia` (en metros). Ahora la transformación deseada es
 `metros=pies/3.2808`:
 
-```{r, eval=FALSE, include=FALSE }
-cars$distancia <- cars$dis / 3.2808
+```{r}
+cars[, c("distancia")] <- cars[, 2]/3.2808
 head(cars)
 ```
 
@@ -288,7 +289,7 @@ cars[, -c(1, 2)]
 
 Utilizando alguna de las opciones anteriores se obtiene el `data.frame`
 deseado:
-```{r, eval=FALSE, include=FALSE}
+```{r}
 coches <- cars[, c("velocidad", "distancia")]
 # head(coches)
 str(coches)
@@ -342,8 +343,8 @@ puede utilizar la función [`subset()` ](https://www.rdocumentation.org/packages
 
 A continuación se muestran un par de ejemplos:
 ```{r}
-subset(cars, dist > 85) # datos con dis>85
-subset(cars, speed > 10 & speed < 15 & dist > 45) # speed en (10,15) y dist>45
+subset(cars, cars$dist > 85) # datos con dis>85
+subset(cars, cars$speed > 10 & cars$speed < 15 & cars$dist > 45) # speed en (10,15) y dist>45
 ```
 
 También se pueden hacer el filtrado empleando directamente los
@@ -369,4 +370,3 @@ str(cars[id, 1:2])
 # Se podría p.e. emplear cars[id, ] para predecir cars[it, ]$speed
 # ?which.min
 ```
-
