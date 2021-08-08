@@ -7,6 +7,8 @@ Los estudiantes con poca experiencia en el análisis avanzado de estadísticas a
 
 El curso se puede consultar aquí: [Introducción a R: Grupo de estudios económicos](http://rgrupodeestudioseconomicos.jeshuanomics.com/)
 
+<br/>
+<br/>
 
 ## 📦 Paquetería necesaria
 
@@ -34,6 +36,8 @@ pkgs <- c("lattice", "ggplot2", "foreign", "car", "leaps", "MASS", "RcmdrMisc",
 install.packages(setdiff(pkgs, installed.packages()[,"Package"]), dependencies = TRUE)
 ```
 
+<br/>
+<br/>
 
 ## ✍🏻 Referencia bibliográfica
 
