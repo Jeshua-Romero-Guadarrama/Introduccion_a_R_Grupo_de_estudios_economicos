@@ -8,8 +8,6 @@ Los estudiantes con poca experiencia en el análisis avanzado de estadísticas a
 El curso se puede consultar aquí: [Introducción a R: Grupo de estudios económicos](http://rgrupodeestudioseconomicos.jeshuanomics.com/)
 
 
-
-
 ## 📦 Paquetería necesaria
 
 Para ejecutar los ejemplos mostrados en el libro será necesario tener instalados los siguientes paquetes:
@@ -37,14 +35,10 @@ install.packages(setdiff(pkgs, installed.packages()[,"Package"]), dependencies =
 ```
 
 
-
 ## ✍🏻 Referencia bibliográfica
 
 Romero, G. J. (2021). *Introducción a R: Grupo de estudios económicos*. JeshuaNomics.
 
-
-
-
 ___
 
-<p align="center"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.eu.svg"/></a></p><br/>Esta obra está autorizada bajo la <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+<p align="center"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.eu.svg"/></a></p>Esta obra está autorizada bajo la <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
