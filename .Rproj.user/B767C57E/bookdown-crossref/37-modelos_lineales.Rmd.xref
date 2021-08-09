@@ -1,28 +1,2 @@
 h1:modelos-lineales Modelos lineales y extensiones
-h2:reg-multiple Regresión lineal múltiple
-h3:ajuste-función-lm Ajuste: función 
-h3:ejemplo Ejemplo
-h2:multicolinealidad El problema de la multicolinelidad
-h2:seleccion-reg-lineal Selección de variables explicativas
-h3:búsqueda-exhaustiva Búsqueda exhaustiva
-h3:selección-por-pasos Selección por pasos
-h2:analisis-reg-multiple Análisis e interpretación del modelo
-h2:evaluación-de-la-precisión Evaluación de la precisión
-h2:shrinkage Métodos de regularización
-h3:implementación-en-r Implementación en R
-h3:ejemplo-ridge-regression Ejemplo: Ridge Regression
-h3:ejemplo-lasso Ejemplo: Lasso
-h3:ejemplo-elastic-net Ejemplo: Elastic Net
-h2:pca-pls Métodos de reducción de la dimensión
-h3:regresión-por-componentes-principales-pcr Regresión por componentes principales (PCR)
-h3:regresión-por-mínimos-cuadrados-parciales-plsr Regresión por mínimos cuadrados parciales (PLSR)
-h2:reg-glm Modelos lineales generalizados
-h3:ajuste-función-glm Ajuste: función 
-h3:ejemplo-regresión-logística Ejemplo: Regresión logística
-h3:selección-de-variables-explicativas Selección de variables explicativas
-h3:analisis-glm Análisis e interpretación del modelo
-h3:evaluación-de-la-precisión-1 Evaluación de la precisión
-h3:extensiones Extensiones
-exr:glmnet
-exr:glm-reduccion
 

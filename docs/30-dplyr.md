@@ -71,18 +71,18 @@ Operaciones con variables (columnas)
 
 
 ```r
-emplea2 <- select(empleados, id, sexo, minoria, tiempemp, salini, salario)
+emplea2 <- select(empleados, c("id", "sexo", "fechnac", "educ", "catlab", "salario", "salini", "tiempemp"))
 head(emplea2)
 ```
 
 ```
-##   id   sexo minoria tiempemp salini salario
-## 1  1 Hombre      No       98  27000   57000
-## 2  2 Hombre      No       98  18750   40200
-## 3  3  Mujer      No       98  12000   21450
-## 4  4  Mujer      No       98  13200   21900
-## 5  5 Hombre      No       98  21000   45000
-## 6  6 Hombre      No       98  13500   32100
+##   id   sexo    fechnac educ         catlab salario salini tiempemp
+## 1  1 Hombre 1952-02-03   15      Directivo   57000  27000       98
+## 2  2 Hombre 1958-05-23   16 Administrativo   40200  18750       98
+## 3  3  Mujer 1929-07-26   12 Administrativo   21450  12000       98
+## 4  4  Mujer 1947-04-15    8 Administrativo   21900  13200       98
+## 5  5 Hombre 1955-02-09   15 Administrativo   45000  21000       98
+## 6  6 Hombre 1958-08-22   15 Administrativo   32100  13500       98
 ```
 
 Se puede cambiar el nombre (ver también *?rename()*)
@@ -155,17 +155,40 @@ head(select(empleados, starts_with("s")))
 
 
 ```r
-head(mutate(emplea2, incsal = salario - salini, tsal = incsal/tiempemp ))
+emplea2 <- mutate(emplea2, incsal = empleados[,"salario"] - empleados[,"salini"]) 
+head(emplea2)
 ```
 
 ```
-##   id   sexo minoria tiempemp salini salario incsal      tsal
-## 1  1 Hombre      No       98  27000   57000  30000 306.12245
-## 2  2 Hombre      No       98  18750   40200  21450 218.87755
-## 3  3  Mujer      No       98  12000   21450   9450  96.42857
-## 4  4  Mujer      No       98  13200   21900   8700  88.77551
-## 5  5 Hombre      No       98  21000   45000  24000 244.89796
-## 6  6 Hombre      No       98  13500   32100  18600 189.79592
+##   id   sexo    fechnac educ         catlab salario salini tiempemp incsal
+## 1  1 Hombre 1952-02-03   15      Directivo   57000  27000       98  30000
+## 2  2 Hombre 1958-05-23   16 Administrativo   40200  18750       98  21450
+## 3  3  Mujer 1929-07-26   12 Administrativo   21450  12000       98   9450
+## 4  4  Mujer 1947-04-15    8 Administrativo   21900  13200       98   8700
+## 5  5 Hombre 1955-02-09   15 Administrativo   45000  21000       98  24000
+## 6  6 Hombre 1958-08-22   15 Administrativo   32100  13500       98  18600
+```
+
+
+```r
+head(mutate(emplea2, tsal = empleados[,"salario"] - empleados[,"salini"]/emplea2[,"tiempemp"]))
+```
+
+```
+##   id   sexo    fechnac educ         catlab salario salini tiempemp incsal
+## 1  1 Hombre 1952-02-03   15      Directivo   57000  27000       98  30000
+## 2  2 Hombre 1958-05-23   16 Administrativo   40200  18750       98  21450
+## 3  3  Mujer 1929-07-26   12 Administrativo   21450  12000       98   9450
+## 4  4  Mujer 1947-04-15    8 Administrativo   21900  13200       98   8700
+## 5  5 Hombre 1955-02-09   15 Administrativo   45000  21000       98  24000
+## 6  6 Hombre 1958-08-22   15 Administrativo   32100  13500       98  18600
+##       tsal
+## 1 56724.49
+## 2 40008.67
+## 3 21327.55
+## 4 21765.31
+## 5 44785.71
+## 6 31962.24
 ```
 
 
@@ -175,17 +198,17 @@ Operaciones con casos (filas)
 
 
 ```r
-head(filter(emplea2, sexo == "Mujer", minoria == "Sí"))
+head(filter(emplea2, sexo == "Mujer", empleados[,"minoria"] == "Sí"))
 ```
 
 ```
-##   id  sexo minoria tiempemp salini salario
-## 1 14 Mujer      Sí       98  16800   35100
-## 2 23 Mujer      Sí       97  11100   24000
-## 3 24 Mujer      Sí       97   9000   16950
-## 4 25 Mujer      Sí       97   9000   21150
-## 5 40 Mujer      Sí       96   9000   19200
-## 6 41 Mujer      Sí       96  11550   23550
+##   id  sexo    fechnac educ         catlab salario salini tiempemp incsal
+## 1 14 Mujer 1949-02-26   15 Administrativo   35100  16800       98  18300
+## 2 23 Mujer 1965-03-15   15 Administrativo   24000  11100       97  12900
+## 3 24 Mujer 1933-03-27   12 Administrativo   16950   9000       97   7950
+## 4 25 Mujer 1942-07-01   15 Administrativo   21150   9000       97  12150
+## 5 40 Mujer 1933-08-28   15 Administrativo   19200   9000       96  10200
+## 6 41 Mujer 1961-03-18   12 Administrativo   23550  11550       96  12000
 ```
 
 ### Organizar casos con **arrange()**
@@ -196,13 +219,13 @@ head(arrange(emplea2, salario))
 ```
 
 ```
-##    id  sexo minoria tiempemp salini salario
-## 1 378 Mujer      No       70  10200   15750
-## 2 338 Mujer      No       74  10200   15900
-## 3  90 Mujer      No       92   9750   16200
-## 4 224 Mujer      No       82  10200   16200
-## 5 411 Mujer      No       68  10200   16200
-## 6 448 Mujer      Sí       66  10200   16350
+##    id  sexo    fechnac educ         catlab salario salini tiempemp incsal
+## 1 378 Mujer 1930-09-21    8 Administrativo   15750  10200       70   5550
+## 2 338 Mujer 1938-08-12    8 Administrativo   15900  10200       74   5700
+## 3  90 Mujer 1938-02-27    8 Administrativo   16200   9750       92   6450
+## 4 224 Mujer 1934-11-20   12 Administrativo   16200  10200       82   6000
+## 5 411 Mujer 1931-08-21   12 Administrativo   16200  10200       68   6000
+## 6 448 Mujer 1933-06-05   12 Administrativo   16350  10200       66   6150
 ```
 
 ```r
@@ -210,13 +233,13 @@ head(arrange(emplea2, desc(salini), salario))
 ```
 
 ```
-##    id   sexo minoria tiempemp salini salario
-## 1  29 Hombre      No       96  79980  135000
-## 2 343 Hombre      No       73  60000  103500
-## 3 205 Hombre      No       83  52500   66750
-## 4 160 Hombre      No       86  47490   66000
-## 5 431 Hombre      No       66  45000   86250
-## 6  32 Hombre      No       96  45000  110625
+##    id   sexo    fechnac educ    catlab salario salini tiempemp incsal
+## 1  29 Hombre 1944-01-28   19 Directivo  135000  79980       96  55020
+## 2 343 Hombre 1953-06-09   16 Directivo  103500  60000       73  43500
+## 3 205 Hombre 1944-06-22   16 Directivo   66750  52500       83  14250
+## 4 160 Hombre 1951-08-27   16 Directivo   66000  47490       86  18510
+## 5 431 Hombre 1959-01-15   18 Directivo   86250  45000       66  41250
+## 6  32 Hombre 1954-01-28   19 Directivo  110625  45000       96  65625
 ```
 
 
@@ -289,7 +312,7 @@ empleados %>% select(sexo, catlab, salario) %>%
 abline(h = 0, lty = 2)
 ```
 
-<img src="30-dplyr_files/figure-epub3/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="30-dplyr_files/figure-html/unnamed-chunk-14-1.png" width="80%" style="display: block; margin: auto;" />
 
 
 --------------

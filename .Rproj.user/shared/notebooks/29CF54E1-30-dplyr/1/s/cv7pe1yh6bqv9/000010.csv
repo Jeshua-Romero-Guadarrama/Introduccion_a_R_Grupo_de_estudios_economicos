@@ -1,0 +1,6 @@
+"0","empleados %>% select(sexo, catlab, salario) %>%"
+"0","          filter(catlab != ""Seguridad"") %>%"
+"0","          group_by(catlab) %>%"
+"0","          mutate(saldif = salario - mean(salario)) %>%"
+"0","          ungroup() %>%"
+"0","          boxplot(saldif ~ sexo*droplevels(catlab), data = .)"

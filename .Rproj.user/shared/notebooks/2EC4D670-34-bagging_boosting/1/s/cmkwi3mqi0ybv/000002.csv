@@ -1,0 +1,31 @@
+"0","load(""datos/winequality.RData"")"
+"0","set.seed(1)"
+"0","df <- winequality"
+"0","nobs <- nrow(df)"
+"0","itrain <- sample(nobs, 0.8 * nobs)"
+"0","train <- df[itrain, ]"
+"0","test <- df[-itrain, ]"
+"0",""
+"0","library(gbm)"
+"2","Loaded gbm 2.1.8
+"
+"0","gbm.fit <- gbm(quality ~ ., data = train)"
+"1","Distribution not specified, assuming gaussian ...
+"
+"0","gbm.fit"
+"1","gbm(formula = quality ~ ., data = train)
+"
+"1","A gradient boosted model with gaussian loss function.
+"
+"1","100 iterations were performed.
+"
+"1","There were"
+"1"," "
+"1","11"
+"1"," "
+"1","predictors of which"
+"1"," "
+"1","11"
+"1"," "
+"1","had non-zero influence.
+"

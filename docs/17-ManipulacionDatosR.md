@@ -45,8 +45,8 @@ ls()
 ```
 
 ```
-##  [1] "citefig"   "citefig2"  "empleados" "fig.path"  "inline"    "inline2"  
-##  [7] "is_html"   "is_latex"  "latexfig"  "res"
+##  [1] "citefig"   "citefig2"  "citepkg"   "citepkgs"  "empleados" "fig.path" 
+##  [7] "inline"    "inline2"   "is_html"   "is_latex"  "latexfig"  "res"
 ```
 y para guardar [`save()`](https://www.rdocumentation.org/packages/base/versions/3.6.1/topics/save):
 
@@ -351,8 +351,9 @@ cars$speed/0.62137
  Finalmente, incluimos la nueva variable que llamaremos
 `velocidad` en `cars`:
 
+
 ```r
-cars$velocidad <- cars$speed / 0.62137
+cars[, c("velocidad")] <- cars[, 1]/0.62137
 head(cars)
 ```
 
@@ -372,7 +373,7 @@ variable `distancia` (en metros). Ahora la transformación deseada es
 
 
 ```r
-cars$distancia <- cars$dis / 3.2808
+cars[, c("distancia")] <- cars[, 2]/3.2808
 head(cars)
 ```
 
@@ -486,7 +487,7 @@ puede utilizar la función [`subset()` ](https://www.rdocumentation.org/packages
 A continuación se muestran un par de ejemplos:
 
 ```r
-subset(cars, dist > 85) # datos con dis>85
+subset(cars, cars$dist > 85) # datos con dis>85
 ```
 
 ```
@@ -497,7 +498,7 @@ subset(cars, dist > 85) # datos con dis>85
 ```
 
 ```r
-subset(cars, speed > 10 & speed < 15 & dist > 45) # speed en (10,15) y dist>45
+subset(cars, cars$speed > 10 & cars$speed < 15 & cars$dist > 45) # speed en (10,15) y dist>45
 ```
 
 ```
@@ -575,4 +576,3 @@ str(cars[id, 1:2])
 # Se podría p.e. emplear cars[id, ] para predecir cars[it, ]$speed
 # ?which.min
 ```
-

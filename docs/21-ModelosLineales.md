@@ -49,7 +49,7 @@ datos <- hatco[, 6:13]  # Nota: realmente no copia el objeto...
 plot(datos)
 ```
 
-![](21-ModelosLineales_files/figure-epub3/unnamed-chunk-2-1.png)<!-- -->
+<img src="21-ModelosLineales_files/figure-html/unnamed-chunk-2-1.png" width="672" />
 
 ```r
 # cor(datos, use = "complete") # Por defecto 8 decimales...
@@ -135,7 +135,7 @@ plot(fidelida ~ servconj, datos)
 abline(modelo)
 ```
 
-![](21-ModelosLineales_files/figure-epub3/unnamed-chunk-7-1.png)<!-- -->
+<img src="21-ModelosLineales_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
 
 ### Extracción de información
@@ -274,7 +274,7 @@ plot(fidelida ~ servconj, datos)
 lines(valores, pred)
 ```
 
-![](21-ModelosLineales_files/figure-epub3/unnamed-chunk-10-1.png)<!-- -->
+<img src="21-ModelosLineales_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 
 Esta función también permite obtener intervalos de confianza y de predicción:
@@ -304,7 +304,7 @@ matlines(valores, pred2[, -1], lty = 3, col = 1)
 legend("topleft", c("Ajuste", "Int. confianza", "Int. predicción"), lty = c(1, 2, 3))
 ```
 
-![](21-ModelosLineales_files/figure-epub3/unnamed-chunk-11-1.png)<!-- -->
+<img src="21-ModelosLineales_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
 
 Selección de variables explicativas
@@ -438,7 +438,7 @@ Por ejemplo, en este caso, empleando el coeficiente de determinación ajustado, 
 plot(res, scale = "adjr2")
 ```
 
-![](21-ModelosLineales_files/figure-epub3/unnamed-chunk-14-1.png)<!-- -->
+<img src="21-ModelosLineales_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
 En este caso (considerando que una mejora del 2% no es significativa), el modelo resultante sería:
 
@@ -707,7 +707,7 @@ abline(a = parest[1] + parest[4], b = parest[2], lty = 3)
 legend("bottomright", levels(datos$catlab), pch = 1:3, lty = 1:3)
 ```
 
-![](21-ModelosLineales_files/figure-epub3/unnamed-chunk-21-1.png)<!-- -->
+<img src="21-ModelosLineales_files/figure-html/unnamed-chunk-21-1.png" width="672" />
 
 Para especificar que el efecto de una covariable depende de otra (interacción), 
 se pueden emplear los operadores `*` ó `:`.
@@ -769,7 +769,7 @@ abline(a = parest[1] + parest[4], b = parest[2] + parest[6], lty = 3)
 legend("bottomright", levels(datos$catlab), pch = 1:3, lty = 1:3)
 ```
 
-![](21-ModelosLineales_files/figure-epub3/unnamed-chunk-23-1.png)<!-- -->
+<img src="21-ModelosLineales_files/figure-html/unnamed-chunk-23-1.png" width="672" />
 
 Por ejemplo, empleando la fórmula `lnsal ~ lnsalini:catlab` se considerarían distintas pendientes pero el mismo término independiente.
 
@@ -834,7 +834,7 @@ oldpar <- par( mfrow=c(2,2))
 plot(modelo)
 ```
 
-![](21-ModelosLineales_files/figure-epub3/unnamed-chunk-25-1.png)<!-- -->
+<img src="21-ModelosLineales_files/figure-html/unnamed-chunk-25-1.png" width="672" />
 
 ```r
 par(oldpar)
@@ -879,7 +879,7 @@ library(car)
 crPlots(modelo)
 ```
 
-![](21-ModelosLineales_files/figure-epub3/unnamed-chunk-28-1.png)<!-- -->
+<img src="21-ModelosLineales_files/figure-html/unnamed-chunk-28-1.png" width="672" />
 
 ```r
 # avPlots(modelo)
@@ -943,7 +943,7 @@ shapiro.test(residuals(modelo))
 hist(residuals(modelo))
 ```
 
-![](21-ModelosLineales_files/figure-epub3/unnamed-chunk-30-1.png)<!-- -->
+<img src="21-ModelosLineales_files/figure-html/unnamed-chunk-30-1.png" width="672" />
 
 #### Homocedasticidad
 
@@ -1079,7 +1079,7 @@ fit.ridge <- glmnet(x, y, alpha = 0)
 plot(fit.ridge, xvar = "lambda", label = TRUE)
 ```
 
-![](21-ModelosLineales_files/figure-epub3/unnamed-chunk-36-1.png)<!-- -->
+<img src="21-ModelosLineales_files/figure-html/unnamed-chunk-36-1.png" width="672" />
 
 Para seleccionar el parámetro de penalización por validación cruzada se puede emplear
 la función `cv.glmnet`.
@@ -1090,7 +1090,7 @@ cv.ridge <- cv.glmnet(x, y, alpha = 0)
 plot(cv.ridge)
 ```
 
-![](21-ModelosLineales_files/figure-epub3/unnamed-chunk-37-1.png)<!-- -->
+<img src="21-ModelosLineales_files/figure-html/unnamed-chunk-37-1.png" width="672" />
 
 En este caso el parámetro sería:
 
@@ -1100,7 +1100,7 @@ cv.ridge$lambda.1se
 ```
 
 ```
-## [1] 3.989587
+## [1] 4.378567
 ```
 
 y el modelo resultante contiene todas las variables explicativas:
@@ -1113,14 +1113,14 @@ coef(cv.ridge)
 ```
 ## 8 x 1 sparse Matrix of class "dgCMatrix"
 ##                     s1
-## (Intercept) 6.25898621
-## velocida    1.56785760
-## precio      0.67897678
-## flexprec    2.17894174
-## imgfabri    0.32939271
-## servconj    3.69427361
-## imgfvent    1.05562044
-## calidadp    0.04709431
+## (Intercept) 7.28558079
+## velocida    1.55290772
+## precio      0.65329920
+## flexprec    2.10876330
+## imgfabri    0.33897337
+## servconj    3.61576314
+## imgfvent    1.03776789
+## calidadp    0.02802458
 ```
 
 ### Lasso
@@ -1133,7 +1133,7 @@ fit.lasso <- glmnet(x,y)
 plot(fit.lasso, xvar = "lambda", label = TRUE)
 ```
 
-![](21-ModelosLineales_files/figure-epub3/unnamed-chunk-40-1.png)<!-- -->
+<img src="21-ModelosLineales_files/figure-html/unnamed-chunk-40-1.png" width="672" />
 
 Seleccionamos el parámetro de penalización por validación cruzada.
 
@@ -1143,7 +1143,7 @@ cv.lasso <- cv.glmnet(x,y)
 plot(cv.lasso)
 ```
 
-![](21-ModelosLineales_files/figure-epub3/unnamed-chunk-41-1.png)<!-- -->
+<img src="21-ModelosLineales_files/figure-html/unnamed-chunk-41-1.png" width="672" />
 
 En este caso el modelo resultante solo contiene 4 variables explicativas:
 
@@ -1188,7 +1188,7 @@ $$Y^{(\lambda)} =
 boxcox(modelo)
 ```
 
-![](21-ModelosLineales_files/figure-epub3/unnamed-chunk-43-1.png)<!-- -->
+<img src="21-ModelosLineales_files/figure-html/unnamed-chunk-43-1.png" width="672" />
 
 En este caso una transformación logarítmica parece adecuada.
 
@@ -1225,7 +1225,7 @@ curve(exp(parest[1]) * x^parest[2], lty = 3, add = TRUE)
 legend("bottomright", c("Lineal","Exponencial","Logarítmico"), lty = 1:3)
 ```
 
-![](21-ModelosLineales_files/figure-epub3/unnamed-chunk-44-1.png)<!-- -->
+<img src="21-ModelosLineales_files/figure-html/unnamed-chunk-44-1.png" width="672" />
 
 Con estos datos de ejemplo, el principal problema es la falta de homogeneidad de varianzas (y de normalidad) y se corrige sustancialmente con el segundo modelo:
 
@@ -1234,7 +1234,7 @@ plot(log(salario) ~ log(salini), data = empleados)
 abline(modelo2)
 ```
 
-![](21-ModelosLineales_files/figure-epub3/unnamed-chunk-45-1.png)<!-- -->
+<img src="21-ModelosLineales_files/figure-html/unnamed-chunk-45-1.png" width="672" />
 
 
 ### Ajuste polinómico
@@ -1254,7 +1254,7 @@ curve(parest[1] + parest[2]*x + parest[3]*x^2, lty = 2, add = TRUE)
 legend("bottomright", c("Lineal","Cuadrático"), lty = 1:2)
 ```
 
-![](21-ModelosLineales_files/figure-epub3/unnamed-chunk-46-1.png)<!-- -->
+<img src="21-ModelosLineales_files/figure-html/unnamed-chunk-46-1.png" width="672" />
 
 Alternativamente se podría emplear la función `poly`:
 
@@ -1267,7 +1267,7 @@ pred <- predict(modelo, newdata = data.frame(income = valores))
 lines(valores, pred, lty = 3) 
 ```
 
-![](21-ModelosLineales_files/figure-epub3/unnamed-chunk-47-1.png)<!-- -->
+<img src="21-ModelosLineales_files/figure-html/unnamed-chunk-47-1.png" width="672" />
 
 ### Ajuste polinómico local (robusto)
 
@@ -1284,7 +1284,7 @@ pred <- predict(fit, newdata = data.frame(income = valores))
 lines(valores, pred)
 ```
 
-![](21-ModelosLineales_files/figure-epub3/unnamed-chunk-48-1.png)<!-- -->
+<img src="21-ModelosLineales_files/figure-html/unnamed-chunk-48-1.png" width="672" />
 
 Este tipo de modelos los trataremos con detalle más adelante...
 

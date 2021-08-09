@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>G.3 CART con el paquete rpart | R Grupo de estudios económicos</title>
+  <meta name="description" content="Los estudiantes con poca experiencia en el análisis avanzado de estadísticas a menudo tienen dificultades para entender los beneficios de desarrollar habilidades de programación al momento de aplicar diversos métodos descriptivos e inferenciales. ‘Análisis estadístico con R para principiantes’ por Jeshua Romero Guadarrama (2021), ofrece una introducción interactiva a los aspectos esenciales de la programación por medio del lenguaje y software estadístico R, así como una guía para la aplicación de la teoría económica y econométrica en entornos específicos. En otras palabras, el objetivo es que los estudiantes se adentren al mundo de la economía aplicada mediante ejemplos empíricos presentados en la vida diaria y haciendo uso de las habilidades de programación recién adquiridas. Dicho objetivo se encuentra respaldado por ejercicios de programación interactivos y la incorporación de visualizaciones dinámicas de conceptos fundamentales mediante la flexibilidad de JavaScript, a través de la biblioteca D3.js." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="G.3 CART con el paquete rpart | R Grupo de estudios económicos" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://rgrupodeestudioseconomicos.jeshuanomics.com" />
+  <meta property="og:image" content="https://rgrupodeestudioseconomicos.jeshuanomics.com/images/cover.png" />
+  <meta property="og:description" content="Los estudiantes con poca experiencia en el análisis avanzado de estadísticas a menudo tienen dificultades para entender los beneficios de desarrollar habilidades de programación al momento de aplicar diversos métodos descriptivos e inferenciales. ‘Análisis estadístico con R para principiantes’ por Jeshua Romero Guadarrama (2021), ofrece una introducción interactiva a los aspectos esenciales de la programación por medio del lenguaje y software estadístico R, así como una guía para la aplicación de la teoría económica y econométrica en entornos específicos. En otras palabras, el objetivo es que los estudiantes se adentren al mundo de la economía aplicada mediante ejemplos empíricos presentados en la vida diaria y haciendo uso de las habilidades de programación recién adquiridas. Dicho objetivo se encuentra respaldado por ejercicios de programación interactivos y la incorporación de visualizaciones dinámicas de conceptos fundamentales mediante la flexibilidad de JavaScript, a través de la biblioteca D3.js." />
+  <meta name="github-repo" content="https://github.com/Jeshua-Romero-Guadarrama/R_grupo_de_estudios_economicos" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="G.3 CART con el paquete rpart | R Grupo de estudios económicos" />
+  
+  <meta name="twitter:description" content="Los estudiantes con poca experiencia en el análisis avanzado de estadísticas a menudo tienen dificultades para entender los beneficios de desarrollar habilidades de programación al momento de aplicar diversos métodos descriptivos e inferenciales. ‘Análisis estadístico con R para principiantes’ por Jeshua Romero Guadarrama (2021), ofrece una introducción interactiva a los aspectos esenciales de la programación por medio del lenguaje y software estadístico R, así como una guía para la aplicación de la teoría económica y econométrica en entornos específicos. En otras palabras, el objetivo es que los estudiantes se adentren al mundo de la economía aplicada mediante ejemplos empíricos presentados en la vida diaria y haciendo uso de las habilidades de programación recién adquiridas. Dicho objetivo se encuentra respaldado por ejercicios de programación interactivos y la incorporación de visualizaciones dinámicas de conceptos fundamentales mediante la flexibilidad de JavaScript, a través de la biblioteca D3.js." />
+  <meta name="twitter:image" content="https://rgrupodeestudioseconomicos.jeshuanomics.com/images/cover.png" />
+
+<meta name="author" content="Jeshua Romero Guadarrama, Kevin Fernández, Apocryfo, Jenn, Daniel, Tifany Jiménez, Ernesto, Ezequiel, Rich Conejo, Angiebaram, Jesmarth, Adolfo Robles, Isaac Flores, Abdeel, Roberto Daniel" />
+
+
+<meta name="date" content="2021-08-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
+<link rel="prev" href="G-2-árboles-de-clasificación-cart.html"/>
+<link rel="next" href="G-4-alternativas-a-los-árboles-cart.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<!-- font families -->
+
+<link href="https://fonts.googleapis.com/css?family=PT+Sans|Pacifico|Source+Sans+Pro" rel="stylesheet">
+
+<script src="js/hideOutput.js"></script>
+
+<!-- Mathjax -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/default.js"></script>
+
+ <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: ["tex2jax.js", "TeX/AMSmath.js"],
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+        jax: ["input/TeX","output/CommonHTML"]
+      });
+      MathJax.Hub.processSectionDelay = 0;
+  </script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110299877-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-110299877-1');
+</script>
+
+<!-- open review block -->
+
+<script async defer src="https://hypothes.is/embed.js"></script>
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="toc.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><center><img src="images/logo.png" alt="logo" width="50%" height="50%"style="margin: 15px 0 0 0"></center></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="" data-path="contenido.html"><a href="contenido.html"><i class="fa fa-check"></i>Contenido</a></li>
+<li class="chapter" data-level="" data-path="índice-de-contenido.html"><a href="índice-de-contenido.html"><i class="fa fa-check"></i>Índice de contenido</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="1-introducción-qué-es-r-y-para-qué-es-usado.html"><a href="1-introducción-qué-es-r-y-para-qué-es-usado.html"><i class="fa fa-check"></i><b>1</b> Introducción: ¿Qué es R y para qué es usado?</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="1-1-un-poco-de-historia.html"><a href="1-1-un-poco-de-historia.html"><i class="fa fa-check"></i><b>1.1</b> Un poco de historia</a></li>
+<li class="chapter" data-level="1.2" data-path="1-2-quién-usa-r.html"><a href="1-2-quién-usa-r.html"><i class="fa fa-check"></i><b>1.2</b> ¿Quién usa R?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-instalación.html"><a href="2-instalación.html"><i class="fa fa-check"></i><b>2</b> Instalación</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="2-1-windows.html"><a href="2-1-windows.html"><i class="fa fa-check"></i><b>2.1</b> Windows</a></li>
+<li class="chapter" data-level="2.2" data-path="2-2-osx.html"><a href="2-2-osx.html"><i class="fa fa-check"></i><b>2.2</b> OSX</a></li>
+<li class="chapter" data-level="2.3" data-path="2-3-linux.html"><a href="2-3-linux.html"><i class="fa fa-check"></i><b>2.3</b> Linux</a></li>
+<li class="chapter" data-level="2.4" data-path="2-4-rstudio-un-ide-para-r.html"><a href="2-4-rstudio-un-ide-para-r.html"><i class="fa fa-check"></i><b>2.4</b> RStudio - un IDE para R</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-conceptos-básicos.html"><a href="3-conceptos-básicos.html"><i class="fa fa-check"></i><b>3</b> Conceptos básicos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="3-1-la-consola-de-r.html"><a href="3-1-la-consola-de-r.html"><i class="fa fa-check"></i><b>3.1</b> La consola de R</a></li>
+<li class="chapter" data-level="3.2" data-path="3-2-ejecutar-llamar-correr-y-devolver.html"><a href="3-2-ejecutar-llamar-correr-y-devolver.html"><i class="fa fa-check"></i><b>3.2</b> Ejecutar, llamar, correr y devolver</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-objetos.html"><a href="3-3-objetos.html"><i class="fa fa-check"></i><b>3.3</b> Objetos</a></li>
+<li class="chapter" data-level="3.4" data-path="3-4-constantes-y-variables.html"><a href="3-4-constantes-y-variables.html"><i class="fa fa-check"></i><b>3.4</b> Constantes y variables</a></li>
+<li class="chapter" data-level="3.5" data-path="3-5-funciones-introducción-básica.html"><a href="3-5-funciones-introducción-básica.html"><i class="fa fa-check"></i><b>3.5</b> Funciones (introducción básica)</a></li>
+<li class="chapter" data-level="3.6" data-path="3-6-documentación.html"><a href="3-6-documentación.html"><i class="fa fa-check"></i><b>3.6</b> Documentación</a></li>
+<li class="chapter" data-level="3.7" data-path="3-7-directorio-de-trabajo.html"><a href="3-7-directorio-de-trabajo.html"><i class="fa fa-check"></i><b>3.7</b> Directorio de trabajo</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="3-7-directorio-de-trabajo.html"><a href="3-7-directorio-de-trabajo.html#sesión"><i class="fa fa-check"></i><b>3.7.1</b> Sesión</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="3-8-paquetes.html"><a href="3-8-paquetes.html"><i class="fa fa-check"></i><b>3.8</b> Paquetes</a></li>
+<li class="chapter" data-level="3.9" data-path="3-9-scripts.html"><a href="3-9-scripts.html"><i class="fa fa-check"></i><b>3.9</b> Scripts</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-tipos-de-datos.html"><a href="4-tipos-de-datos.html"><i class="fa fa-check"></i><b>4</b> Tipos de datos</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="4-1-datos-más-comunes.html"><a href="4-1-datos-más-comunes.html"><i class="fa fa-check"></i><b>4.1</b> Datos más comunes</a></li>
+<li class="chapter" data-level="4.2" data-path="4-2-entero-y-numérico.html"><a href="4-2-entero-y-numérico.html"><i class="fa fa-check"></i><b>4.2</b> Entero y numérico</a></li>
+<li class="chapter" data-level="4.3" data-path="4-3-cadena-de-texto.html"><a href="4-3-cadena-de-texto.html"><i class="fa fa-check"></i><b>4.3</b> Cadena de texto</a></li>
+<li class="chapter" data-level="4.4" data-path="4-4-factor.html"><a href="4-4-factor.html"><i class="fa fa-check"></i><b>4.4</b> Factor</a></li>
+<li class="chapter" data-level="4.5" data-path="4-5-lógico.html"><a href="4-5-lógico.html"><i class="fa fa-check"></i><b>4.5</b> Lógico</a></li>
+<li class="chapter" data-level="4.6" data-path="4-6-na-y-null.html"><a href="4-6-na-y-null.html"><i class="fa fa-check"></i><b>4.6</b> <code>NA</code> y <code>NULL</code></a></li>
+<li class="chapter" data-level="4.7" data-path="4-7-coerción.html"><a href="4-7-coerción.html"><i class="fa fa-check"></i><b>4.7</b> Coerción</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="4-7-coerción.html"><a href="4-7-coerción.html#coerción-explícita-con-la-familia-as"><i class="fa fa-check"></i><b>4.7.1</b> Coerción explícita con la familia <code>as()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="4-8-verificar-el-tipo-de-un-dato.html"><a href="4-8-verificar-el-tipo-de-un-dato.html"><i class="fa fa-check"></i><b>4.8</b> Verificar el tipo de un dato</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="4-8-verificar-el-tipo-de-un-dato.html"><a href="4-8-verificar-el-tipo-de-un-dato.html#verificación-con-la-familia-de-funciones-is"><i class="fa fa-check"></i><b>4.8.1</b> Verificación con la familia de funciones <code>is()</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-operadores.html"><a href="5-operadores.html"><i class="fa fa-check"></i><b>5</b> Operadores</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="5-1-operadores-aritméticos.html"><a href="5-1-operadores-aritméticos.html"><i class="fa fa-check"></i><b>5.1</b> Operadores aritméticos</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="5-1-operadores-aritméticos.html"><a href="5-1-operadores-aritméticos.html#la-división-entera"><i class="fa fa-check"></i><b>5.1.1</b> La división entera</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="5-2-operadores-relacionales.html"><a href="5-2-operadores-relacionales.html"><i class="fa fa-check"></i><b>5.2</b> Operadores relacionales</a></li>
+<li class="chapter" data-level="5.3" data-path="5-3-operadores-lógicos.html"><a href="5-3-operadores-lógicos.html"><i class="fa fa-check"></i><b>5.3</b> Operadores lógicos</a></li>
+<li class="chapter" data-level="5.4" data-path="5-4-operadores-de-asignación.html"><a href="5-4-operadores-de-asignación.html"><i class="fa fa-check"></i><b>5.4</b> Operadores de asignación</a></li>
+<li class="chapter" data-level="5.5" data-path="5-5-orden-de-operaciones.html"><a href="5-5-orden-de-operaciones.html"><i class="fa fa-check"></i><b>5.5</b> Orden de operaciones</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="6-estructuras-de-datos.html"><a href="6-estructuras-de-datos.html"><i class="fa fa-check"></i><b>6</b> Estructuras de datos</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="6-1-vectores.html"><a href="6-1-vectores.html"><i class="fa fa-check"></i><b>6.1</b> Vectores</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="6-1-vectores.html"><a href="6-1-vectores.html#creación-de-vectores"><i class="fa fa-check"></i><b>6.1.1</b> Creación de vectores</a></li>
+<li class="chapter" data-level="6.1.2" data-path="6-1-vectores.html"><a href="6-1-vectores.html#vectorización-de-operaciones"><i class="fa fa-check"></i><b>6.1.2</b> Vectorización de operaciones</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="6-2-matrices-y-arrays.html"><a href="6-2-matrices-y-arrays.html"><i class="fa fa-check"></i><b>6.2</b> Matrices y arrays</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="6-2-matrices-y-arrays.html"><a href="6-2-matrices-y-arrays.html#creación-de-matrices"><i class="fa fa-check"></i><b>6.2.1</b> Creación de matrices</a></li>
+<li class="chapter" data-level="6.2.2" data-path="6-2-matrices-y-arrays.html"><a href="6-2-matrices-y-arrays.html#propiedades-de-las-matrices"><i class="fa fa-check"></i><b>6.2.2</b> Propiedades de las matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="6-3-data-frames.html"><a href="6-3-data-frames.html"><i class="fa fa-check"></i><b>6.3</b> Data frames</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="6-3-data-frames.html"><a href="6-3-data-frames.html#propiedades-de-un-data-frame"><i class="fa fa-check"></i><b>6.3.1</b> Propiedades de un data frame</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="6-4-listas.html"><a href="6-4-listas.html"><i class="fa fa-check"></i><b>6.4</b> Listas</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="6-4-listas.html"><a href="6-4-listas.html#propiedades-de-una-lista"><i class="fa fa-check"></i><b>6.4.1</b> Propiedades de una lista</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="6-5-coerción-1.html"><a href="6-5-coerción-1.html"><i class="fa fa-check"></i><b>6.5</b> Coerción</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="7-subconjuntos.html"><a href="7-subconjuntos.html"><i class="fa fa-check"></i><b>7</b> Subconjuntos</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="7-1-índices.html"><a href="7-1-índices.html"><i class="fa fa-check"></i><b>7.1</b> Índices</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="7-1-índices.html"><a href="7-1-índices.html#vectores-1"><i class="fa fa-check"></i><b>7.1.1</b> Vectores</a></li>
+<li class="chapter" data-level="7.1.2" data-path="7-1-índices.html"><a href="7-1-índices.html#data-frames-1"><i class="fa fa-check"></i><b>7.1.2</b> Data frames</a></li>
+<li class="chapter" data-level="7.1.3" data-path="7-1-índices.html"><a href="7-1-índices.html#matrices"><i class="fa fa-check"></i><b>7.1.3</b> Matrices</a></li>
+<li class="chapter" data-level="7.1.4" data-path="7-1-índices.html"><a href="7-1-índices.html#arrays"><i class="fa fa-check"></i><b>7.1.4</b> Arrays</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="7-2-nombres.html"><a href="7-2-nombres.html"><i class="fa fa-check"></i><b>7.2</b> Nombres</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="7-2-nombres.html"><a href="7-2-nombres.html#data-frames-2"><i class="fa fa-check"></i><b>7.2.1</b> Data frames</a></li>
+<li class="chapter" data-level="7.2.2" data-path="7-2-nombres.html"><a href="7-2-nombres.html#listas-1"><i class="fa fa-check"></i><b>7.2.2</b> Listas</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="7-3-subconjuntos-por-índice-y-nombre.html"><a href="7-3-subconjuntos-por-índice-y-nombre.html"><i class="fa fa-check"></i><b>7.3</b> Subconjuntos por índice y nombre</a></li>
+<li class="chapter" data-level="7.4" data-path="7-4-el-signo-de-dolar-y-los-corchetes-dobles.html"><a href="7-4-el-signo-de-dolar-y-los-corchetes-dobles.html"><i class="fa fa-check"></i><b>7.4</b> El signo de dolar <code>$</code> y los corchetes dobles <code>[[]]</code></a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="7-4-el-signo-de-dolar-y-los-corchetes-dobles.html"><a href="7-4-el-signo-de-dolar-y-los-corchetes-dobles.html#los-data-frames-y-listas-son-como-cajas-de-manzanas"><i class="fa fa-check"></i><b>7.4.1</b> Los data frames y listas son como cajas de manzanas</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="7-5-condicionales.html"><a href="7-5-condicionales.html"><i class="fa fa-check"></i><b>7.5</b> Condicionales</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="7-5-condicionales.html"><a href="7-5-condicionales.html#usando-condicionales"><i class="fa fa-check"></i><b>7.5.1</b> Usando condicionales</a></li>
+<li class="chapter" data-level="7.5.2" data-path="7-5-condicionales.html"><a href="7-5-condicionales.html#la-función-subset"><i class="fa fa-check"></i><b>7.5.2</b> La función <code>subset()</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="8-funciones.html"><a href="8-funciones.html"><i class="fa fa-check"></i><b>8</b> Funciones</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="8-1-por-qué-necesitamos-crear-nuestrar-propias-funciones.html"><a href="8-1-por-qué-necesitamos-crear-nuestrar-propias-funciones.html"><i class="fa fa-check"></i><b>8.1</b> ¿Por qué necesitamos crear nuestrar propias funciones?</a></li>
+<li class="chapter" data-level="8.2" data-path="8-2-funciones-definidas-por-el-usuario.html"><a href="8-2-funciones-definidas-por-el-usuario.html"><i class="fa fa-check"></i><b>8.2</b> Funciones definidas por el usuario</a></li>
+<li class="chapter" data-level="8.3" data-path="8-3-nuestra-primera-función.html"><a href="8-3-nuestra-primera-función.html"><i class="fa fa-check"></i><b>8.3</b> Nuestra primera función</a></li>
+<li class="chapter" data-level="8.4" data-path="8-4-definiendo-la-función-crear-histograma.html"><a href="8-4-definiendo-la-función-crear-histograma.html"><i class="fa fa-check"></i><b>8.4</b> Definiendo la función <code>crear_histograma()</code></a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="8-4-definiendo-la-función-crear-histograma.html"><a href="8-4-definiendo-la-función-crear-histograma.html#ejecutando"><i class="fa fa-check"></i><b>8.4.1</b> Ejecutando</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="9-estructuras-de-control.html"><a href="9-estructuras-de-control.html"><i class="fa fa-check"></i><b>9</b> Estructuras de control</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="9-1-if-else.html"><a href="9-1-if-else.html"><i class="fa fa-check"></i><b>9.1</b> if, else</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="9-1-if-else.html"><a href="9-1-if-else.html#usando-if-y-else"><i class="fa fa-check"></i><b>9.1.1</b> Usando if y else</a></li>
+<li class="chapter" data-level="9.1.2" data-path="9-1-if-else.html"><a href="9-1-if-else.html#ifelse"><i class="fa fa-check"></i><b>9.1.2</b> ifelse</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="9-2-for.html"><a href="9-2-for.html"><i class="fa fa-check"></i><b>9.2</b> for</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="9-2-for.html"><a href="9-2-for.html#usando-for"><i class="fa fa-check"></i><b>9.2.1</b> Usando for</a></li>
+<li class="chapter" data-level="9.2.2" data-path="9-2-for.html"><a href="9-2-for.html#for-y-vectorización"><i class="fa fa-check"></i><b>9.2.2</b> for y vectorización</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="9-3-while.html"><a href="9-3-while.html"><i class="fa fa-check"></i><b>9.3</b> while</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="9-3-while.html"><a href="9-3-while.html#usando-while"><i class="fa fa-check"></i><b>9.3.1</b> Usando while</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="9-4-break-y-next.html"><a href="9-4-break-y-next.html"><i class="fa fa-check"></i><b>9.4</b> break y next</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="9-4-break-y-next.html"><a href="9-4-break-y-next.html#usando-break"><i class="fa fa-check"></i><b>9.4.1</b> Usando break</a></li>
+<li class="chapter" data-level="9.4.2" data-path="9-4-break-y-next.html"><a href="9-4-break-y-next.html#usando-next"><i class="fa fa-check"></i><b>9.4.2</b> Usando next</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="9-5-repeat.html"><a href="9-5-repeat.html"><i class="fa fa-check"></i><b>9.5</b> repeat</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="10-la-familia-apply.html"><a href="10-la-familia-apply.html"><i class="fa fa-check"></i><b>10</b> La familia apply</a>
+<ul>
+<li class="chapter" data-level="10.0.1" data-path="10-la-familia-apply.html"><a href="10-la-familia-apply.html#un-recordatorio-sobre-vectorización"><i class="fa fa-check"></i><b>10.0.1</b> Un recordatorio sobre vectorización</a></li>
+<li class="chapter" data-level="10.0.2" data-path="10-la-familia-apply.html"><a href="10-la-familia-apply.html#las-funciones-de-la-familia-apply"><i class="fa fa-check"></i><b>10.0.2</b> Las funciones de la familia apply</a></li>
+<li class="chapter" data-level="10.1" data-path="10-1-apply.html"><a href="10-1-apply.html"><i class="fa fa-check"></i><b>10.1</b> apply</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="10-1-apply.html"><a href="10-1-apply.html#qué-es-x"><i class="fa fa-check"></i><b>10.1.1</b> ¿Qué es X</a></li>
+<li class="chapter" data-level="10.1.2" data-path="10-1-apply.html"><a href="10-1-apply.html#qué-es-margin"><i class="fa fa-check"></i><b>10.1.2</b> ¿Qué es MARGIN?</a></li>
+<li class="chapter" data-level="10.1.3" data-path="10-1-apply.html"><a href="10-1-apply.html#qué-es-fun"><i class="fa fa-check"></i><b>10.1.3</b> ¿Qué es FUN?</a></li>
+<li class="chapter" data-level="10.1.4" data-path="10-1-apply.html"><a href="10-1-apply.html#cómo-sabe-fun-cuáles-son-sus-argumentos"><i class="fa fa-check"></i><b>10.1.4</b> ¿Cómo sabe FUN cuáles son sus argumentos?</a></li>
+<li class="chapter" data-level="10.1.5" data-path="10-1-apply.html"><a href="10-1-apply.html#qué-pasa-si-deseamos-utilizar-los-demás-argumentos-de-una-función-con-apply"><i class="fa fa-check"></i><b>10.1.5</b> ¿Qué pasa si deseamos utilizar los demás argumentos de una función con apply?</a></li>
+<li class="chapter" data-level="10.1.6" data-path="10-1-apply.html"><a href="10-1-apply.html#qué-tipo-de-resultados-devuelve-apply"><i class="fa fa-check"></i><b>10.1.6</b> ¿Qué tipo de resultados devuelve apply?</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="10-2-lapply.html"><a href="10-2-lapply.html"><i class="fa fa-check"></i><b>10.2</b> lapply</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="10-2-lapply.html"><a href="10-2-lapply.html#usando-lapply"><i class="fa fa-check"></i><b>10.2.1</b> Usando lapply()</a></li>
+<li class="chapter" data-level="10.2.2" data-path="10-2-lapply.html"><a href="10-2-lapply.html#usando-lapply-en-lugar-de-un-bucle-for"><i class="fa fa-check"></i><b>10.2.2</b> Usando lapply() en lugar de un bucle for</a></li>
+<li class="chapter" data-level="10.2.3" data-path="10-2-lapply.html"><a href="10-2-lapply.html#usando-lapply-con-listas"><i class="fa fa-check"></i><b>10.2.3</b> Usando lapply con listas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="11-importar-y-exportar-datos.html"><a href="11-importar-y-exportar-datos.html"><i class="fa fa-check"></i><b>11</b> Importar y exportar datos</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="11-1-descargando-datos.html"><a href="11-1-descargando-datos.html"><i class="fa fa-check"></i><b>11.1</b> Descargando datos</a></li>
+<li class="chapter" data-level="11.2" data-path="11-2-tablas-datos-rectangulares.html"><a href="11-2-tablas-datos-rectangulares.html"><i class="fa fa-check"></i><b>11.2</b> Tablas (datos rectangulares)</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="11-2-tablas-datos-rectangulares.html"><a href="11-2-tablas-datos-rectangulares.html#archivos-csv"><i class="fa fa-check"></i><b>11.2.1</b> Archivos CSV</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="11-3-archivos-con-una-estructura-desconocida.html"><a href="11-3-archivos-con-una-estructura-desconocida.html"><i class="fa fa-check"></i><b>11.3</b> Archivos con una estructura desconocida</a></li>
+<li class="chapter" data-level="11.4" data-path="11-4-exportar-datos.html"><a href="11-4-exportar-datos.html"><i class="fa fa-check"></i><b>11.4</b> Exportar datos</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="11-4-exportar-datos.html"><a href="11-4-exportar-datos.html#data-frames-y-matrices"><i class="fa fa-check"></i><b>11.4.1</b> Data frames y matrices</a></li>
+<li class="chapter" data-level="11.4.2" data-path="11-4-exportar-datos.html"><a href="11-4-exportar-datos.html#listas-2"><i class="fa fa-check"></i><b>11.4.2</b> Listas</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="11-5-hojas-de-cálculo-de-excel.html"><a href="11-5-hojas-de-cálculo-de-excel.html"><i class="fa fa-check"></i><b>11.5</b> Hojas de cálculo de Excel</a></li>
+<li class="chapter" data-level="11.6" data-path="11-6-datos-de-paquetes-estadísticos-comerciales-spss-sas-y-stata.html"><a href="11-6-datos-de-paquetes-estadísticos-comerciales-spss-sas-y-stata.html"><i class="fa fa-check"></i><b>11.6</b> Datos de paquetes estadísticos comerciales (SPSS, SAS y STATA)</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="12-gráficas.html"><a href="12-gráficas.html"><i class="fa fa-check"></i><b>12</b> Gráficas</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="12-1-datos-usados-en-el-capítulo.html"><a href="12-1-datos-usados-en-el-capítulo.html"><i class="fa fa-check"></i><b>12.1</b> Datos usados en el capítulo</a></li>
+<li class="chapter" data-level="12.2" data-path="12-2-la-función-plot.html"><a href="12-2-la-función-plot.html"><i class="fa fa-check"></i><b>12.2</b> La función <code>plot()</code></a></li>
+<li class="chapter" data-level="12.3" data-path="12-3-histogramas.html"><a href="12-3-histogramas.html"><i class="fa fa-check"></i><b>12.3</b> Histogramas</a></li>
+<li class="chapter" data-level="12.4" data-path="12-4-gráficas-de-barras.html"><a href="12-4-gráficas-de-barras.html"><i class="fa fa-check"></i><b>12.4</b> Gráficas de barras</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="12-4-gráficas-de-barras.html"><a href="12-4-gráficas-de-barras.html#la-función-barplot"><i class="fa fa-check"></i><b>12.4.1</b> La función <code>barplot()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="12-5-leyendas.html"><a href="12-5-leyendas.html"><i class="fa fa-check"></i><b>12.5</b> Leyendas</a></li>
+<li class="chapter" data-level="12.6" data-path="12-6-diagramas-de-dispersión.html"><a href="12-6-diagramas-de-dispersión.html"><i class="fa fa-check"></i><b>12.6</b> Diagramas de dispersión</a></li>
+<li class="chapter" data-level="12.7" data-path="12-7-diagramas-de-caja.html"><a href="12-7-diagramas-de-caja.html"><i class="fa fa-check"></i><b>12.7</b> Diagramas de caja</a></li>
+<li class="chapter" data-level="12.8" data-path="12-8-gráficos-de-mosaico.html"><a href="12-8-gráficos-de-mosaico.html"><i class="fa fa-check"></i><b>12.8</b> Gráficos de mosaico</a></li>
+<li class="chapter" data-level="12.9" data-path="12-9-exportar-gráficos.html"><a href="12-9-exportar-gráficos.html"><i class="fa fa-check"></i><b>12.9</b> Exportar gráficos</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="13-conclusión.html"><a href="13-conclusión.html"><i class="fa fa-check"></i><b>13</b> Conclusión</a></li>
+<li class="part"><span><b>I Introducción a la Ciencia de Datos con R</b></span></li>
+<li class="chapter" data-level="14" data-path="14-introducción.html"><a href="14-introducción.html"><i class="fa fa-check"></i><b>14</b> # Introducción</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="14-1-el-lenguaje-y-entorno-estadístico-r.html"><a href="14-1-el-lenguaje-y-entorno-estadístico-r.html"><i class="fa fa-check"></i><b>14.1</b> El lenguaje y entorno estadístico <code>R</code></a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="14-1-el-lenguaje-y-entorno-estadístico-r.html"><a href="14-1-el-lenguaje-y-entorno-estadístico-r.html#principales-características"><i class="fa fa-check"></i><b>14.1.1</b> Principales características</a></li>
+<li class="chapter" data-level="14.1.2" data-path="14-1-el-lenguaje-y-entorno-estadístico-r.html"><a href="14-1-el-lenguaje-y-entorno-estadístico-r.html#interfaces-gráficas"><i class="fa fa-check"></i><b>14.1.2</b> Interfaces gráficas</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="14-2-entorno-de-trabajo.html"><a href="14-2-entorno-de-trabajo.html"><i class="fa fa-check"></i><b>14.2</b> Entorno de trabajo</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="14-2-entorno-de-trabajo.html"><a href="14-2-entorno-de-trabajo.html#ventana-de-consola"><i class="fa fa-check"></i><b>14.2.1</b> Ventana de Consola</a></li>
+<li class="chapter" data-level="14.2.2" data-path="14-2-entorno-de-trabajo.html"><a href="14-2-entorno-de-trabajo.html#ventana-de-script"><i class="fa fa-check"></i><b>14.2.2</b> Ventana de Script</a></li>
+<li class="chapter" data-level="14.2.3" data-path="14-2-entorno-de-trabajo.html"><a href="14-2-entorno-de-trabajo.html#ayuda-dentro-del-programa"><i class="fa fa-check"></i><b>14.2.3</b> Ayuda dentro del programa</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="14-3-librerías.html"><a href="14-3-librerías.html"><i class="fa fa-check"></i><b>14.3</b> Librerías</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="14-3-librerías.html"><a href="14-3-librerías.html#paquetes-1"><i class="fa fa-check"></i><b>14.3.1</b> Paquetes</a></li>
+<li class="chapter" data-level="14.3.2" data-path="14-3-librerías.html"><a href="14-3-librerías.html#instalacion-pkg"><i class="fa fa-check"></i><b>14.3.2</b> Instalación</a></li>
+<li class="chapter" data-level="14.3.3" data-path="14-3-librerías.html"><a href="14-3-librerías.html#carga"><i class="fa fa-check"></i><b>14.3.3</b> Carga</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="14-4-una-primera-sesión.html"><a href="14-4-una-primera-sesión.html"><i class="fa fa-check"></i><b>14.4</b> Una primera sesión</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="14-4-una-primera-sesión.html"><a href="14-4-una-primera-sesión.html#inicio-de-una-sesión"><i class="fa fa-check"></i><b>14.4.1</b> Inicio de una sesión</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="14-5-objetos-básicos.html"><a href="14-5-objetos-básicos.html"><i class="fa fa-check"></i><b>14.5</b> Objetos básicos</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="14-5-objetos-básicos.html"><a href="14-5-objetos-básicos.html#objetos-numéricos"><i class="fa fa-check"></i><b>14.5.1</b> Objetos numéricos</a></li>
+<li class="chapter" data-level="14.5.2" data-path="14-5-objetos-básicos.html"><a href="14-5-objetos-básicos.html#objetos-tipo-carácter"><i class="fa fa-check"></i><b>14.5.2</b> Objetos tipo carácter</a></li>
+<li class="chapter" data-level="14.5.3" data-path="14-5-objetos-básicos.html"><a href="14-5-objetos-básicos.html#objetos-lógicos"><i class="fa fa-check"></i><b>14.5.3</b> Objetos lógicos</a></li>
+<li class="chapter" data-level="14.5.4" data-path="14-5-objetos-básicos.html"><a href="14-5-objetos-básicos.html#operadores-lógicos-1"><i class="fa fa-check"></i><b>14.5.4</b> Operadores lógicos</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="14-6-área-de-trabajo.html"><a href="14-6-área-de-trabajo.html"><i class="fa fa-check"></i><b>14.6</b> Área de trabajo</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="14-6-área-de-trabajo.html"><a href="14-6-área-de-trabajo.html#guardar-y-cargar-resultados"><i class="fa fa-check"></i><b>14.6.1</b> Guardar y cargar resultados</a></li>
+<li class="chapter" data-level="14.6.2" data-path="14-6-área-de-trabajo.html"><a href="14-6-área-de-trabajo.html#directorio-de-trabajo-1"><i class="fa fa-check"></i><b>14.6.2</b> Directorio de trabajo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="15-estructuras-de-datos-1.html"><a href="15-estructuras-de-datos-1.html"><i class="fa fa-check"></i><b>15</b> Estructuras de datos</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="15-1-vectores-2.html"><a href="15-1-vectores-2.html"><i class="fa fa-check"></i><b>15.1</b> Vectores</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="15-1-vectores-2.html"><a href="15-1-vectores-2.html#generación-de-secuencias"><i class="fa fa-check"></i><b>15.1.1</b> Generación de secuencias</a></li>
+<li class="chapter" data-level="15.1.2" data-path="15-1-vectores-2.html"><a href="15-1-vectores-2.html#generación-secuencias-aleatorias"><i class="fa fa-check"></i><b>15.1.2</b> Generación secuencias aleatorias</a></li>
+<li class="chapter" data-level="15.1.3" data-path="15-1-vectores-2.html"><a href="15-1-vectores-2.html#selección-de-elementos-de-un-vector"><i class="fa fa-check"></i><b>15.1.3</b> Selección de elementos de un vector</a></li>
+<li class="chapter" data-level="15.1.4" data-path="15-1-vectores-2.html"><a href="15-1-vectores-2.html#ordenación-de-vectores"><i class="fa fa-check"></i><b>15.1.4</b> Ordenación de vectores</a></li>
+<li class="chapter" data-level="15.1.5" data-path="15-1-vectores-2.html"><a href="15-1-vectores-2.html#valores-perdidos"><i class="fa fa-check"></i><b>15.1.5</b> Valores perdidos</a></li>
+<li class="chapter" data-level="15.1.6" data-path="15-1-vectores-2.html"><a href="15-1-vectores-2.html#vectores-no-numéricos"><i class="fa fa-check"></i><b>15.1.6</b> Vectores no numéricos</a></li>
+<li class="chapter" data-level="15.1.7" data-path="15-1-vectores-2.html"><a href="15-1-vectores-2.html#factores"><i class="fa fa-check"></i><b>15.1.7</b> Factores</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="15-2-matrices-y-arrays-1.html"><a href="15-2-matrices-y-arrays-1.html"><i class="fa fa-check"></i><b>15.2</b> Matrices y arrays</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="15-2-matrices-y-arrays-1.html"><a href="15-2-matrices-y-arrays-1.html#matrices-1"><i class="fa fa-check"></i><b>15.2.1</b> Matrices</a></li>
+<li class="chapter" data-level="15.2.2" data-path="15-2-matrices-y-arrays-1.html"><a href="15-2-matrices-y-arrays-1.html#nombres-en-matrices"><i class="fa fa-check"></i><b>15.2.2</b> Nombres en matrices</a></li>
+<li class="chapter" data-level="15.2.3" data-path="15-2-matrices-y-arrays-1.html"><a href="15-2-matrices-y-arrays-1.html#acceso-a-los-elementos-de-una-matriz"><i class="fa fa-check"></i><b>15.2.3</b> Acceso a los elementos de una matriz</a></li>
+<li class="chapter" data-level="15.2.4" data-path="15-2-matrices-y-arrays-1.html"><a href="15-2-matrices-y-arrays-1.html#ordenación-por-filas-y-columnas"><i class="fa fa-check"></i><b>15.2.4</b> Ordenación por filas y columnas</a></li>
+<li class="chapter" data-level="15.2.5" data-path="15-2-matrices-y-arrays-1.html"><a href="15-2-matrices-y-arrays-1.html#operaciones-con-matrices-y-arrays"><i class="fa fa-check"></i><b>15.2.5</b> Operaciones con Matrices y Arrays</a></li>
+<li class="chapter" data-level="15.2.6" data-path="15-2-matrices-y-arrays-1.html"><a href="15-2-matrices-y-arrays-1.html#ejemplos"><i class="fa fa-check"></i><b>15.2.6</b> Ejemplos</a></li>
+<li class="chapter" data-level="15.2.7" data-path="15-2-matrices-y-arrays-1.html"><a href="15-2-matrices-y-arrays-1.html#inversión-de-una-matriz"><i class="fa fa-check"></i><b>15.2.7</b> Inversión de una matriz</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="15-3-data-frames-3.html"><a href="15-3-data-frames-3.html"><i class="fa fa-check"></i><b>15.3</b> Data frames</a></li>
+<li class="chapter" data-level="15.4" data-path="15-4-listas-3.html"><a href="15-4-listas-3.html"><i class="fa fa-check"></i><b>15.4</b> Listas</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="16-gráficos.html"><a href="16-gráficos.html"><i class="fa fa-check"></i><b>16</b> Gráficos</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="16-1-el-comando-plot.html"><a href="16-1-el-comando-plot.html"><i class="fa fa-check"></i><b>16.1</b> El comando plot</a></li>
+<li class="chapter" data-level="16.2" data-path="16-2-funciones-gráficas-de-bajo-nivel.html"><a href="16-2-funciones-gráficas-de-bajo-nivel.html"><i class="fa fa-check"></i><b>16.2</b> Funciones gráficas de bajo nivel</a></li>
+<li class="chapter" data-level="16.3" data-path="16-3-ejemplos-1.html"><a href="16-3-ejemplos-1.html"><i class="fa fa-check"></i><b>16.3</b> Ejemplos</a></li>
+<li class="chapter" data-level="16.4" data-path="16-4-parámetros-gráficos.html"><a href="16-4-parámetros-gráficos.html"><i class="fa fa-check"></i><b>16.4</b> Parámetros gráficos</a></li>
+<li class="chapter" data-level="16.5" data-path="16-5-múltiples-gráficos-por-ventana.html"><a href="16-5-múltiples-gráficos-por-ventana.html"><i class="fa fa-check"></i><b>16.5</b> Múltiples gráficos por ventana</a></li>
+<li class="chapter" data-level="16.6" data-path="16-6-exportar-gráficos-1.html"><a href="16-6-exportar-gráficos-1.html"><i class="fa fa-check"></i><b>16.6</b> Exportar gráficos</a></li>
+<li class="chapter" data-level="16.7" data-path="16-7-otras-librerías-gráficas.html"><a href="16-7-otras-librerías-gráficas.html"><i class="fa fa-check"></i><b>16.7</b> Otras librerías gráficas</a>
+<ul>
+<li class="chapter" data-level="16.7.1" data-path="16-7-otras-librerías-gráficas.html"><a href="16-7-otras-librerías-gráficas.html#ejemplos-2"><i class="fa fa-check"></i><b>16.7.1</b> Ejemplos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="17-manipulación-de-datos-con-r.html"><a href="17-manipulación-de-datos-con-r.html"><i class="fa fa-check"></i><b>17</b> Manipulación de datos con R</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="17-1-lectura-importación-y-exportación-de-datos.html"><a href="17-1-lectura-importación-y-exportación-de-datos.html"><i class="fa fa-check"></i><b>17.1</b> Lectura, importación y exportación de datos</a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="17-1-lectura-importación-y-exportación-de-datos.html"><a href="17-1-lectura-importación-y-exportación-de-datos.html#formato-de-datos-de-r"><i class="fa fa-check"></i><b>17.1.1</b> Formato de datos de R</a></li>
+<li class="chapter" data-level="17.1.2" data-path="17-1-lectura-importación-y-exportación-de-datos.html"><a href="17-1-lectura-importación-y-exportación-de-datos.html#acceso-a-datos-en-paquetes"><i class="fa fa-check"></i><b>17.1.2</b> Acceso a datos en paquetes</a></li>
+<li class="chapter" data-level="17.1.3" data-path="17-1-lectura-importación-y-exportación-de-datos.html"><a href="17-1-lectura-importación-y-exportación-de-datos.html#cap4-texto"><i class="fa fa-check"></i><b>17.1.3</b> Lectura de archivos de texto</a></li>
+<li class="chapter" data-level="17.1.4" data-path="17-1-lectura-importación-y-exportación-de-datos.html"><a href="17-1-lectura-importación-y-exportación-de-datos.html#alternativa-tidyverse"><i class="fa fa-check"></i><b>17.1.4</b> Alternativa <code>tidyverse</code></a></li>
+<li class="chapter" data-level="17.1.5" data-path="17-1-lectura-importación-y-exportación-de-datos.html"><a href="17-1-lectura-importación-y-exportación-de-datos.html#importación-desde-spss"><i class="fa fa-check"></i><b>17.1.5</b> Importación desde SPSS</a></li>
+<li class="chapter" data-level="17.1.6" data-path="17-1-lectura-importación-y-exportación-de-datos.html"><a href="17-1-lectura-importación-y-exportación-de-datos.html#importación-desde-excel"><i class="fa fa-check"></i><b>17.1.6</b> Importación desde Excel</a></li>
+<li class="chapter" data-level="17.1.7" data-path="17-1-lectura-importación-y-exportación-de-datos.html"><a href="17-1-lectura-importación-y-exportación-de-datos.html#exportación-de-datos"><i class="fa fa-check"></i><b>17.1.7</b> Exportación de datos</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="17-2-manipulación-de-datos.html"><a href="17-2-manipulación-de-datos.html"><i class="fa fa-check"></i><b>17.2</b> Manipulación de datos</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="17-2-manipulación-de-datos.html"><a href="17-2-manipulación-de-datos.html#operaciones-con-variables"><i class="fa fa-check"></i><b>17.2.1</b> Operaciones con variables</a></li>
+<li class="chapter" data-level="17.2.2" data-path="17-2-manipulación-de-datos.html"><a href="17-2-manipulación-de-datos.html#operaciones-con-casos"><i class="fa fa-check"></i><b>17.2.2</b> Operaciones con casos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="18-análisis-exploratorio-de-datos.html"><a href="18-análisis-exploratorio-de-datos.html"><i class="fa fa-check"></i><b>18</b> Análisis exploratorio de datos</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="18-1-medidas-resumen.html"><a href="18-1-medidas-resumen.html"><i class="fa fa-check"></i><b>18.1</b> Medidas resumen</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="18-1-medidas-resumen.html"><a href="18-1-medidas-resumen.html#datos-de-ejemplo"><i class="fa fa-check"></i><b>18.1.1</b> Datos de ejemplo</a></li>
+<li class="chapter" data-level="18.1.2" data-path="18-1-medidas-resumen.html"><a href="18-1-medidas-resumen.html#tablas-de-frecuencias"><i class="fa fa-check"></i><b>18.1.2</b> Tablas de frecuencias</a></li>
+<li class="chapter" data-level="18.1.3" data-path="18-1-medidas-resumen.html"><a href="18-1-medidas-resumen.html#media-y-varianza"><i class="fa fa-check"></i><b>18.1.3</b> Media y varianza</a></li>
+<li class="chapter" data-level="18.1.4" data-path="18-1-medidas-resumen.html"><a href="18-1-medidas-resumen.html#mediana-y-cuantiles"><i class="fa fa-check"></i><b>18.1.4</b> Mediana y cuantiles</a></li>
+<li class="chapter" data-level="18.1.5" data-path="18-1-medidas-resumen.html"><a href="18-1-medidas-resumen.html#summary"><i class="fa fa-check"></i><b>18.1.5</b> <em>Summary</em></a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="18-2-gráficos-1.html"><a href="18-2-gráficos-1.html"><i class="fa fa-check"></i><b>18.2</b> Gráficos</a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="18-2-gráficos-1.html"><a href="18-2-gráficos-1.html#diagrama-de-barras-y-gráfico-de-sectores"><i class="fa fa-check"></i><b>18.2.1</b> Diagrama de barras y gráfico de sectores</a></li>
+<li class="chapter" data-level="18.2.2" data-path="18-2-gráficos-1.html"><a href="18-2-gráficos-1.html#gráfico-de-puntos"><i class="fa fa-check"></i><b>18.2.2</b> Gráfico de puntos</a></li>
+<li class="chapter" data-level="18.2.3" data-path="18-2-gráficos-1.html"><a href="18-2-gráficos-1.html#árbol-de-tallo-y-hojas"><i class="fa fa-check"></i><b>18.2.3</b> Árbol de tallo y hojas</a></li>
+<li class="chapter" data-level="18.2.4" data-path="18-2-gráficos-1.html"><a href="18-2-gráficos-1.html#histograma"><i class="fa fa-check"></i><b>18.2.4</b> Histograma</a></li>
+<li class="chapter" data-level="18.2.5" data-path="18-2-gráficos-1.html"><a href="18-2-gráficos-1.html#gráfico-de-densidad"><i class="fa fa-check"></i><b>18.2.5</b> Gráfico de densidad</a></li>
+<li class="chapter" data-level="18.2.6" data-path="18-2-gráficos-1.html"><a href="18-2-gráficos-1.html#diagrama-de-cajas"><i class="fa fa-check"></i><b>18.2.6</b> Diagrama de cajas</a></li>
+<li class="chapter" data-level="18.2.7" data-path="18-2-gráficos-1.html"><a href="18-2-gráficos-1.html#gráfica-de-dispersión"><i class="fa fa-check"></i><b>18.2.7</b> Gráfica de dispersión</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="19-inferencia-estadística.html"><a href="19-inferencia-estadística.html"><i class="fa fa-check"></i><b>19</b> Inferencia estadística</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="19-1-normalidad.html"><a href="19-1-normalidad.html"><i class="fa fa-check"></i><b>19.1</b> Normalidad</a></li>
+<li class="chapter" data-level="19.2" data-path="19-2-contrastes.html"><a href="19-2-contrastes.html"><i class="fa fa-check"></i><b>19.2</b> Contrastes</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="19-2-contrastes.html"><a href="19-2-contrastes.html#una-muestra"><i class="fa fa-check"></i><b>19.2.1</b> Una muestra</a></li>
+<li class="chapter" data-level="19.2.2" data-path="19-2-contrastes.html"><a href="19-2-contrastes.html#dos-muestras"><i class="fa fa-check"></i><b>19.2.2</b> Dos muestras</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="19-3-regresión-y-correlación.html"><a href="19-3-regresión-y-correlación.html"><i class="fa fa-check"></i><b>19.3</b> Regresión y correlación</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="19-3-regresión-y-correlación.html"><a href="19-3-regresión-y-correlación.html#regresión-lineal-simple"><i class="fa fa-check"></i><b>19.3.1</b> Regresión lineal simple</a></li>
+<li class="chapter" data-level="19.3.2" data-path="19-3-regresión-y-correlación.html"><a href="19-3-regresión-y-correlación.html#correlación"><i class="fa fa-check"></i><b>19.3.2</b> Correlación</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="19-4-análisis-de-la-varianza.html"><a href="19-4-análisis-de-la-varianza.html"><i class="fa fa-check"></i><b>19.4</b> Análisis de la varianza</a>
+<ul>
+<li class="chapter" data-level="19.4.1" data-path="19-4-análisis-de-la-varianza.html"><a href="19-4-análisis-de-la-varianza.html#anova-con-un-factor"><i class="fa fa-check"></i><b>19.4.1</b> ANOVA con un factor</a></li>
+<li class="chapter" data-level="19.4.2" data-path="19-4-análisis-de-la-varianza.html"><a href="19-4-análisis-de-la-varianza.html#test-de-kruskal-wallis"><i class="fa fa-check"></i><b>19.4.2</b> Test de Kruskal-Wallis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="20-modelado-de-datos.html"><a href="20-modelado-de-datos.html"><i class="fa fa-check"></i><b>20</b> Modelado de datos</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="20-1-modelos-de-regresión.html"><a href="20-1-modelos-de-regresión.html"><i class="fa fa-check"></i><b>20.1</b> Modelos de regresión</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="20-1-modelos-de-regresión.html"><a href="20-1-modelos-de-regresión.html#herramientas-disponibles-en-r"><i class="fa fa-check"></i><b>20.1.1</b> Herramientas disponibles en <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="20-2-fórmulas.html"><a href="20-2-fórmulas.html"><i class="fa fa-check"></i><b>20.2</b> Fórmulas</a></li>
+<li class="chapter" data-level="20.3" data-path="20-3-ejemplo-regresión-lineal-simple.html"><a href="20-3-ejemplo-regresión-lineal-simple.html"><i class="fa fa-check"></i><b>20.3</b> Ejemplo: regresión lineal simple</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="21-modelos-lineales.html"><a href="21-modelos-lineales.html"><i class="fa fa-check"></i><b>21</b> Modelos lineales</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="21-1-ejemplo.html"><a href="21-1-ejemplo.html"><i class="fa fa-check"></i><b>21.1</b> Ejemplo</a></li>
+<li class="chapter" data-level="21.2" data-path="21-2-ajuste-función-lm.html"><a href="21-2-ajuste-función-lm.html"><i class="fa fa-check"></i><b>21.2</b> Ajuste: función <code>lm</code></a>
+<ul>
+<li class="chapter" data-level="21.2.1" data-path="21-2-ajuste-función-lm.html"><a href="21-2-ajuste-función-lm.html#extracción-de-información"><i class="fa fa-check"></i><b>21.2.1</b> Extracción de información</a></li>
+</ul></li>
+<li class="chapter" data-level="21.3" data-path="21-3-predicción.html"><a href="21-3-predicción.html"><i class="fa fa-check"></i><b>21.3</b> Predicción</a></li>
+<li class="chapter" data-level="21.4" data-path="21-4-selección-de-variables-explicativas.html"><a href="21-4-selección-de-variables-explicativas.html"><i class="fa fa-check"></i><b>21.4</b> Selección de variables explicativas</a>
+<ul>
+<li class="chapter" data-level="21.4.1" data-path="21-4-selección-de-variables-explicativas.html"><a href="21-4-selección-de-variables-explicativas.html#búsqueda-exhaustiva"><i class="fa fa-check"></i><b>21.4.1</b> Búsqueda exhaustiva</a></li>
+<li class="chapter" data-level="21.4.2" data-path="21-4-selección-de-variables-explicativas.html"><a href="21-4-selección-de-variables-explicativas.html#selección-por-pasos"><i class="fa fa-check"></i><b>21.4.2</b> Selección por pasos</a></li>
+</ul></li>
+<li class="chapter" data-level="21.5" data-path="21-5-regresión-con-variables-categóricas.html"><a href="21-5-regresión-con-variables-categóricas.html"><i class="fa fa-check"></i><b>21.5</b> Regresión con variables categóricas</a></li>
+<li class="chapter" data-level="21.6" data-path="21-6-interacciones.html"><a href="21-6-interacciones.html"><i class="fa fa-check"></i><b>21.6</b> Interacciones</a></li>
+<li class="chapter" data-level="21.7" data-path="21-7-diagnosis-del-modelo.html"><a href="21-7-diagnosis-del-modelo.html"><i class="fa fa-check"></i><b>21.7</b> Diagnosis del modelo</a>
+<ul>
+<li class="chapter" data-level="21.7.1" data-path="21-7-diagnosis-del-modelo.html"><a href="21-7-diagnosis-del-modelo.html#gráficas-básicas-de-diagnóstico"><i class="fa fa-check"></i><b>21.7.1</b> Gráficas básicas de diagnóstico</a></li>
+<li class="chapter" data-level="21.7.2" data-path="21-7-diagnosis-del-modelo.html"><a href="21-7-diagnosis-del-modelo.html#gráficos-parciales-de-residuos"><i class="fa fa-check"></i><b>21.7.2</b> Gráficos parciales de residuos</a></li>
+<li class="chapter" data-level="21.7.3" data-path="21-7-diagnosis-del-modelo.html"><a href="21-7-diagnosis-del-modelo.html#estadísticos"><i class="fa fa-check"></i><b>21.7.3</b> Estadísticos</a></li>
+<li class="chapter" data-level="21.7.4" data-path="21-7-diagnosis-del-modelo.html"><a href="21-7-diagnosis-del-modelo.html#contrastes-1"><i class="fa fa-check"></i><b>21.7.4</b> Contrastes</a></li>
+</ul></li>
+<li class="chapter" data-level="21.8" data-path="21-8-métodos-de-regularización.html"><a href="21-8-métodos-de-regularización.html"><i class="fa fa-check"></i><b>21.8</b> Métodos de regularización</a>
+<ul>
+<li class="chapter" data-level="21.8.1" data-path="21-8-métodos-de-regularización.html"><a href="21-8-métodos-de-regularización.html#datos"><i class="fa fa-check"></i><b>21.8.1</b> Datos</a></li>
+<li class="chapter" data-level="21.8.2" data-path="21-8-métodos-de-regularización.html"><a href="21-8-métodos-de-regularización.html#ridge-regression"><i class="fa fa-check"></i><b>21.8.2</b> Ridge Regression</a></li>
+<li class="chapter" data-level="21.8.3" data-path="21-8-métodos-de-regularización.html"><a href="21-8-métodos-de-regularización.html#lasso"><i class="fa fa-check"></i><b>21.8.3</b> Lasso</a></li>
+</ul></li>
+<li class="chapter" data-level="21.9" data-path="21-9-alternativas.html"><a href="21-9-alternativas.html"><i class="fa fa-check"></i><b>21.9</b> Alternativas</a>
+<ul>
+<li class="chapter" data-level="21.9.1" data-path="21-9-alternativas.html"><a href="21-9-alternativas.html#transformación-modelos-linealizables"><i class="fa fa-check"></i><b>21.9.1</b> Transformación (modelos linealizables)</a></li>
+<li class="chapter" data-level="21.9.2" data-path="21-9-alternativas.html"><a href="21-9-alternativas.html#ajuste-polinómico"><i class="fa fa-check"></i><b>21.9.2</b> Ajuste polinómico</a></li>
+<li class="chapter" data-level="21.9.3" data-path="21-9-alternativas.html"><a href="21-9-alternativas.html#ajuste-polinómico-local-robusto"><i class="fa fa-check"></i><b>21.9.3</b> Ajuste polinómico local (robusto)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="22-modelos-lineales-generalizados.html"><a href="22-modelos-lineales-generalizados.html"><i class="fa fa-check"></i><b>22</b> Modelos lineales generalizados</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="22-1-ajuste-función-glm.html"><a href="22-1-ajuste-función-glm.html"><i class="fa fa-check"></i><b>22.1</b> Ajuste: función <code>glm</code></a></li>
+<li class="chapter" data-level="22.2" data-path="22-2-regresión-logística.html"><a href="22-2-regresión-logística.html"><i class="fa fa-check"></i><b>22.2</b> Regresión logística</a>
+<ul>
+<li class="chapter" data-level="22.2.1" data-path="22-2-regresión-logística.html"><a href="22-2-regresión-logística.html#ejemplo-2"><i class="fa fa-check"></i><b>22.2.1</b> Ejemplo</a></li>
+<li class="chapter" data-level="22.2.2" data-path="22-2-regresión-logística.html"><a href="22-2-regresión-logística.html#ajuste-de-un-modelo-de-regresión-logística"><i class="fa fa-check"></i><b>22.2.2</b> Ajuste de un modelo de regresión logística</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="22-3-predicción-1.html"><a href="22-3-predicción-1.html"><i class="fa fa-check"></i><b>22.3</b> Predicción</a></li>
+<li class="chapter" data-level="22.4" data-path="22-4-selección-de-variables-explicativas-1.html"><a href="22-4-selección-de-variables-explicativas-1.html"><i class="fa fa-check"></i><b>22.4</b> Selección de variables explicativas</a>
+<ul>
+<li class="chapter" data-level="22.4.1" data-path="22-4-selección-de-variables-explicativas-1.html"><a href="22-4-selección-de-variables-explicativas-1.html#selección-por-pasos-1"><i class="fa fa-check"></i><b>22.4.1</b> Selección por pasos</a></li>
+</ul></li>
+<li class="chapter" data-level="22.5" data-path="22-5-diagnosis-del-modelo-1.html"><a href="22-5-diagnosis-del-modelo-1.html"><i class="fa fa-check"></i><b>22.5</b> Diagnosis del modelo</a>
+<ul>
+<li class="chapter" data-level="22.5.1" data-path="22-5-diagnosis-del-modelo-1.html"><a href="22-5-diagnosis-del-modelo-1.html#gráficas-básicas-de-diagnóstico-1"><i class="fa fa-check"></i><b>22.5.1</b> Gráficas básicas de diagnóstico</a></li>
+<li class="chapter" data-level="22.5.2" data-path="22-5-diagnosis-del-modelo-1.html"><a href="22-5-diagnosis-del-modelo-1.html#gráficos-parciales-de-residuos-1"><i class="fa fa-check"></i><b>22.5.2</b> Gráficos parciales de residuos</a></li>
+<li class="chapter" data-level="22.5.3" data-path="22-5-diagnosis-del-modelo-1.html"><a href="22-5-diagnosis-del-modelo-1.html#estadísticos-1"><i class="fa fa-check"></i><b>22.5.3</b> Estadísticos</a></li>
+</ul></li>
+<li class="chapter" data-level="22.6" data-path="22-6-alternativas-1.html"><a href="22-6-alternativas-1.html"><i class="fa fa-check"></i><b>22.6</b> Alternativas</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="23-regresión-no-paramétrica.html"><a href="23-regresión-no-paramétrica.html"><i class="fa fa-check"></i><b>23</b> Regresión no paramétrica</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="23-1-modelos-aditivos.html"><a href="23-1-modelos-aditivos.html"><i class="fa fa-check"></i><b>23.1</b> Modelos aditivos</a>
+<ul>
+<li class="chapter" data-level="23.1.1" data-path="23-1-modelos-aditivos.html"><a href="23-1-modelos-aditivos.html#ajuste-función-gam"><i class="fa fa-check"></i><b>23.1.1</b> Ajuste: función <code>gam</code></a></li>
+<li class="chapter" data-level="23.1.2" data-path="23-1-modelos-aditivos.html"><a href="23-1-modelos-aditivos.html#ejemplo-3"><i class="fa fa-check"></i><b>23.1.2</b> Ejemplo</a></li>
+<li class="chapter" data-level="23.1.3" data-path="23-1-modelos-aditivos.html"><a href="23-1-modelos-aditivos.html#superficie-de-predicción"><i class="fa fa-check"></i><b>23.1.3</b> Superficie de predicción</a></li>
+<li class="chapter" data-level="23.1.4" data-path="23-1-modelos-aditivos.html"><a href="23-1-modelos-aditivos.html#comparación-de-modelos"><i class="fa fa-check"></i><b>23.1.4</b> Comparación de modelos</a></li>
+<li class="chapter" data-level="23.1.5" data-path="23-1-modelos-aditivos.html"><a href="23-1-modelos-aditivos.html#diagnosis-del-modelo-2"><i class="fa fa-check"></i><b>23.1.5</b> Diagnosis del modelo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="24-programacion.html"><a href="24-programacion.html"><i class="fa fa-check"></i><b>24</b> Programación</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="24-1-funciones-1.html"><a href="24-1-funciones-1.html"><i class="fa fa-check"></i><b>24.1</b> Funciones</a>
+<ul>
+<li class="chapter" data-level="24.1.1" data-path="24-1-funciones-1.html"><a href="24-1-funciones-1.html#ejemplo-progresión-geométrica"><i class="fa fa-check"></i><b>24.1.1</b> Ejemplo: progresión geométrica</a></li>
+<li class="chapter" data-level="24.1.2" data-path="24-1-funciones-1.html"><a href="24-1-funciones-1.html#argumentos-de-entrada"><i class="fa fa-check"></i><b>24.1.2</b> Argumentos de entrada</a></li>
+<li class="chapter" data-level="24.1.3" data-path="24-1-funciones-1.html"><a href="24-1-funciones-1.html#salida"><i class="fa fa-check"></i><b>24.1.3</b> Salida</a></li>
+<li class="chapter" data-level="24.1.4" data-path="24-1-funciones-1.html"><a href="24-1-funciones-1.html#otros-ejemplos"><i class="fa fa-check"></i><b>24.1.4</b> Otros ejemplos</a></li>
+<li class="chapter" data-level="24.1.5" data-path="24-1-funciones-1.html"><a href="24-1-funciones-1.html#variables-locales-y-globales"><i class="fa fa-check"></i><b>24.1.5</b> Variables locales y globales</a></li>
+</ul></li>
+<li class="chapter" data-level="24.2" data-path="24-2-ejecución-condicional.html"><a href="24-2-ejecución-condicional.html"><i class="fa fa-check"></i><b>24.2</b> Ejecución condicional</a></li>
+<li class="chapter" data-level="24.3" data-path="24-3-bucles-y-vectorización.html"><a href="24-3-bucles-y-vectorización.html"><i class="fa fa-check"></i><b>24.3</b> Bucles y vectorización</a>
+<ul>
+<li class="chapter" data-level="24.3.1" data-path="24-3-bucles-y-vectorización.html"><a href="24-3-bucles-y-vectorización.html#bucles"><i class="fa fa-check"></i><b>24.3.1</b> Bucles</a></li>
+<li class="chapter" data-level="24.3.2" data-path="24-3-bucles-y-vectorización.html"><a href="24-3-bucles-y-vectorización.html#vectorización"><i class="fa fa-check"></i><b>24.3.2</b> Vectorización</a></li>
+<li class="chapter" data-level="24.3.3" data-path="24-3-bucles-y-vectorización.html"><a href="24-3-bucles-y-vectorización.html#funciones-apply"><i class="fa fa-check"></i><b>24.3.3</b> Funciones <code>apply</code></a></li>
+</ul></li>
+<li class="chapter" data-level="24.4" data-path="24-4-aplicación-validación-cruzada.html"><a href="24-4-aplicación-validación-cruzada.html"><i class="fa fa-check"></i><b>24.4</b> Aplicación: validación cruzada</a>
+<ul>
+<li class="chapter" data-level="24.4.1" data-path="24-4-aplicación-validación-cruzada.html"><a href="24-4-aplicación-validación-cruzada.html#primer-ejemplo"><i class="fa fa-check"></i><b>24.4.1</b> Primer ejemplo</a></li>
+<li class="chapter" data-level="24.4.2" data-path="24-4-aplicación-validación-cruzada.html"><a href="24-4-aplicación-validación-cruzada.html#segundo-ejemplo"><i class="fa fa-check"></i><b>24.4.2</b> Segundo ejemplo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="25-generación-de-informes.html"><a href="25-generación-de-informes.html"><i class="fa fa-check"></i><b>25</b> Generación de informes</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="25-1-r-markdown.html"><a href="25-1-r-markdown.html"><i class="fa fa-check"></i><b>25.1</b> R Markdown</a>
+<ul>
+<li class="chapter" data-level="25.1.1" data-path="25-1-r-markdown.html"><a href="25-1-r-markdown.html#introducción-1"><i class="fa fa-check"></i><b>25.1.1</b> Introducción</a></li>
+<li class="chapter" data-level="25.1.2" data-path="25-1-r-markdown.html"><a href="25-1-r-markdown.html#inclusión-de-código-r"><i class="fa fa-check"></i><b>25.1.2</b> Inclusión de código R</a></li>
+<li class="chapter" data-level="25.1.3" data-path="25-1-r-markdown.html"><a href="25-1-r-markdown.html#inclusión-de-gráficos"><i class="fa fa-check"></i><b>25.1.3</b> Inclusión de gráficos</a></li>
+<li class="chapter" data-level="25.1.4" data-path="25-1-r-markdown.html"><a href="25-1-r-markdown.html#inclusión-de-tablas"><i class="fa fa-check"></i><b>25.1.4</b> Inclusión de tablas</a></li>
+<li class="chapter" data-level="25.1.5" data-path="25-1-r-markdown.html"><a href="25-1-r-markdown.html#extracción-del-código-r"><i class="fa fa-check"></i><b>25.1.5</b> Extracción del código R</a></li>
+</ul></li>
+<li class="chapter" data-level="25.2" data-path="25-2-spin.html"><a href="25-2-spin.html"><i class="fa fa-check"></i><b>25.2</b> Spin</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a>
+<ul>
+<li class="chapter" data-level="" data-path="bibliografía-complementaria.html"><a href="bibliografía-complementaria.html"><i class="fa fa-check"></i>Bibliografía complementaria</a></li>
+</ul></li>
+<li class="appendix"><span><b>Apendices</b></span></li>
+<li class="chapter" data-level="A" data-path="A-links.html"><a href="A-links.html"><i class="fa fa-check"></i><b>A</b> Enlaces</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="A-1-rstudio-links.html"><a href="A-1-rstudio-links.html"><i class="fa fa-check"></i><b>A.1</b> RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="B-instalacion.html"><a href="B-instalacion.html"><i class="fa fa-check"></i><b>B</b> Instalación de R</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="B-1-instalación-de-r-en-windows.html"><a href="B-1-instalación-de-r-en-windows.html"><i class="fa fa-check"></i><b>B.1</b> Instalación de R en Windows</a>
+<ul>
+<li class="chapter" data-level="B.1.1" data-path="B-1-instalación-de-r-en-windows.html"><a href="B-1-instalación-de-r-en-windows.html#asistente-de-instalación"><i class="fa fa-check"></i><b>B.1.1</b> Asistente de instalación</a></li>
+<li class="chapter" data-level="B.1.2" data-path="B-1-instalación-de-r-en-windows.html"><a href="B-1-instalación-de-r-en-windows.html#instalación-de-paquetes"><i class="fa fa-check"></i><b>B.1.2</b> Instalación de paquetes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="C-interfaces.html"><a href="C-interfaces.html"><i class="fa fa-check"></i><b>C</b> Interfaces gráficas</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="C-1-rstudio.html"><a href="C-1-rstudio.html"><i class="fa fa-check"></i><b>C.1</b> RStudio</a></li>
+<li class="chapter" data-level="C.2" data-path="C-2-rcmdr.html"><a href="C-2-rcmdr.html"><i class="fa fa-check"></i><b>C.2</b> RCommander</a>
+<ul>
+<li class="chapter" data-level="C.2.1" data-path="C-2-rcmdr.html"><a href="C-2-rcmdr.html#instalación-de-r-commander"><i class="fa fa-check"></i><b>C.2.1</b> Instalación de R-Commander</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="D-manipulación-de-datos-con-dplyr.html"><a href="D-manipulación-de-datos-con-dplyr.html"><i class="fa fa-check"></i><b>D</b> Manipulación de datos con dplyr</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="D-1-el-paquete-dplyr.html"><a href="D-1-el-paquete-dplyr.html"><i class="fa fa-check"></i><b>D.1</b> El paquete <strong>dplyr</strong></a>
+<ul>
+<li class="chapter" data-level="D.1.1" data-path="D-1-el-paquete-dplyr.html"><a href="D-1-el-paquete-dplyr.html#datos-de-ejemplo-1"><i class="fa fa-check"></i><b>D.1.1</b> Datos de ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="D.2" data-path="D-2-operaciones-con-variables-columnas.html"><a href="D-2-operaciones-con-variables-columnas.html"><i class="fa fa-check"></i><b>D.2</b> Operaciones con variables (columnas)</a>
+<ul>
+<li class="chapter" data-level="D.2.1" data-path="D-2-operaciones-con-variables-columnas.html"><a href="D-2-operaciones-con-variables-columnas.html#seleccionar-variables-con-select"><i class="fa fa-check"></i><b>D.2.1</b> Seleccionar variables con <strong>select()</strong></a></li>
+<li class="chapter" data-level="D.2.2" data-path="D-2-operaciones-con-variables-columnas.html"><a href="D-2-operaciones-con-variables-columnas.html#generar-nuevas-variables-con-mutate"><i class="fa fa-check"></i><b>D.2.2</b> Generar nuevas variables con <strong>mutate()</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="D-3-operaciones-con-casos-filas.html"><a href="D-3-operaciones-con-casos-filas.html"><i class="fa fa-check"></i><b>D.3</b> Operaciones con casos (filas)</a>
+<ul>
+<li class="chapter" data-level="D.3.1" data-path="D-3-operaciones-con-casos-filas.html"><a href="D-3-operaciones-con-casos-filas.html#seleccionar-casos-con-filter"><i class="fa fa-check"></i><b>D.3.1</b> Seleccionar casos con <strong>filter()</strong></a></li>
+<li class="chapter" data-level="D.3.2" data-path="D-3-operaciones-con-casos-filas.html"><a href="D-3-operaciones-con-casos-filas.html#organizar-casos-con-arrange"><i class="fa fa-check"></i><b>D.3.2</b> Organizar casos con <strong>arrange()</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="D-4-resumir-valores-con-summarise.html"><a href="D-4-resumir-valores-con-summarise.html"><i class="fa fa-check"></i><b>D.4</b> Resumir valores con <strong>summarise()</strong></a></li>
+<li class="chapter" data-level="D.5" data-path="D-5-agrupar-casos-con-group-by.html"><a href="D-5-agrupar-casos-con-group-by.html"><i class="fa fa-check"></i><b>D.5</b> Agrupar casos con <strong>group_by()</strong></a></li>
+<li class="chapter" data-level="D.6" data-path="D-6-operador-pipe-tubería-redirección.html"><a href="D-6-operador-pipe-tubería-redirección.html"><i class="fa fa-check"></i><b>D.6</b> Operador <em>pipe</em> <strong>%&gt;% </strong>(tubería, redirección)</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="E-compañías-que-usan-r.html"><a href="E-compañías-que-usan-r.html"><i class="fa fa-check"></i><b>E</b> Compañías que usan <code>R</code></a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="E-1-microsoft.html"><a href="E-1-microsoft.html"><i class="fa fa-check"></i><b>E.1</b> Microsoft</a></li>
+<li class="chapter" data-level="E.2" data-path="E-2-rstudio-com.html"><a href="E-2-rstudio-com.html"><i class="fa fa-check"></i><b>E.2</b> RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="F-intro-AE.html"><a href="F-intro-AE.html"><i class="fa fa-check"></i><b>F</b> Introducción al Aprendizaje Estadístico</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="F-1-aprendizaje-estadístico-vs-aprendizaje-automático.html"><a href="F-1-aprendizaje-estadístico-vs-aprendizaje-automático.html"><i class="fa fa-check"></i><b>F.1</b> Aprendizaje Estadístico vs. Aprendizaje Automático</a>
+<ul>
+<li class="chapter" data-level="F.1.1" data-path="F-1-aprendizaje-estadístico-vs-aprendizaje-automático.html"><a href="F-1-aprendizaje-estadístico-vs-aprendizaje-automático.html#machine-learning-vs.-data-mining"><i class="fa fa-check"></i><b>F.1.1</b> Machine Learning vs. Data Mining</a></li>
+<li class="chapter" data-level="F.1.2" data-path="F-1-aprendizaje-estadístico-vs-aprendizaje-automático.html"><a href="F-1-aprendizaje-estadístico-vs-aprendizaje-automático.html#las-dos-culturas-breiman-2001"><i class="fa fa-check"></i><b>F.1.2</b> Las dos culturas (Breiman, 2001)</a></li>
+<li class="chapter" data-level="F.1.3" data-path="F-1-aprendizaje-estadístico-vs-aprendizaje-automático.html"><a href="F-1-aprendizaje-estadístico-vs-aprendizaje-automático.html#machine-learning-vs.-estadística-dunson-2018"><i class="fa fa-check"></i><b>F.1.3</b> Machine Learning vs. Estadística (Dunson, 2018)</a></li>
+</ul></li>
+<li class="chapter" data-level="F.2" data-path="F-2-métodos-de-aprendizaje-estadístico.html"><a href="F-2-métodos-de-aprendizaje-estadístico.html"><i class="fa fa-check"></i><b>F.2</b> Métodos de Aprendizaje Estadístico</a>
+<ul>
+<li class="chapter" data-level="F.2.1" data-path="F-2-métodos-de-aprendizaje-estadístico.html"><a href="F-2-métodos-de-aprendizaje-estadístico.html#notacion"><i class="fa fa-check"></i><b>F.2.1</b> Notación y terminología</a></li>
+<li class="chapter" data-level="F.2.2" data-path="F-2-métodos-de-aprendizaje-estadístico.html"><a href="F-2-métodos-de-aprendizaje-estadístico.html#metodos-pkgs"><i class="fa fa-check"></i><b>F.2.2</b> Métodos (de aprendizaje supervisado) y paquetes de R</a></li>
+</ul></li>
+<li class="chapter" data-level="F.3" data-path="F-3-const-eval.html"><a href="F-3-const-eval.html"><i class="fa fa-check"></i><b>F.3</b> Construcción y evaluación de los modelos</a>
+<ul>
+<li class="chapter" data-level="F.3.1" data-path="F-3-const-eval.html"><a href="F-3-const-eval.html#bias-variance"><i class="fa fa-check"></i><b>F.3.1</b> Equilibrio entre sesgo y varianza: infraajuste y sobreajuste</a></li>
+<li class="chapter" data-level="F.3.2" data-path="F-3-const-eval.html"><a href="F-3-const-eval.html#entrenamiento-test"><i class="fa fa-check"></i><b>F.3.2</b> Datos de entrenamiento y datos de test</a></li>
+<li class="chapter" data-level="F.3.3" data-path="F-3-const-eval.html"><a href="F-3-const-eval.html#cv"><i class="fa fa-check"></i><b>F.3.3</b> Validación cruzada</a></li>
+<li class="chapter" data-level="F.3.4" data-path="F-3-const-eval.html"><a href="F-3-const-eval.html#eval-reg"><i class="fa fa-check"></i><b>F.3.4</b> Evaluación de un método de regresión</a></li>
+<li class="chapter" data-level="F.3.5" data-path="F-3-const-eval.html"><a href="F-3-const-eval.html#eval-class"><i class="fa fa-check"></i><b>F.3.5</b> Evaluación de un método de clasificación</a></li>
+</ul></li>
+<li class="chapter" data-level="F.4" data-path="F-4-dimen-curse.html"><a href="F-4-dimen-curse.html"><i class="fa fa-check"></i><b>F.4</b> La maldición de la dimensionalidad</a></li>
+<li class="chapter" data-level="F.5" data-path="F-5-analisis-modelos.html"><a href="F-5-analisis-modelos.html"><i class="fa fa-check"></i><b>F.5</b> Análisis e interpretación de los modelos</a></li>
+<li class="chapter" data-level="F.6" data-path="F-6-caret.html"><a href="F-6-caret.html"><i class="fa fa-check"></i><b>F.6</b> Introducción al paquete <code>caret</code></a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="G-trees.html"><a href="G-trees.html"><i class="fa fa-check"></i><b>G</b> Árboles de decisión</a>
+<ul>
+<li class="chapter" data-level="G.1" data-path="G-1-árboles-de-regresión-cart.html"><a href="G-1-árboles-de-regresión-cart.html"><i class="fa fa-check"></i><b>G.1</b> Árboles de regresión CART</a></li>
+<li class="chapter" data-level="G.2" data-path="G-2-árboles-de-clasificación-cart.html"><a href="G-2-árboles-de-clasificación-cart.html"><i class="fa fa-check"></i><b>G.2</b> Árboles de clasificación CART</a></li>
+<li class="chapter" data-level="G.3" data-path="G-3-cart-con-el-paquete-rpart.html"><a href="G-3-cart-con-el-paquete-rpart.html"><i class="fa fa-check"></i><b>G.3</b> CART con el paquete <code>rpart</code></a>
+<ul>
+<li class="chapter" data-level="G.3.1" data-path="G-3-cart-con-el-paquete-rpart.html"><a href="G-3-cart-con-el-paquete-rpart.html#ejemplo-regresión"><i class="fa fa-check"></i><b>G.3.1</b> Ejemplo: regresión</a></li>
+<li class="chapter" data-level="G.3.2" data-path="G-3-cart-con-el-paquete-rpart.html"><a href="G-3-cart-con-el-paquete-rpart.html#class-rpart"><i class="fa fa-check"></i><b>G.3.2</b> Ejemplo: modelo de clasificación</a></li>
+<li class="chapter" data-level="G.3.3" data-path="G-3-cart-con-el-paquete-rpart.html"><a href="G-3-cart-con-el-paquete-rpart.html#interfaz-de-caret"><i class="fa fa-check"></i><b>G.3.3</b> Interfaz de <code>caret</code></a></li>
+</ul></li>
+<li class="chapter" data-level="G.4" data-path="G-4-alternativas-a-los-árboles-cart.html"><a href="G-4-alternativas-a-los-árboles-cart.html"><i class="fa fa-check"></i><b>G.4</b> Alternativas a los árboles CART</a>
+<ul>
+<li class="chapter" data-level="G.4.1" data-path="G-4-alternativas-a-los-árboles-cart.html"><a href="G-4-alternativas-a-los-árboles-cart.html#ejemplo-4"><i class="fa fa-check"></i><b>G.4.1</b> Ejemplo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="H" data-path="H-bagging-boosting.html"><a href="H-bagging-boosting.html"><i class="fa fa-check"></i><b>H</b> Bagging y Boosting</a>
+<ul>
+<li class="chapter" data-level="H.1" data-path="H-1-bagging.html"><a href="H-1-bagging.html"><i class="fa fa-check"></i><b>H.1</b> Bagging</a></li>
+<li class="chapter" data-level="H.2" data-path="H-2-bosques-aleatorios.html"><a href="H-2-bosques-aleatorios.html"><i class="fa fa-check"></i><b>H.2</b> Bosques aleatorios</a></li>
+<li class="chapter" data-level="H.3" data-path="H-3-bagging-rf-r.html"><a href="H-3-bagging-rf-r.html"><i class="fa fa-check"></i><b>H.3</b> Bagging y bosques aleatorios en R</a>
+<ul>
+<li class="chapter" data-level="H.3.1" data-path="H-3-bagging-rf-r.html"><a href="H-3-bagging-rf-r.html#ejemplo-clasificación-con-bagging"><i class="fa fa-check"></i><b>H.3.1</b> Ejemplo: Clasificación con bagging</a></li>
+<li class="chapter" data-level="H.3.2" data-path="H-3-bagging-rf-r.html"><a href="H-3-bagging-rf-r.html#ejemplo-clasificación-con-bosques-aleatorios"><i class="fa fa-check"></i><b>H.3.2</b> Ejemplo: Clasificación con bosques aleatorios</a></li>
+<li class="chapter" data-level="H.3.3" data-path="H-3-bagging-rf-r.html"><a href="H-3-bagging-rf-r.html#ejemplo-bosques-aleatorios-con-caret"><i class="fa fa-check"></i><b>H.3.3</b> Ejemplo: bosques aleatorios con <code>caret</code></a></li>
+</ul></li>
+<li class="chapter" data-level="H.4" data-path="H-4-boosting.html"><a href="H-4-boosting.html"><i class="fa fa-check"></i><b>H.4</b> Boosting</a></li>
+<li class="chapter" data-level="H.5" data-path="H-5-boosting-en-r.html"><a href="H-5-boosting-en-r.html"><i class="fa fa-check"></i><b>H.5</b> Boosting en R</a>
+<ul>
+<li class="chapter" data-level="H.5.1" data-path="H-5-boosting-en-r.html"><a href="H-5-boosting-en-r.html#ejemplo-clasificación-con-el-paquete-ada"><i class="fa fa-check"></i><b>H.5.1</b> Ejemplo: clasificación con el paquete <code>ada</code></a></li>
+<li class="chapter" data-level="H.5.2" data-path="H-5-boosting-en-r.html"><a href="H-5-boosting-en-r.html#ejemplo-regresión-con-el-paquete-gbm"><i class="fa fa-check"></i><b>H.5.2</b> Ejemplo: regresión con el paquete <code>gbm</code></a></li>
+<li class="chapter" data-level="H.5.3" data-path="H-5-boosting-en-r.html"><a href="H-5-boosting-en-r.html#ejemplo-xgboost-con-el-paquete-caret"><i class="fa fa-check"></i><b>H.5.3</b> Ejemplo: XGBoost con el paquete <code>caret</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="I" data-path="I-svm.html"><a href="I-svm.html"><i class="fa fa-check"></i><b>I</b> Máquinas de soporte vectorial</a>
+<ul>
+<li class="chapter" data-level="I.1" data-path="I-1-clasificadores-de-máximo-margen.html"><a href="I-1-clasificadores-de-máximo-margen.html"><i class="fa fa-check"></i><b>I.1</b> Clasificadores de máximo margen</a></li>
+<li class="chapter" data-level="I.2" data-path="I-2-clasificadores-de-soporte-vectorial.html"><a href="I-2-clasificadores-de-soporte-vectorial.html"><i class="fa fa-check"></i><b>I.2</b> Clasificadores de soporte vectorial</a></li>
+<li class="chapter" data-level="I.3" data-path="I-3-máquinas-de-soporte-vectorial.html"><a href="I-3-máquinas-de-soporte-vectorial.html"><i class="fa fa-check"></i><b>I.3</b> Máquinas de soporte vectorial</a>
+<ul>
+<li class="chapter" data-level="I.3.1" data-path="I-3-máquinas-de-soporte-vectorial.html"><a href="I-3-máquinas-de-soporte-vectorial.html#clasificación-con-más-de-dos-categorías"><i class="fa fa-check"></i><b>I.3.1</b> Clasificación con más de dos categorías</a></li>
+<li class="chapter" data-level="I.3.2" data-path="I-3-máquinas-de-soporte-vectorial.html"><a href="I-3-máquinas-de-soporte-vectorial.html#regresión"><i class="fa fa-check"></i><b>I.3.2</b> Regresión</a></li>
+<li class="chapter" data-level="I.3.3" data-path="I-3-máquinas-de-soporte-vectorial.html"><a href="I-3-máquinas-de-soporte-vectorial.html#ventajas-e-incovenientes"><i class="fa fa-check"></i><b>I.3.3</b> Ventajas e incovenientes</a></li>
+</ul></li>
+<li class="chapter" data-level="I.4" data-path="I-4-svm-con-el-paquete-kernlab.html"><a href="I-4-svm-con-el-paquete-kernlab.html"><i class="fa fa-check"></i><b>I.4</b> SVM con el paquete <code>kernlab</code></a></li>
+</ul></li>
+<li class="chapter" data-level="J" data-path="J-class-otros.html"><a href="J-class-otros.html"><i class="fa fa-check"></i><b>J</b> Otros métodos de clasificación</a>
+<ul>
+<li class="chapter" data-level="J.1" data-path="J-1-análisis-discriminate-lineal.html"><a href="J-1-análisis-discriminate-lineal.html"><i class="fa fa-check"></i><b>J.1</b> Análisis discriminate lineal</a>
+<ul>
+<li class="chapter" data-level="J.1.1" data-path="J-1-análisis-discriminate-lineal.html"><a href="J-1-análisis-discriminate-lineal.html#ejemplo-masslda"><i class="fa fa-check"></i><b>J.1.1</b> Ejemplo <code>MASS::lda</code></a></li>
+</ul></li>
+<li class="chapter" data-level="J.2" data-path="J-2-análisis-discriminante-cuadrático.html"><a href="J-2-análisis-discriminante-cuadrático.html"><i class="fa fa-check"></i><b>J.2</b> Análisis discriminante cuadrático</a>
+<ul>
+<li class="chapter" data-level="J.2.1" data-path="J-2-análisis-discriminante-cuadrático.html"><a href="J-2-análisis-discriminante-cuadrático.html#ejemplo-massqda"><i class="fa fa-check"></i><b>J.2.1</b> Ejemplo <code>MASS::qda</code></a></li>
+</ul></li>
+<li class="chapter" data-level="J.3" data-path="J-3-naive-bayes.html"><a href="J-3-naive-bayes.html"><i class="fa fa-check"></i><b>J.3</b> Naive Bayes</a>
+<ul>
+<li class="chapter" data-level="J.3.1" data-path="J-3-naive-bayes.html"><a href="J-3-naive-bayes.html#ejemplo-e1071naivebayes"><i class="fa fa-check"></i><b>J.3.1</b> Ejemplo <code>e1071::naiveBayes</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="K" data-path="21-modelos-lineales.html"><a href="21-modelos-lineales.html#modelos-lineales"><i class="fa fa-check"></i><b>K</b> Modelos lineales y extensiones</a></li>
+<li class="chapter" data-level="L" data-path="L-reg-np.html"><a href="L-reg-np.html"><i class="fa fa-check"></i><b>L</b> Regresión no paramétrica</a>
+<ul>
+<li class="chapter" data-level="L.1" data-path="L-1-reg-local.html"><a href="L-1-reg-local.html"><i class="fa fa-check"></i><b>L.1</b> Regresión local</a>
+<ul>
+<li class="chapter" data-level="L.1.1" data-path="L-1-reg-local.html"><a href="L-1-reg-local.html#reg-knn"><i class="fa fa-check"></i><b>L.1.1</b> Vecinos más próximos</a></li>
+<li class="chapter" data-level="L.1.2" data-path="L-1-reg-local.html"><a href="L-1-reg-local.html#reg-locpol"><i class="fa fa-check"></i><b>L.1.2</b> Regresión polinómica local</a></li>
+<li class="chapter" data-level="L.1.3" data-path="L-1-reg-local.html"><a href="L-1-reg-local.html#regresión-polinómica-local-robusta"><i class="fa fa-check"></i><b>L.1.3</b> Regresión polinómica local robusta</a></li>
+</ul></li>
+<li class="chapter" data-level="L.2" data-path="L-2-splines.html"><a href="L-2-splines.html"><i class="fa fa-check"></i><b>L.2</b> Splines</a>
+<ul>
+<li class="chapter" data-level="L.2.1" data-path="L-2-splines.html"><a href="L-2-splines.html#reg-splines"><i class="fa fa-check"></i><b>L.2.1</b> Regression splines</a></li>
+<li class="chapter" data-level="L.2.2" data-path="L-2-splines.html"><a href="L-2-splines.html#smoothing-splines"><i class="fa fa-check"></i><b>L.2.2</b> Smoothing splines</a></li>
+<li class="chapter" data-level="L.2.3" data-path="L-2-splines.html"><a href="L-2-splines.html#splines-penalizados"><i class="fa fa-check"></i><b>L.2.3</b> Splines penalizados</a></li>
+</ul></li>
+<li class="chapter" data-level="L.3" data-path="L-3-modelos-aditivos-1.html"><a href="L-3-modelos-aditivos-1.html"><i class="fa fa-check"></i><b>L.3</b> Modelos aditivos</a>
+<ul>
+<li class="chapter" data-level="L.3.1" data-path="L-3-modelos-aditivos-1.html"><a href="L-3-modelos-aditivos-1.html#ajuste-función-gam-1"><i class="fa fa-check"></i><b>L.3.1</b> Ajuste: función <code>gam</code></a></li>
+<li class="chapter" data-level="L.3.2" data-path="L-3-modelos-aditivos-1.html"><a href="L-3-modelos-aditivos-1.html#ejemplo-5"><i class="fa fa-check"></i><b>L.3.2</b> Ejemplo</a></li>
+<li class="chapter" data-level="L.3.3" data-path="L-3-modelos-aditivos-1.html"><a href="L-3-modelos-aditivos-1.html#superficies-de-predicción"><i class="fa fa-check"></i><b>L.3.3</b> Superficies de predicción</a></li>
+<li class="chapter" data-level="L.3.4" data-path="L-3-modelos-aditivos-1.html"><a href="L-3-modelos-aditivos-1.html#comparación-y-selección-de-modelos"><i class="fa fa-check"></i><b>L.3.4</b> Comparación y selección de modelos</a></li>
+<li class="chapter" data-level="L.3.5" data-path="L-3-modelos-aditivos-1.html"><a href="L-3-modelos-aditivos-1.html#mgcv-diagnosis"><i class="fa fa-check"></i><b>L.3.5</b> Diagnosis del modelo</a></li>
+<li class="chapter" data-level="L.3.6" data-path="L-3-modelos-aditivos-1.html"><a href="L-3-modelos-aditivos-1.html#gam-en-caret"><i class="fa fa-check"></i><b>L.3.6</b> GAM en <code>caret</code></a></li>
+<li class="chapter" data-level="L.3.7" data-path="L-3-modelos-aditivos-1.html"><a href="L-3-modelos-aditivos-1.html#ejercicios"><i class="fa fa-check"></i><b>L.3.7</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="L.4" data-path="L-4-mars.html"><a href="L-4-mars.html"><i class="fa fa-check"></i><b>L.4</b> Regresión spline adaptativa multivariante</a>
+<ul>
+<li class="chapter" data-level="L.4.1" data-path="L-4-mars.html"><a href="L-4-mars.html#mars-con-el-paquete-earth"><i class="fa fa-check"></i><b>L.4.1</b> MARS con el paquete <code>earth</code></a></li>
+<li class="chapter" data-level="L.4.2" data-path="L-4-mars.html"><a href="L-4-mars.html#mars-con-el-paquete-caret"><i class="fa fa-check"></i><b>L.4.2</b> MARS con el paquete <code>caret</code></a></li>
+</ul></li>
+<li class="chapter" data-level="L.5" data-path="L-5-projection-pursuit.html"><a href="L-5-projection-pursuit.html"><i class="fa fa-check"></i><b>L.5</b> Projection pursuit</a>
+<ul>
+<li class="chapter" data-level="L.5.1" data-path="L-5-projection-pursuit.html"><a href="L-5-projection-pursuit.html#ppr"><i class="fa fa-check"></i><b>L.5.1</b> Regresión por <em>projection pursuit</em></a></li>
+<li class="chapter" data-level="L.5.2" data-path="L-5-projection-pursuit.html"><a href="L-5-projection-pursuit.html#implementación-en-r"><i class="fa fa-check"></i><b>L.5.2</b> Implementación en R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="M" data-path="M-neural-nets.html"><a href="M-neural-nets.html"><i class="fa fa-check"></i><b>M</b> Redes neuronales</a>
+<ul>
+<li class="chapter" data-level="M.1" data-path="M-1-single-hidden-layer-feedforward-network.html"><a href="M-1-single-hidden-layer-feedforward-network.html"><i class="fa fa-check"></i><b>M.1</b> Single-hidden-layer feedforward network</a></li>
+<li class="chapter" data-level="M.2" data-path="M-2-clasificación-con-ann.html"><a href="M-2-clasificación-con-ann.html"><i class="fa fa-check"></i><b>M.2</b> Clasificación con ANN</a></li>
+<li class="chapter" data-level="M.3" data-path="M-3-implementación-en-r-1.html"><a href="M-3-implementación-en-r-1.html"><i class="fa fa-check"></i><b>M.3</b> Implementación en R</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias-1.html"><a href="referencias-1.html"><i class="fa fa-check"></i>Referencias</a>
+<ul>
+<li class="chapter" data-level="" data-path="bibliografía-básica.html"><a href="bibliografía-básica.html"><i class="fa fa-check"></i>Bibliografía básica</a></li>
+<li class="chapter" data-level="" data-path="bibliografía-complementaria-1.html"><a href="bibliografía-complementaria-1.html"><i class="fa fa-check"></i>Bibliografía complementaria</a>
+<ul>
+<li class="chapter" data-level="" data-path="bibliografía-complementaria-1.html"><a href="bibliografía-complementaria-1.html#libros"><i class="fa fa-check"></i>Libros</a></li>
+<li class="chapter" data-level="" data-path="bibliografía-complementaria-1.html"><a href="bibliografía-complementaria-1.html#artículos"><i class="fa fa-check"></i>Artículos</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.jeshuanomics.com/" target="blank">Publicado por JeshuaNomics</a></li>
+<li><a href="https://github.com/JeshuaNomics" class="fa fa-github"><span class="label">  Git Hub</span></a></li>	
+<li><a href="https://www.facebook.com/JeshuaNomics/" class="fa fa-facebook"><span class="label">  Facebook</span></a></li>
+<li><a href="https://twitter.com/JeshuaNomics" class="fa fa-twitter"><span class="label">  Twitter</span></a></li>
+<li><a href="https://www.linkedin.com/in/jeshua-romero-guadarrama/" class="fa fa-linkedin"><span class="label">  Linkedin</span></a></li>
+<li><a href="https://vk.com/jeshuanomics" class="fa fa-vk"><span class="label">  Vkontakte</span></a></li>
+<li><a href="https://jeshuanomics.tumblr.com/" class="fa fa-tumblr"><span class="label">  Tumblr</span></a></li>
+<li><a href="https://www.youtube.com/channel/UCY7f84mJGvMN7TF7XI4-Jgg?view_as=subscriber/" class="fa fa-youtube-play"><span class="label">  YouTube</span></a></li>	
+<li><a href="https://www.instagram.com/JeshuaNomics/" class="fa fa-instagram"><span class="label">  Instagram</span></a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Grupo de estudios económicos</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cart-con-el-paquete-rpart" class="section level2" number="32.3">
+<h2><span class="header-section-number">G.3</span> CART con el paquete <code>rpart</code></h2>
+<p>La metodología CART está implementada en el paquete <a href="https://CRAN.R-project.org/package=rpart"><code>rpart</code></a>
+(Recursive PARTitioning)<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>.
+La función principal es <code>rpart()</code> y habitualmente se emplea de la forma:</p>
+<p><code>rpart(formula, data, method, parms, control, ...)</code></p>
+<ul>
+<li><p><code>formula</code>: permite especificar la respuesta y las variables predictoras de la forma habitual,
+se suele establecer de la forma <code>respuesta ~ .</code> para incluir todas las posibles variables explicativas.</p></li>
+<li><p><code>data</code>: <code>data.frame</code> (opcional; donde se evaluará la fórmula) con la muestra de entrenamiento.</p></li>
+<li><p><code>method</code>: método empleado para realizar las particiones, puede ser <code>"anova"</code> (regresión), <code>"class"</code> (clasificación),
+<code>"poisson"</code> (regresión de Poisson) o <code>"exp"</code> (supervivencia), o alternativamente una lista de funciones (con componentes
+<code>init</code>, <code>split</code>, <code>eval</code>; ver la vignette <a href="https://cran.r-project.org/web/packages/rpart/vignettes/usercode.pdf"><em>User Written Split Functions</em></a>).
+Por defecto se selecciona a partir de la variable respuesta en <code>formula</code>,
+por ejemplo si es un factor (lo recomendado en clasificación) emplea <code>method = "class"</code>.</p></li>
+<li><p><code>parms</code>: lista de parámetros opcionales para la partición en el caso de clasificación
+(o regresión de Poisson). Puede contener los componentes <code>prior</code> (vector de probabilidades previas;
+por defecto las frecuencias observadas), <code>loss</code> (matriz de pérdidas; con ceros en la diagonal y por defecto 1 en el resto)
+y <code>split</code> (criterio de error; por defecto <code>"gini"</code> o alternativamente <code>"information"</code>).</p></li>
+<li><p><code>control</code>: lista de opciones que controlan el algoritmo de partición, por defecto se seleccionan mediante la función <code>rpart.control</code>,
+aunque también se pueden establecer en la llamada a la función principal, y los principales parámetros son:</p>
+<p><code>rpart.control(minsplit = 20, minbucket = round(minsplit/3), cp = 0.01, xval = 10, maxdepth = 30, ...)</code></p>
+<ul>
+<li><p><code>cp</code> es el parámetro de complejidad <span class="math inline">\(\tilde \alpha\)</span> para la poda del árbol, de forma que un valor de 1 se corresponde con un árbol sin divisiones y un valor de 0 con un árbol de profundidad máxima.
+Adicionalmente, para reducir el tiempo de computación, el algoritmo empleado no realiza una partición si la proporción de reducción del error es inferior a este valor (valores más grandes simplifican el modelo y reducen el tiempo de computación).</p></li>
+<li><p><code>maxdepth</code> es la profundidad máxima del árbol (la profundidad de la raíz sería 0).</p></li>
+<li><p><code>minsplit</code> y <code>minbucket</code> son, respectivamente, los números mínimos de observaciones en un nodo intermedio para particionarlo
+y en un nodo terminal.</p></li>
+<li><p><code>xval</code> es el número de grupos (folds) para validación cruzada.</p></li>
+</ul></li>
+</ul>
+<p>Para más detalles consultar la documentación de esta función o la vignette <a href="https://cran.r-project.org/web/packages/rpart/vignettes/longintro.pdf"><em>Introduction to Rpart</em></a>.</p>
+<div id="ejemplo-regresión" class="section level3" number="32.3.1">
+<h3><span class="header-section-number">G.3.1</span> Ejemplo: regresión</h3>
+<p>Emplearemos el conjunto de datos <em>winequality.RData</em> (ver Cortez et al., 2009), que contiene información fisico-química
+(<code>fixed.acidity</code>, <code>volatile.acidity</code>, <code>citric.acid</code>, <code>residual.sugar</code>, <code>chlorides</code>, <code>free.sulfur.dioxide</code>,
+<code>total.sulfur.dioxide</code>, <code>density</code>, <code>pH</code>, <code>sulphates</code> y <code>alcohol</code>) y sensorial (<code>quality</code>)
+de una muestra de 1250 vinos portugueses de la variedad <em>Vinho Verde</em>.
+Como respuesta consideraremos la variable <code>quality</code>, mediana de al menos 3 evaluaciones de la calidad del vino
+realizadas por expertos, que los evaluaron entre 0 (muy malo) y 10 (muy excelente).</p>
+<div class="sourceCode" id="cb1660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1660-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1660-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;datos/winequality.RData&quot;</span>)</span>
+<span id="cb1660-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1660-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(winequality)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    1250 obs. of  12 variables:
+##  $ fixed.acidity       : num  6.8 7.1 6.9 7.5 8.6 7.7 5.4 6.8 6.1 5.5 ...
+##  $ volatile.acidity    : num  0.37 0.24 0.32 0.23 0.36 0.28 0.59 0.16 0.28 0.28 ...
+##  $ citric.acid         : num  0.47 0.34 0.13 0.49 0.26 0.63 0.07 0.36 0.27 0.21 ...
+##  $ residual.sugar      : num  11.2 1.2 7.8 7.7 11.1 11.1 7 1.3 4.7 1.6 ...
+##  $ chlorides           : num  0.071 0.045 0.042 0.049 0.03 0.039 0.045 0.034 0.03 0.032 ...
+##  $ free.sulfur.dioxide : num  44 6 11 61 43.5 58 36 32 56 23 ...
+##  $ total.sulfur.dioxide: num  136 132 117 209 171 179 147 98 140 85 ...
+##  $ density             : num  0.997 0.991 0.996 0.994 0.995 ...
+##  $ pH                  : num  2.98 3.16 3.23 3.14 3.03 3.08 3.34 3.02 3.16 3.42 ...
+##  $ sulphates           : num  0.88 0.46 0.37 0.3 0.49 0.44 0.57 0.58 0.42 0.42 ...
+##  $ alcohol             : num  9.2 11.2 9.2 11.1 12 8.8 9.7 11.3 12.5 12.5 ...
+##  $ quality             : int  5 4 5 7 5 4 6 6 8 5 ...</code></pre>
+<div class="sourceCode" id="cb1662"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1662-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1662-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(winequality<span class="sc">$</span>quality))</span></code></pre></div>
+<p><img src="33-arboles_files/figure-html/unnamed-chunk-4-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>En primer lugar se selecciona el 80% de los datos como muestra de entrenamiento y el 20% restante como muestra de test:</p>
+<div class="sourceCode" id="cb1663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1663-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1663-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb1663-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1663-2" aria-hidden="true" tabindex="-1"></a>nobs <span class="ot">&lt;-</span> <span class="fu">nrow</span>(winequality)</span>
+<span id="cb1663-3"><a href="G-3-cart-con-el-paquete-rpart.html#cb1663-3" aria-hidden="true" tabindex="-1"></a>itrain <span class="ot">&lt;-</span> <span class="fu">sample</span>(nobs, <span class="fl">0.8</span> <span class="sc">*</span> nobs)</span>
+<span id="cb1663-4"><a href="G-3-cart-con-el-paquete-rpart.html#cb1663-4" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> winequality[itrain, ]</span>
+<span id="cb1663-5"><a href="G-3-cart-con-el-paquete-rpart.html#cb1663-5" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> winequality[<span class="sc">-</span>itrain, ]</span></code></pre></div>
+<p>Podemos obtener el arbol con las opciones por defecto con el comando:</p>
+<div class="sourceCode" id="cb1664"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1664-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1664-1" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">rpart</span>(quality <span class="sc">~</span> ., <span class="at">data =</span> train)</span></code></pre></div>
+<p>Al imprimirlo se muestra el número de observaciones e información
+sobre los distintos nodos (número de nodo, condición que define la partición,
+número de observaciones en el nodo, función de pérdida y predicción),
+marcando con un <code>*</code> los nodos terminales.</p>
+<div class="sourceCode" id="cb1665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1665-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1665-1" aria-hidden="true" tabindex="-1"></a>tree</span></code></pre></div>
+<pre><code>## n= 1000 
+## 
+## node), split, n, deviance, yval
+##       * denotes terminal node
+## 
+##  1) root 1000 768.95600 5.862000  
+##    2) alcohol&lt; 10.75 622 340.81190 5.586817  
+##      4) volatile.acidity&gt;=0.2575 329 154.75990 5.370821  
+##        8) total.sulfur.dioxide&lt; 98.5 24  12.50000 4.750000 *
+##        9) total.sulfur.dioxide&gt;=98.5 305 132.28200 5.419672  
+##         18) pH&lt; 3.315 269 101.44980 5.353160 *
+##         19) pH&gt;=3.315 36  20.75000 5.916667 *
+##      5) volatile.acidity&lt; 0.2575 293 153.46760 5.829352  
+##       10) sulphates&lt; 0.475 144  80.32639 5.659722 *
+##       11) sulphates&gt;=0.475 149  64.99329 5.993289 *
+##    3) alcohol&gt;=10.75 378 303.53700 6.314815  
+##      6) alcohol&lt; 11.775 200 173.87500 6.075000  
+##       12) free.sulfur.dioxide&lt; 11.5 15  10.93333 4.933333 *
+##       13) free.sulfur.dioxide&gt;=11.5 185 141.80540 6.167568  
+##         26) volatile.acidity&gt;=0.395 7  12.85714 5.142857 *
+##         27) volatile.acidity&lt; 0.395 178 121.30900 6.207865  
+##           54) citric.acid&gt;=0.385 31  21.93548 5.741935 *
+##           55) citric.acid&lt; 0.385 147  91.22449 6.306122 *
+##      7) alcohol&gt;=11.775 178 105.23600 6.584270 *</code></pre>
+<p>Para representarlo se puede emplear las herramientas del paquete <a href="https://CRAN.R-project.org/package=rpart"><code>rpart</code></a>:</p>
+<div class="sourceCode" id="cb1667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1667-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1667-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tree)</span>
+<span id="cb1667-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1667-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(tree)</span></code></pre></div>
+<p><img src="33-arboles_files/figure-html/unnamed-chunk-8-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Pero puede ser preferible emplear el paquete <a href="https://CRAN.R-project.org/package=rpart.plot"><code>rpart.plot</code></a></p>
+<div class="sourceCode" id="cb1668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1668-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1668-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
+<span id="cb1668-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1668-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(tree, <span class="at">main=</span><span class="st">&quot;Regresion tree winequality&quot;</span>)  </span></code></pre></div>
+<p><img src="33-arboles_files/figure-html/unnamed-chunk-9-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Nos interesa como se clasificaría a una nueva observación en los nodos terminales (en los nodos intermedios solo nos interesarían las condiciones, y el orden de las variables consideradas, hasta llegar a las hojas) y las correspondientes predicciones (la media de la respuesta en el correspondiente nodo terminal).
+Para ello, puede ser de utilidad imprimir las reglas:</p>
+<div class="sourceCode" id="cb1669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1669-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1669-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.rules</span>(tree, <span class="at">style =</span> <span class="st">&quot;tall&quot;</span>)</span></code></pre></div>
+<pre><code>## quality is 4.8 when
+##     alcohol &lt; 11
+##     volatile.acidity &gt;= 0.26
+##     total.sulfur.dioxide &lt; 99
+## 
+## quality is 4.9 when
+##     alcohol is 11 to 12
+##     free.sulfur.dioxide &lt; 12
+## 
+## quality is 5.1 when
+##     alcohol is 11 to 12
+##     volatile.acidity &gt;= 0.40
+##     free.sulfur.dioxide &gt;= 12
+## 
+## quality is 5.4 when
+##     alcohol &lt; 11
+##     volatile.acidity &gt;= 0.26
+##     total.sulfur.dioxide &gt;= 99
+##     pH &lt; 3.3
+## 
+## quality is 5.7 when
+##     alcohol &lt; 11
+##     volatile.acidity &lt; 0.26
+##     sulphates &lt; 0.48
+## 
+## quality is 5.7 when
+##     alcohol is 11 to 12
+##     volatile.acidity &lt; 0.40
+##     free.sulfur.dioxide &gt;= 12
+##     citric.acid &gt;= 0.39
+## 
+## quality is 5.9 when
+##     alcohol &lt; 11
+##     volatile.acidity &gt;= 0.26
+##     total.sulfur.dioxide &gt;= 99
+##     pH &gt;= 3.3
+## 
+## quality is 6.0 when
+##     alcohol &lt; 11
+##     volatile.acidity &lt; 0.26
+##     sulphates &gt;= 0.48
+## 
+## quality is 6.3 when
+##     alcohol is 11 to 12
+##     volatile.acidity &lt; 0.40
+##     free.sulfur.dioxide &gt;= 12
+##     citric.acid &lt; 0.39
+## 
+## quality is 6.6 when
+##     alcohol &gt;= 12</code></pre>
+<p>Por defecto se poda el arbol considerando <code>cp = 0.01</code>, que puede ser adecuado en muchos casos.
+Sin embargo, para seleccionar el valor óptimo de este (hiper)parámetro se puede emplear validación cruzada.
+En primer lugar habría que establecer <code>cp = 0</code> para construir el árbol completo, a la profundidad máxima
+(determinada por los valores de <code>minsplit</code> y <code>minbucket</code>, que se podrían seleccionar
+“a mano” dependiendo del número de observaciones o también considerándolos como hiperparámetos; esto último no está implementado en <code>rpart</code>, ni en principio en <code>caret</code>)<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>.</p>
+<div class="sourceCode" id="cb1671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1671-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1671-1" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">rpart</span>(quality <span class="sc">~</span> ., <span class="at">data =</span> train, <span class="at">cp =</span> <span class="dv">0</span>)</span></code></pre></div>
+<p>Posteriormente podemos emplear las funciones <code>printcp()</code> (o <code>plotcp()</code>) para obtener (representar)
+los valores de CP para los árboles (óptimos) de menor tamaño junto con su error de validación cruzada
+<code>xerror</code> (reescalado de forma que el máximo de <code>rel error</code> es 1)<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a>:</p>
+<div class="sourceCode" id="cb1672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1672-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1672-1" aria-hidden="true" tabindex="-1"></a><span class="fu">printcp</span>(tree)</span></code></pre></div>
+<pre><code>## 
+## Regression tree:
+## rpart(formula = quality ~ ., data = train, cp = 0)
+## 
+## Variables actually used in tree construction:
+##  [1] alcohol              chlorides            citric.acid         
+##  [4] density              fixed.acidity        free.sulfur.dioxide 
+##  [7] pH                   residual.sugar       sulphates           
+## [10] total.sulfur.dioxide volatile.acidity    
+## 
+## Root node error: 768.96/1000 = 0.76896
+## 
+## n= 1000 
+## 
+##            CP nsplit rel error  xerror     xstd
+## 1  0.16204707      0   1.00000 1.00203 0.048591
+## 2  0.04237491      1   0.83795 0.85779 0.043646
+## 3  0.03176525      2   0.79558 0.82810 0.043486
+## 4  0.02748696      3   0.76381 0.81350 0.042814
+## 5  0.01304370      4   0.73633 0.77038 0.039654
+## 6  0.01059605      6   0.71024 0.78168 0.039353
+## 7  0.01026605      7   0.69964 0.78177 0.039141
+## 8  0.00840800      9   0.67911 0.78172 0.039123
+## 9  0.00813924     10   0.67070 0.80117 0.039915
+## 10 0.00780567     11   0.66256 0.80020 0.040481
+## 11 0.00684175     13   0.64695 0.79767 0.040219
+## 12 0.00673843     15   0.63327 0.81381 0.040851
+## 13 0.00643577     18   0.61305 0.82059 0.041240
+## 14 0.00641137     19   0.60662 0.82323 0.041271
+## 15 0.00549694     21   0.59379 0.84187 0.042714
+## 16 0.00489406     23   0.58280 0.84748 0.042744
+## 17 0.00483045     24   0.57791 0.85910 0.043897
+## 18 0.00473741     25   0.57308 0.86553 0.045463
+## 19 0.00468372     26   0.56834 0.86455 0.045413
+## 20 0.00450496     28   0.55897 0.87049 0.045777
+## 21 0.00448365     32   0.54095 0.87263 0.045824
+## 22 0.00437484     33   0.53647 0.87260 0.045846
+## 23 0.00435280     35   0.52772 0.87772 0.046022
+## 24 0.00428623     36   0.52337 0.87999 0.046124
+## 25 0.00412515     37   0.51908 0.88151 0.046505
+## 26 0.00390866     39   0.51083 0.89242 0.047068
+## 27 0.00375301     42   0.49910 0.90128 0.047319
+## 28 0.00370055     43   0.49535 0.90965 0.047991
+## 29 0.00351987     45   0.48795 0.91404 0.048079
+## 30 0.00308860     47   0.48091 0.92132 0.048336
+## 31 0.00305781     49   0.47473 0.93168 0.049699
+## 32 0.00299018     51   0.46862 0.93258 0.049701
+## 33 0.00295148     52   0.46563 0.93062 0.049644
+## 34 0.00286138     54   0.45972 0.93786 0.050366
+## 35 0.00283972     55   0.45686 0.93474 0.050404
+## 36 0.00274809     56   0.45402 0.93307 0.050390
+## 37 0.00273457     58   0.44853 0.93642 0.050406
+## 38 0.00260607     59   0.44579 0.93726 0.050543
+## 39 0.00252978     60   0.44318 0.93692 0.050323
+## 40 0.00252428     62   0.43813 0.93778 0.050381
+## 41 0.00250804     64   0.43308 0.93778 0.050381
+## 42 0.00232226     65   0.43057 0.93642 0.050081
+## 43 0.00227625     66   0.42825 0.93915 0.050166
+## 44 0.00225146     67   0.42597 0.94101 0.050195
+## 45 0.00224774     68   0.42372 0.94101 0.050195
+## 46 0.00216406     69   0.42147 0.94067 0.050124
+## 47 0.00204851     70   0.41931 0.94263 0.050366
+## 48 0.00194517     72   0.41521 0.94203 0.050360
+## 49 0.00188139     73   0.41326 0.93521 0.050349
+## 50 0.00154129     75   0.40950 0.93500 0.050277
+## 51 0.00143642     76   0.40796 0.93396 0.050329
+## 52 0.00118294     77   0.40652 0.93289 0.050325
+## 53 0.00117607     78   0.40534 0.93738 0.050406
+## 54 0.00108561     79   0.40417 0.93738 0.050406
+## 55 0.00097821     80   0.40308 0.93670 0.050406
+## 56 0.00093107     81   0.40210 0.93752 0.050589
+## 57 0.00090075     82   0.40117 0.93752 0.050589
+## 58 0.00082968     83   0.40027 0.93634 0.050561
+## 59 0.00048303     85   0.39861 0.93670 0.050557
+## 60 0.00000000     86   0.39813 0.93745 0.050558</code></pre>
+<div class="sourceCode" id="cb1674"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1674-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1674-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotcp</span>(tree)</span></code></pre></div>
+<p><img src="33-arboles_files/figure-html/unnamed-chunk-12-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>La tabla con los valores de las podas (óptimas, dependiendo del parámetro de complejidad)
+está almacenada en la componente <code>$cptable</code>:</p>
+<div class="sourceCode" id="cb1675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1675-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1675-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tree<span class="sc">$</span>cptable, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##             CP nsplit rel error    xerror       xstd
+## 1  0.162047069      0 1.0000000 1.0020304 0.04859127
+## 2  0.042374911      1 0.8379529 0.8577876 0.04364585
+## 3  0.031765253      2 0.7955780 0.8281010 0.04348571
+## 4  0.027486958      3 0.7638128 0.8134957 0.04281430
+## 5  0.013043701      4 0.7363258 0.7703804 0.03965433
+## 6  0.010596054      6 0.7102384 0.7816774 0.03935308
+## 7  0.010266055      7 0.6996424 0.7817716 0.03914071
+## 8  0.008408003      9 0.6791102 0.7817177 0.03912344
+## 9  0.008139238     10 0.6707022 0.8011719 0.03991498
+## 10 0.007805674     11 0.6625630 0.8001996 0.04048088</code></pre>
+<p>A partir de la que podríamos seleccionar el valor óptimo de forma automática,
+siguiendo el criterio de un error estándar de Breiman et al. (1984):</p>
+<div class="sourceCode" id="cb1677"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1677-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1677-1" aria-hidden="true" tabindex="-1"></a>xerror <span class="ot">&lt;-</span> tree<span class="sc">$</span>cptable[,<span class="st">&quot;xerror&quot;</span>]</span>
+<span id="cb1677-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1677-2" aria-hidden="true" tabindex="-1"></a>imin.xerror <span class="ot">&lt;-</span> <span class="fu">which.min</span>(xerror)</span>
+<span id="cb1677-3"><a href="G-3-cart-con-el-paquete-rpart.html#cb1677-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Valor óptimo</span></span>
+<span id="cb1677-4"><a href="G-3-cart-con-el-paquete-rpart.html#cb1677-4" aria-hidden="true" tabindex="-1"></a>tree<span class="sc">$</span>cptable[imin.xerror, ]</span></code></pre></div>
+<pre><code>##         CP     nsplit  rel error     xerror       xstd 
+## 0.01304370 4.00000000 0.73632581 0.77038039 0.03965433</code></pre>
+<div class="sourceCode" id="cb1679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1679-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1679-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Límite superior &quot;oneSE rule&quot; y complejidad mínima por debajo de ese valor</span></span>
+<span id="cb1679-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1679-2" aria-hidden="true" tabindex="-1"></a>upper.xerror <span class="ot">&lt;-</span> xerror[imin.xerror] <span class="sc">+</span> tree<span class="sc">$</span>cptable[imin.xerror, <span class="st">&quot;xstd&quot;</span>]</span>
+<span id="cb1679-3"><a href="G-3-cart-con-el-paquete-rpart.html#cb1679-3" aria-hidden="true" tabindex="-1"></a>icp <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">which</span>(xerror <span class="sc">&lt;=</span> upper.xerror))</span>
+<span id="cb1679-4"><a href="G-3-cart-con-el-paquete-rpart.html#cb1679-4" aria-hidden="true" tabindex="-1"></a>cp <span class="ot">&lt;-</span> tree<span class="sc">$</span>cptable[icp, <span class="st">&quot;CP&quot;</span>]</span></code></pre></div>
+<p>Para obtener el modelo final podamos el arbol con el valor de complejidad obtenido 0.0130437 (que en este caso coincide con el valor óptimo):</p>
+<div class="sourceCode" id="cb1680"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1680-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1680-1" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">prune</span>(tree, <span class="at">cp =</span> cp)</span>
+<span id="cb1680-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1680-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(tree, <span class="at">main=</span><span class="st">&quot;Regresion tree winequality&quot;</span>) </span></code></pre></div>
+<p><img src="33-arboles_files/figure-html/unnamed-chunk-15-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Podríamos estudiar el modelo final, por ejemplo mediante el método <code>summary()</code>, que entre otras cosas muestra una medida (en porcentaje) de la importancia de las variables explicativas para la predicción de la respuesta (teniendo en cuenta todas las particiones, principales y secundarias, en las que se emplea cada variable explicativa).
+Alternativamente podríamos emplear el siguiente código:</p>
+<div class="sourceCode" id="cb1681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1681-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1681-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(tree)</span></span>
+<span id="cb1681-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1681-2" aria-hidden="true" tabindex="-1"></a>importance <span class="ot">&lt;-</span> tree<span class="sc">$</span>variable.importance <span class="co"># Equivalente a caret::varImp(tree) </span></span>
+<span id="cb1681-3"><a href="G-3-cart-con-el-paquete-rpart.html#cb1681-3" aria-hidden="true" tabindex="-1"></a>importance <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>importance<span class="sc">/</span><span class="fu">sum</span>(importance), <span class="dv">1</span>)</span>
+<span id="cb1681-4"><a href="G-3-cart-con-el-paquete-rpart.html#cb1681-4" aria-hidden="true" tabindex="-1"></a>importance[importance <span class="sc">&gt;=</span> <span class="dv">1</span>]</span></code></pre></div>
+<pre><code>##              alcohol              density            chlorides 
+##                 36.1                 21.7                 11.3 
+##     volatile.acidity total.sulfur.dioxide  free.sulfur.dioxide 
+##                  8.7                  8.5                  5.0 
+##       residual.sugar            sulphates          citric.acid 
+##                  4.0                  1.9                  1.1 
+##                   pH 
+##                  1.1</code></pre>
+<p>El último paso sería evaluarlo en la muestra de test siguiendo los pasos descritos en la Sección <a href="F-3-const-eval.html#eval-reg">F.3.4</a>:</p>
+<div class="sourceCode" id="cb1683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1683-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1683-1" aria-hidden="true" tabindex="-1"></a>obs <span class="ot">&lt;-</span> test<span class="sc">$</span>quality</span>
+<span id="cb1683-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1683-2" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(tree, <span class="at">newdata =</span> test)</span>
+<span id="cb1683-3"><a href="G-3-cart-con-el-paquete-rpart.html#cb1683-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1683-4"><a href="G-3-cart-con-el-paquete-rpart.html#cb1683-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(pred, obs, main = &quot;Observado frente a predicciones (quality)&quot;,</span></span>
+<span id="cb1683-5"><a href="G-3-cart-con-el-paquete-rpart.html#cb1683-5" aria-hidden="true" tabindex="-1"></a><span class="co">#      xlab = &quot;Predicción&quot;, ylab = &quot;Observado&quot;)</span></span>
+<span id="cb1683-6"><a href="G-3-cart-con-el-paquete-rpart.html#cb1683-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">jitter</span>(pred), <span class="fu">jitter</span>(obs), <span class="at">main =</span> <span class="st">&quot;Observado frente a predicciones (quality)&quot;</span>,</span>
+<span id="cb1683-7"><a href="G-3-cart-con-el-paquete-rpart.html#cb1683-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Predicción&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Observado&quot;</span>)</span>
+<span id="cb1683-8"><a href="G-3-cart-con-el-paquete-rpart.html#cb1683-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="33-arboles_files/figure-html/unnamed-chunk-17-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb1684"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1684-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1684-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Empleando el paquete caret </span></span>
+<span id="cb1684-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1684-2" aria-hidden="true" tabindex="-1"></a>caret<span class="sc">::</span><span class="fu">postResample</span>(pred, obs)</span></code></pre></div>
+<pre><code>##      RMSE  Rsquared       MAE 
+## 0.8145614 0.1969485 0.6574264</code></pre>
+<div class="sourceCode" id="cb1686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1686-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1686-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Con la función accuracy()</span></span>
+<span id="cb1686-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1686-2" aria-hidden="true" tabindex="-1"></a>accuracy <span class="ot">&lt;-</span> <span class="cf">function</span>(pred, obs, <span class="at">na.rm =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb1686-3"><a href="G-3-cart-con-el-paquete-rpart.html#cb1686-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">tol =</span> <span class="fu">sqrt</span>(.Machine<span class="sc">$</span>double.eps)) {</span>
+<span id="cb1686-4"><a href="G-3-cart-con-el-paquete-rpart.html#cb1686-4" aria-hidden="true" tabindex="-1"></a>  err <span class="ot">&lt;-</span> obs <span class="sc">-</span> pred     <span class="co"># Errores</span></span>
+<span id="cb1686-5"><a href="G-3-cart-con-el-paquete-rpart.html#cb1686-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(na.rm) {</span>
+<span id="cb1686-6"><a href="G-3-cart-con-el-paquete-rpart.html#cb1686-6" aria-hidden="true" tabindex="-1"></a>    is.a <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(err)</span>
+<span id="cb1686-7"><a href="G-3-cart-con-el-paquete-rpart.html#cb1686-7" aria-hidden="true" tabindex="-1"></a>    err <span class="ot">&lt;-</span> err[is.a]</span>
+<span id="cb1686-8"><a href="G-3-cart-con-el-paquete-rpart.html#cb1686-8" aria-hidden="true" tabindex="-1"></a>    obs <span class="ot">&lt;-</span> obs[is.a]</span>
+<span id="cb1686-9"><a href="G-3-cart-con-el-paquete-rpart.html#cb1686-9" aria-hidden="true" tabindex="-1"></a>  }  </span>
+<span id="cb1686-10"><a href="G-3-cart-con-el-paquete-rpart.html#cb1686-10" aria-hidden="true" tabindex="-1"></a>  perr <span class="ot">&lt;-</span> <span class="dv">100</span><span class="sc">*</span>err<span class="sc">/</span><span class="fu">pmax</span>(obs, tol)  <span class="co"># Errores porcentuales</span></span>
+<span id="cb1686-11"><a href="G-3-cart-con-el-paquete-rpart.html#cb1686-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">c</span>(</span>
+<span id="cb1686-12"><a href="G-3-cart-con-el-paquete-rpart.html#cb1686-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">me =</span> <span class="fu">mean</span>(err),           <span class="co"># Error medio</span></span>
+<span id="cb1686-13"><a href="G-3-cart-con-el-paquete-rpart.html#cb1686-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">rmse =</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(err<span class="sc">^</span><span class="dv">2</span>)), <span class="co"># Raíz del error cuadrático medio </span></span>
+<span id="cb1686-14"><a href="G-3-cart-con-el-paquete-rpart.html#cb1686-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">mae =</span> <span class="fu">mean</span>(<span class="fu">abs</span>(err)),     <span class="co"># Error absoluto medio</span></span>
+<span id="cb1686-15"><a href="G-3-cart-con-el-paquete-rpart.html#cb1686-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">mpe =</span> <span class="fu">mean</span>(perr),         <span class="co"># Error porcentual medio</span></span>
+<span id="cb1686-16"><a href="G-3-cart-con-el-paquete-rpart.html#cb1686-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">mape =</span> <span class="fu">mean</span>(<span class="fu">abs</span>(perr)),   <span class="co"># Error porcentual absoluto medio</span></span>
+<span id="cb1686-17"><a href="G-3-cart-con-el-paquete-rpart.html#cb1686-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">r.squared =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">sum</span>(err<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">sum</span>((obs <span class="sc">-</span> <span class="fu">mean</span>(obs))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb1686-18"><a href="G-3-cart-con-el-paquete-rpart.html#cb1686-18" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb1686-19"><a href="G-3-cart-con-el-paquete-rpart.html#cb1686-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1686-20"><a href="G-3-cart-con-el-paquete-rpart.html#cb1686-20" aria-hidden="true" tabindex="-1"></a><span class="fu">accuracy</span>(pred, test<span class="sc">$</span>quality)</span></code></pre></div>
+<pre><code>##           me         rmse          mae          mpe         mape    r.squared 
+## -0.001269398  0.814561435  0.657426365 -1.952342173 11.576716037  0.192007721</code></pre>
+</div>
+<div id="class-rpart" class="section level3" number="32.3.2">
+<h3><span class="header-section-number">G.3.2</span> Ejemplo: modelo de clasificación</h3>
+<p>Para ilustrar los árboles de clasificación CART, podemos emplear los datos anteriores de calidad de vino, considerando como respuesta una nueva variable <code>taste</code> que clasifica los vinos en “good” o “bad” dependiendo de si <code>winequality$quality &gt;= 5</code> (este conjunto de datos está almacenado en el archivo <em>winetaste.RData</em>).</p>
+<div class="sourceCode" id="cb1688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1688-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1688-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load(&quot;datos/winetaste.RData&quot;)</span></span>
+<span id="cb1688-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1688-2" aria-hidden="true" tabindex="-1"></a>winetaste <span class="ot">&lt;-</span> winequality[, <span class="fu">colnames</span>(winequality)<span class="sc">!=</span><span class="st">&quot;quality&quot;</span>]</span>
+<span id="cb1688-3"><a href="G-3-cart-con-el-paquete-rpart.html#cb1688-3" aria-hidden="true" tabindex="-1"></a>winetaste<span class="sc">$</span>taste <span class="ot">&lt;-</span> <span class="fu">factor</span>(winequality<span class="sc">$</span>quality <span class="sc">&lt;</span> <span class="dv">6</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;good&#39;</span>, <span class="st">&#39;bad&#39;</span>)) <span class="co"># levels = c(&#39;FALSE&#39;, &#39;TRUE&#39;)</span></span>
+<span id="cb1688-4"><a href="G-3-cart-con-el-paquete-rpart.html#cb1688-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(winetaste)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    1250 obs. of  12 variables:
+##  $ fixed.acidity       : num  6.8 7.1 6.9 7.5 8.6 7.7 5.4 6.8 6.1 5.5 ...
+##  $ volatile.acidity    : num  0.37 0.24 0.32 0.23 0.36 0.28 0.59 0.16 0.28 0.28 ...
+##  $ citric.acid         : num  0.47 0.34 0.13 0.49 0.26 0.63 0.07 0.36 0.27 0.21 ...
+##  $ residual.sugar      : num  11.2 1.2 7.8 7.7 11.1 11.1 7 1.3 4.7 1.6 ...
+##  $ chlorides           : num  0.071 0.045 0.042 0.049 0.03 0.039 0.045 0.034 0.03 0.032 ...
+##  $ free.sulfur.dioxide : num  44 6 11 61 43.5 58 36 32 56 23 ...
+##  $ total.sulfur.dioxide: num  136 132 117 209 171 179 147 98 140 85 ...
+##  $ density             : num  0.997 0.991 0.996 0.994 0.995 ...
+##  $ pH                  : num  2.98 3.16 3.23 3.14 3.03 3.08 3.34 3.02 3.16 3.42 ...
+##  $ sulphates           : num  0.88 0.46 0.37 0.3 0.49 0.44 0.57 0.58 0.42 0.42 ...
+##  $ alcohol             : num  9.2 11.2 9.2 11.1 12 8.8 9.7 11.3 12.5 12.5 ...
+##  $ taste               : Factor w/ 2 levels &quot;good&quot;,&quot;bad&quot;: 2 2 2 1 2 2 1 1 1 2 ...</code></pre>
+<div class="sourceCode" id="cb1690"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1690-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1690-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(winetaste<span class="sc">$</span>taste)</span></code></pre></div>
+<pre><code>## 
+## good  bad 
+##  828  422</code></pre>
+<p>Como en el caso anterior, se contruyen las muestras de entrenamiento (80%) y de test (20%):</p>
+<div class="sourceCode" id="cb1692"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1692-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1692-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set.seed(1)</span></span>
+<span id="cb1692-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1692-2" aria-hidden="true" tabindex="-1"></a><span class="co"># nobs &lt;- nrow(winetaste)</span></span>
+<span id="cb1692-3"><a href="G-3-cart-con-el-paquete-rpart.html#cb1692-3" aria-hidden="true" tabindex="-1"></a><span class="co"># itrain &lt;- sample(nobs, 0.8 * nobs)</span></span>
+<span id="cb1692-4"><a href="G-3-cart-con-el-paquete-rpart.html#cb1692-4" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> winetaste[itrain, ]</span>
+<span id="cb1692-5"><a href="G-3-cart-con-el-paquete-rpart.html#cb1692-5" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> winetaste[<span class="sc">-</span>itrain, ]</span></code></pre></div>
+<p>Al igual que en el caso anterior podemos obtener el árbol de clasificación con las opciones por defecto (<code>cp = 0.01</code> y <code>split = "gini"</code>) con el comando:</p>
+<div class="sourceCode" id="cb1693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1693-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1693-1" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">rpart</span>(taste <span class="sc">~</span> ., <span class="at">data =</span> train)</span></code></pre></div>
+<p>En este caso al imprimirlo como información de los nodos se muestra (además del número de nodo, la condición de la partición y el número de observaciones en el nodo) el número de observaciones mal clasificadas, la predicción y las proporciones estimadas (frecuencias relativas en la muestra de entrenamiento) de las clases:</p>
+<div class="sourceCode" id="cb1694"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1694-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1694-1" aria-hidden="true" tabindex="-1"></a>tree</span></code></pre></div>
+<pre><code>## n= 1000 
+## 
+## node), split, n, loss, yval, (yprob)
+##       * denotes terminal node
+## 
+##  1) root 1000 338 good (0.6620000 0.3380000)  
+##    2) alcohol&gt;=10.11667 541 100 good (0.8151571 0.1848429)  
+##      4) free.sulfur.dioxide&gt;=8.5 522  87 good (0.8333333 0.1666667)  
+##        8) fixed.acidity&lt; 8.55 500  73 good (0.8540000 0.1460000) *
+##        9) fixed.acidity&gt;=8.55 22   8 bad (0.3636364 0.6363636) *
+##      5) free.sulfur.dioxide&lt; 8.5 19   6 bad (0.3157895 0.6842105) *
+##    3) alcohol&lt; 10.11667 459 221 bad (0.4814815 0.5185185)  
+##      6) volatile.acidity&lt; 0.2875 264 102 good (0.6136364 0.3863636)  
+##       12) fixed.acidity&lt; 7.45 213  71 good (0.6666667 0.3333333)  
+##         24) citric.acid&gt;=0.265 160  42 good (0.7375000 0.2625000) *
+##         25) citric.acid&lt; 0.265 53  24 bad (0.4528302 0.5471698)  
+##           50) free.sulfur.dioxide&lt; 42.5 33  13 good (0.6060606 0.3939394) *
+##           51) free.sulfur.dioxide&gt;=42.5 20   4 bad (0.2000000 0.8000000) *
+##       13) fixed.acidity&gt;=7.45 51  20 bad (0.3921569 0.6078431)  
+##         26) total.sulfur.dioxide&gt;=150 26  10 good (0.6153846 0.3846154) *
+##         27) total.sulfur.dioxide&lt; 150 25   4 bad (0.1600000 0.8400000) *
+##      7) volatile.acidity&gt;=0.2875 195  59 bad (0.3025641 0.6974359)  
+##       14) pH&gt;=3.235 49  24 bad (0.4897959 0.5102041)  
+##         28) chlorides&lt; 0.0465 18   4 good (0.7777778 0.2222222) *
+##         29) chlorides&gt;=0.0465 31  10 bad (0.3225806 0.6774194) *
+##       15) pH&lt; 3.235 146  35 bad (0.2397260 0.7602740) *</code></pre>
+<p>También puede ser preferible emplear el paquete <a href="https://CRAN.R-project.org/package=rpart.plot"><code>rpart.plot</code></a> para representarlo:</p>
+<div class="sourceCode" id="cb1696"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1696-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1696-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
+<span id="cb1696-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1696-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(tree, <span class="at">main=</span><span class="st">&quot;Classification tree winetaste&quot;</span>) <span class="co"># Alternativa: rattle::fancyRpartPlot</span></span></code></pre></div>
+<p><img src="33-arboles_files/figure-html/unnamed-chunk-22-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb1697"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1697-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1697-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(tree, <span class="at">main=</span><span class="st">&quot;Classification tree winetaste&quot;</span>,</span>
+<span id="cb1697-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1697-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">extra =</span> <span class="dv">104</span>,          <span class="co"># show fitted class, probs, percentages</span></span>
+<span id="cb1697-3"><a href="G-3-cart-con-el-paquete-rpart.html#cb1697-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">box.palette =</span> <span class="st">&quot;GnBu&quot;</span>, <span class="co"># color scheme</span></span>
+<span id="cb1697-4"><a href="G-3-cart-con-el-paquete-rpart.html#cb1697-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">branch.lty =</span> <span class="dv">3</span>,       <span class="co"># dotted branch lines</span></span>
+<span id="cb1697-5"><a href="G-3-cart-con-el-paquete-rpart.html#cb1697-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">shadow.col =</span> <span class="st">&quot;gray&quot;</span>,  <span class="co"># shadows under the node boxes</span></span>
+<span id="cb1697-6"><a href="G-3-cart-con-el-paquete-rpart.html#cb1697-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">nn =</span> <span class="cn">TRUE</span>)            <span class="co"># display the node numbers </span></span></code></pre></div>
+<p><img src="33-arboles_files/figure-html/unnamed-chunk-22-2.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Nos interesa como se clasificaría a una nueva observación (como se llega a los nodos terminales) y su probabilidad estimada (la frecuencia relativa de la clase más frecuente en el correspondiente nodo terminal).
+Al igual que en el caso de regresión, puede ser de utilidad imprimir las reglas:</p>
+<div class="sourceCode" id="cb1698"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1698-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1698-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.rules</span>(tree, <span class="at">style =</span> <span class="st">&quot;tall&quot;</span>)</span></code></pre></div>
+<pre><code>## taste is 0.15 when
+##     alcohol &gt;= 10
+##     fixed.acidity &lt; 8.6
+##     free.sulfur.dioxide &gt;= 8.5
+## 
+## taste is 0.22 when
+##     alcohol &lt; 10
+##     volatile.acidity &gt;= 0.29
+##     pH &gt;= 3.2
+##     chlorides &lt; 0.047
+## 
+## taste is 0.26 when
+##     alcohol &lt; 10
+##     volatile.acidity &lt; 0.29
+##     fixed.acidity &lt; 7.5
+##     citric.acid &gt;= 0.27
+## 
+## taste is 0.38 when
+##     alcohol &lt; 10
+##     volatile.acidity &lt; 0.29
+##     fixed.acidity &gt;= 7.5
+##     total.sulfur.dioxide &gt;= 150
+## 
+## taste is 0.39 when
+##     alcohol &lt; 10
+##     volatile.acidity &lt; 0.29
+##     fixed.acidity &lt; 7.5
+##     free.sulfur.dioxide &lt; 42.5
+##     citric.acid &lt; 0.27
+## 
+## taste is 0.64 when
+##     alcohol &gt;= 10
+##     fixed.acidity &gt;= 8.6
+##     free.sulfur.dioxide &gt;= 8.5
+## 
+## taste is 0.68 when
+##     alcohol &lt; 10
+##     volatile.acidity &gt;= 0.29
+##     pH &gt;= 3.2
+##     chlorides &gt;= 0.047
+## 
+## taste is 0.68 when
+##     alcohol &gt;= 10
+##     free.sulfur.dioxide &lt; 8.5
+## 
+## taste is 0.76 when
+##     alcohol &lt; 10
+##     volatile.acidity &gt;= 0.29
+##     pH &lt; 3.2
+## 
+## taste is 0.80 when
+##     alcohol &lt; 10
+##     volatile.acidity &lt; 0.29
+##     fixed.acidity &lt; 7.5
+##     free.sulfur.dioxide &gt;= 42.5
+##     citric.acid &lt; 0.27
+## 
+## taste is 0.84 when
+##     alcohol &lt; 10
+##     volatile.acidity &lt; 0.29
+##     fixed.acidity &gt;= 7.5
+##     total.sulfur.dioxide &lt; 150</code></pre>
+<p>Al igual que en el caso anterior, para seleccionar un valor óptimo del (hiper)parámetro de complejidad, se puede construir un árbol de decisión completo y emplear validación cruzada para podarlo.
+Además, si el número de observaciones es grande y las clases están más o menos balanceadas,
+se podría aumentar los valores mínimos de observaciones en los nodos intermedios y terminales<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a>, por ejemplo:</p>
+<div class="sourceCode" id="cb1700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1700-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1700-1" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">rpart</span>(taste <span class="sc">~</span> ., <span class="at">data =</span> train, <span class="at">cp =</span> <span class="dv">0</span>, <span class="at">minsplit =</span> <span class="dv">30</span>, <span class="at">minbucket =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p>En este caso mantenemos el resto de valores por defecto:</p>
+<div class="sourceCode" id="cb1701"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1701-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1701-1" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">rpart</span>(taste <span class="sc">~</span> ., <span class="at">data =</span> train, <span class="at">cp =</span> <span class="dv">0</span>)</span></code></pre></div>
+<p>Representamos los errores (reescalados) de validación cruzada:</p>
+<div class="sourceCode" id="cb1702"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1702-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1702-1" aria-hidden="true" tabindex="-1"></a><span class="co"># printcp(tree)</span></span>
+<span id="cb1702-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1702-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotcp</span>(tree)</span></code></pre></div>
+<p><img src="33-arboles_files/figure-html/unnamed-chunk-26-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Para obtener el modelo final, seleccionamos el valor óptimo de complejidad siguiendo el criterio de un error estándar de Breiman et al. (1984) y podamos el arbol:</p>
+<div class="sourceCode" id="cb1703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1703-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1703-1" aria-hidden="true" tabindex="-1"></a>xerror <span class="ot">&lt;-</span> tree<span class="sc">$</span>cptable[,<span class="st">&quot;xerror&quot;</span>]</span>
+<span id="cb1703-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1703-2" aria-hidden="true" tabindex="-1"></a>imin.xerror <span class="ot">&lt;-</span> <span class="fu">which.min</span>(xerror)</span>
+<span id="cb1703-3"><a href="G-3-cart-con-el-paquete-rpart.html#cb1703-3" aria-hidden="true" tabindex="-1"></a>upper.xerror <span class="ot">&lt;-</span> xerror[imin.xerror] <span class="sc">+</span> tree<span class="sc">$</span>cptable[imin.xerror, <span class="st">&quot;xstd&quot;</span>]</span>
+<span id="cb1703-4"><a href="G-3-cart-con-el-paquete-rpart.html#cb1703-4" aria-hidden="true" tabindex="-1"></a>icp <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">which</span>(xerror <span class="sc">&lt;=</span> upper.xerror))</span>
+<span id="cb1703-5"><a href="G-3-cart-con-el-paquete-rpart.html#cb1703-5" aria-hidden="true" tabindex="-1"></a>cp <span class="ot">&lt;-</span> tree<span class="sc">$</span>cptable[icp, <span class="st">&quot;CP&quot;</span>]</span>
+<span id="cb1703-6"><a href="G-3-cart-con-el-paquete-rpart.html#cb1703-6" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">prune</span>(tree, <span class="at">cp =</span> cp)</span>
+<span id="cb1703-7"><a href="G-3-cart-con-el-paquete-rpart.html#cb1703-7" aria-hidden="true" tabindex="-1"></a><span class="co"># tree</span></span>
+<span id="cb1703-8"><a href="G-3-cart-con-el-paquete-rpart.html#cb1703-8" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(tree)</span></span>
+<span id="cb1703-9"><a href="G-3-cart-con-el-paquete-rpart.html#cb1703-9" aria-hidden="true" tabindex="-1"></a><span class="co"># caret::varImp(tree)</span></span>
+<span id="cb1703-10"><a href="G-3-cart-con-el-paquete-rpart.html#cb1703-10" aria-hidden="true" tabindex="-1"></a><span class="co"># importance &lt;- tree$variable.importance</span></span>
+<span id="cb1703-11"><a href="G-3-cart-con-el-paquete-rpart.html#cb1703-11" aria-hidden="true" tabindex="-1"></a><span class="co"># importance &lt;- round(100*importance/sum(importance), 1)</span></span>
+<span id="cb1703-12"><a href="G-3-cart-con-el-paquete-rpart.html#cb1703-12" aria-hidden="true" tabindex="-1"></a><span class="co"># importance[importance &gt;= 1]</span></span>
+<span id="cb1703-13"><a href="G-3-cart-con-el-paquete-rpart.html#cb1703-13" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(tree, <span class="at">main=</span><span class="st">&quot;Classification tree winetaste&quot;</span>)</span></code></pre></div>
+<p><img src="33-arboles_files/figure-html/unnamed-chunk-27-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>El último paso sería evaluarlo en la muestra de test siguiendo los pasos descritos en la Sección <a href="F-3-const-eval.html#eval-class">F.3.5</a>.
+El método <code>predict()</code> por defecto (<code>type = "prob"</code>) devuelve una matriz con las probabilidades de cada clase, habrá que establecer <code>type = "class"</code> (para más detalles consultar la ayuda de <code>predic.rpart()</code>).</p>
+<div class="sourceCode" id="cb1704"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1704-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1704-1" aria-hidden="true" tabindex="-1"></a>obs <span class="ot">&lt;-</span> test<span class="sc">$</span>taste</span>
+<span id="cb1704-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1704-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">predict</span>(tree, <span class="at">newdata =</span> test))</span></code></pre></div>
+<pre><code>##         good       bad
+## 1  0.3025641 0.6974359
+## 4  0.8151571 0.1848429
+## 9  0.8151571 0.1848429
+## 10 0.8151571 0.1848429
+## 12 0.8151571 0.1848429
+## 16 0.8151571 0.1848429</code></pre>
+<div class="sourceCode" id="cb1706"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1706-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1706-1" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(tree, <span class="at">newdata =</span> test, <span class="at">type =</span> <span class="st">&quot;class&quot;</span>)</span>
+<span id="cb1706-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1706-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(obs, pred)</span></code></pre></div>
+<pre><code>##       pred
+## obs    good bad
+##   good  153  13
+##   bad    54  30</code></pre>
+<div class="sourceCode" id="cb1708"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1708-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1708-1" aria-hidden="true" tabindex="-1"></a>caret<span class="sc">::</span><span class="fu">confusionMatrix</span>(pred, obs)</span></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction good bad
+##       good  153  54
+##       bad    13  30
+##                                           
+##                Accuracy : 0.732           
+##                  95% CI : (0.6725, 0.7859)
+##     No Information Rate : 0.664           
+##     P-Value [Acc &gt; NIR] : 0.01247         
+##                                           
+##                   Kappa : 0.3171          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 1.025e-06       
+##                                           
+##             Sensitivity : 0.9217          
+##             Specificity : 0.3571          
+##          Pos Pred Value : 0.7391          
+##          Neg Pred Value : 0.6977          
+##              Prevalence : 0.6640          
+##          Detection Rate : 0.6120          
+##    Detection Prevalence : 0.8280          
+##       Balanced Accuracy : 0.6394          
+##                                           
+##        &#39;Positive&#39; Class : good            
+## </code></pre>
+</div>
+<div id="interfaz-de-caret" class="section level3" number="32.3.3">
+<h3><span class="header-section-number">G.3.3</span> Interfaz de <code>caret</code></h3>
+<p>En <code>caret</code> podemos ajustar un árbol CART seleccionando <code>method = "rpart"</code>.
+Por defecto emplea bootstrap de las observaciones para seleccionar el valor óptimo del hiperparámetro <code>cp</code> (considerando únicamente tres posibles valores).
+Si queremos emplear validación cruzada como en el caso anterior podemos emplear la función auxiliar <code>trainControl()</code> y para considerar un mayor rango de posibles valores, el argumento <code>tuneLength</code>.</p>
+<div class="sourceCode" id="cb1710"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1710-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1710-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb1710-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1710-2" aria-hidden="true" tabindex="-1"></a><span class="co"># names(getModelInfo()) # Listado de todos los métodos disponibles</span></span>
+<span id="cb1710-3"><a href="G-3-cart-con-el-paquete-rpart.html#cb1710-3" aria-hidden="true" tabindex="-1"></a><span class="co"># modelLookup(&quot;rpart&quot;)  # Información sobre hiperparámetros</span></span>
+<span id="cb1710-4"><a href="G-3-cart-con-el-paquete-rpart.html#cb1710-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb1710-5"><a href="G-3-cart-con-el-paquete-rpart.html#cb1710-5" aria-hidden="true" tabindex="-1"></a><span class="co"># itrain &lt;- &lt;- createDataPartition(winetaste$taste, p = 0.8, list = FALSE)</span></span>
+<span id="cb1710-6"><a href="G-3-cart-con-el-paquete-rpart.html#cb1710-6" aria-hidden="true" tabindex="-1"></a><span class="co"># train &lt;- winetaste[itrain, ]</span></span>
+<span id="cb1710-7"><a href="G-3-cart-con-el-paquete-rpart.html#cb1710-7" aria-hidden="true" tabindex="-1"></a><span class="co"># test &lt;- winetaste[-itrain, ]</span></span>
+<span id="cb1710-8"><a href="G-3-cart-con-el-paquete-rpart.html#cb1710-8" aria-hidden="true" tabindex="-1"></a>caret.rpart <span class="ot">&lt;-</span> <span class="fu">train</span>(taste <span class="sc">~</span> ., <span class="at">method =</span> <span class="st">&quot;rpart&quot;</span>, <span class="at">data =</span> train, </span>
+<span id="cb1710-9"><a href="G-3-cart-con-el-paquete-rpart.html#cb1710-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">tuneLength =</span> <span class="dv">20</span>,</span>
+<span id="cb1710-10"><a href="G-3-cart-con-el-paquete-rpart.html#cb1710-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="at">number =</span> <span class="dv">10</span>)) </span>
+<span id="cb1710-11"><a href="G-3-cart-con-el-paquete-rpart.html#cb1710-11" aria-hidden="true" tabindex="-1"></a>caret.rpart</span></code></pre></div>
+<pre><code>## CART 
+## 
+## 1000 samples
+##   11 predictor
+##    2 classes: &#39;good&#39;, &#39;bad&#39; 
+## 
+## No pre-processing
+## Resampling: Cross-Validated (10 fold) 
+## Summary of sample sizes: 901, 900, 900, 900, 900, 900, ... 
+## Resampling results across tuning parameters:
+## 
+##   cp           Accuracy   Kappa    
+##   0.000000000  0.7018843  0.3487338
+##   0.005995017  0.7330356  0.3870552
+##   0.011990034  0.7410655  0.3878517
+##   0.017985051  0.7230748  0.3374518
+##   0.023980069  0.7360748  0.3698691
+##   0.029975086  0.7340748  0.3506377
+##   0.035970103  0.7320748  0.3418235
+##   0.041965120  0.7350849  0.3422651
+##   0.047960137  0.7350849  0.3422651
+##   0.053955154  0.7350849  0.3422651
+##   0.059950171  0.7350849  0.3422651
+##   0.065945188  0.7350849  0.3422651
+##   0.071940206  0.7350849  0.3422651
+##   0.077935223  0.7350849  0.3422651
+##   0.083930240  0.7350849  0.3422651
+##   0.089925257  0.7350849  0.3422651
+##   0.095920274  0.7350849  0.3422651
+##   0.101915291  0.7350849  0.3422651
+##   0.107910308  0.7229637  0.2943312
+##   0.113905325  0.6809637  0.1087694
+## 
+## Accuracy was used to select the optimal model using the largest value.
+## The final value used for the model was cp = 0.01199003.</code></pre>
+<div class="sourceCode" id="cb1712"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1712-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1712-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(caret.rpart)</span></code></pre></div>
+<p><img src="33-arboles_files/figure-html/unnamed-chunk-29-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb1713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1713-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1713-1" aria-hidden="true" tabindex="-1"></a>caret.rpart<span class="sc">$</span>finalModel</span></code></pre></div>
+<pre><code>## n= 1000 
+## 
+## node), split, n, loss, yval, (yprob)
+##       * denotes terminal node
+## 
+##  1) root 1000 338 good (0.6620000 0.3380000)  
+##    2) alcohol&gt;=10.11667 541 100 good (0.8151571 0.1848429)  
+##      4) free.sulfur.dioxide&gt;=8.5 522  87 good (0.8333333 0.1666667)  
+##        8) fixed.acidity&lt; 8.55 500  73 good (0.8540000 0.1460000) *
+##        9) fixed.acidity&gt;=8.55 22   8 bad (0.3636364 0.6363636) *
+##      5) free.sulfur.dioxide&lt; 8.5 19   6 bad (0.3157895 0.6842105) *
+##    3) alcohol&lt; 10.11667 459 221 bad (0.4814815 0.5185185)  
+##      6) volatile.acidity&lt; 0.2875 264 102 good (0.6136364 0.3863636)  
+##       12) fixed.acidity&lt; 7.45 213  71 good (0.6666667 0.3333333)  
+##         24) citric.acid&gt;=0.265 160  42 good (0.7375000 0.2625000) *
+##         25) citric.acid&lt; 0.265 53  24 bad (0.4528302 0.5471698)  
+##           50) free.sulfur.dioxide&lt; 42.5 33  13 good (0.6060606 0.3939394) *
+##           51) free.sulfur.dioxide&gt;=42.5 20   4 bad (0.2000000 0.8000000) *
+##       13) fixed.acidity&gt;=7.45 51  20 bad (0.3921569 0.6078431)  
+##         26) total.sulfur.dioxide&gt;=150 26  10 good (0.6153846 0.3846154) *
+##         27) total.sulfur.dioxide&lt; 150 25   4 bad (0.1600000 0.8400000) *
+##      7) volatile.acidity&gt;=0.2875 195  59 bad (0.3025641 0.6974359)  
+##       14) pH&gt;=3.235 49  24 bad (0.4897959 0.5102041)  
+##         28) chlorides&lt; 0.0465 18   4 good (0.7777778 0.2222222) *
+##         29) chlorides&gt;=0.0465 31  10 bad (0.3225806 0.6774194) *
+##       15) pH&lt; 3.235 146  35 bad (0.2397260 0.7602740) *</code></pre>
+<div class="sourceCode" id="cb1715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1715-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1715-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(caret.rpart<span class="sc">$</span>finalModel, <span class="at">main=</span><span class="st">&quot;Classification tree winetaste&quot;</span>)</span></code></pre></div>
+<p><img src="33-arboles_files/figure-html/unnamed-chunk-29-2.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Para utilizar la regla de “un error estándar” se puede añadir <code>selectionFunction = "oneSE"</code></p>
+<div class="sourceCode" id="cb1716"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1716-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1716-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb1716-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1716-2" aria-hidden="true" tabindex="-1"></a>caret.rpart <span class="ot">&lt;-</span> <span class="fu">train</span>(taste <span class="sc">~</span> ., <span class="at">method =</span> <span class="st">&quot;rpart&quot;</span>, <span class="at">data =</span> train, </span>
+<span id="cb1716-3"><a href="G-3-cart-con-el-paquete-rpart.html#cb1716-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">tuneLength =</span> <span class="dv">20</span>,</span>
+<span id="cb1716-4"><a href="G-3-cart-con-el-paquete-rpart.html#cb1716-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="at">number =</span> <span class="dv">10</span>,</span>
+<span id="cb1716-5"><a href="G-3-cart-con-el-paquete-rpart.html#cb1716-5" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">selectionFunction =</span> <span class="st">&quot;oneSE&quot;</span>)) </span>
+<span id="cb1716-6"><a href="G-3-cart-con-el-paquete-rpart.html#cb1716-6" aria-hidden="true" tabindex="-1"></a>caret.rpart</span></code></pre></div>
+<pre><code>## CART 
+## 
+## 1000 samples
+##   11 predictor
+##    2 classes: &#39;good&#39;, &#39;bad&#39; 
+## 
+## No pre-processing
+## Resampling: Cross-Validated (10 fold) 
+## Summary of sample sizes: 901, 900, 900, 900, 900, 900, ... 
+## Resampling results across tuning parameters:
+## 
+##   cp           Accuracy   Kappa    
+##   0.000000000  0.7018843  0.3487338
+##   0.005995017  0.7330356  0.3870552
+##   0.011990034  0.7410655  0.3878517
+##   0.017985051  0.7230748  0.3374518
+##   0.023980069  0.7360748  0.3698691
+##   0.029975086  0.7340748  0.3506377
+##   0.035970103  0.7320748  0.3418235
+##   0.041965120  0.7350849  0.3422651
+##   0.047960137  0.7350849  0.3422651
+##   0.053955154  0.7350849  0.3422651
+##   0.059950171  0.7350849  0.3422651
+##   0.065945188  0.7350849  0.3422651
+##   0.071940206  0.7350849  0.3422651
+##   0.077935223  0.7350849  0.3422651
+##   0.083930240  0.7350849  0.3422651
+##   0.089925257  0.7350849  0.3422651
+##   0.095920274  0.7350849  0.3422651
+##   0.101915291  0.7350849  0.3422651
+##   0.107910308  0.7229637  0.2943312
+##   0.113905325  0.6809637  0.1087694
+## 
+## Accuracy was used to select the optimal model using  the one SE rule.
+## The final value used for the model was cp = 0.1019153.</code></pre>
+<div class="sourceCode" id="cb1718"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1718-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1718-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(caret.rpart)</span></span>
+<span id="cb1718-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1718-2" aria-hidden="true" tabindex="-1"></a>caret.rpart<span class="sc">$</span>finalModel</span></code></pre></div>
+<pre><code>## n= 1000 
+## 
+## node), split, n, loss, yval, (yprob)
+##       * denotes terminal node
+## 
+## 1) root 1000 338 good (0.6620000 0.3380000)  
+##   2) alcohol&gt;=10.11667 541 100 good (0.8151571 0.1848429) *
+##   3) alcohol&lt; 10.11667 459 221 bad (0.4814815 0.5185185)  
+##     6) volatile.acidity&lt; 0.2875 264 102 good (0.6136364 0.3863636) *
+##     7) volatile.acidity&gt;=0.2875 195  59 bad (0.3025641 0.6974359) *</code></pre>
+<div class="sourceCode" id="cb1720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1720-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1720-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(caret.rpart<span class="sc">$</span>finalModel, <span class="at">main =</span> <span class="st">&quot;Classification tree winetaste&quot;</span>)</span></code></pre></div>
+<p><img src="33-arboles_files/figure-html/unnamed-chunk-30-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb1721"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1721-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1721-1" aria-hidden="true" tabindex="-1"></a>var.imp <span class="ot">&lt;-</span> <span class="fu">varImp</span>(caret.rpart)</span>
+<span id="cb1721-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1721-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(var.imp)</span></code></pre></div>
+<p><img src="33-arboles_files/figure-html/unnamed-chunk-30-2.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Para calcular las predicciones (o las estimaciones de las probabilidades) podemos emplear el método <code>predict.train()</code> y posteriormente <code>confusionMatrix()</code> para evaluar su precisión:</p>
+<div class="sourceCode" id="cb1722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1722-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1722-1" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(caret.rpart, <span class="at">newdata =</span> test)</span>
+<span id="cb1722-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1722-2" aria-hidden="true" tabindex="-1"></a><span class="co"># p.est &lt;- predict(caret.rpart, newdata = test, type = &quot;prob&quot;)</span></span>
+<span id="cb1722-3"><a href="G-3-cart-con-el-paquete-rpart.html#cb1722-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(pred, test<span class="sc">$</span>taste)</span></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction good bad
+##       good  153  54
+##       bad    13  30
+##                                           
+##                Accuracy : 0.732           
+##                  95% CI : (0.6725, 0.7859)
+##     No Information Rate : 0.664           
+##     P-Value [Acc &gt; NIR] : 0.01247         
+##                                           
+##                   Kappa : 0.3171          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 1.025e-06       
+##                                           
+##             Sensitivity : 0.9217          
+##             Specificity : 0.3571          
+##          Pos Pred Value : 0.7391          
+##          Neg Pred Value : 0.6977          
+##              Prevalence : 0.6640          
+##          Detection Rate : 0.6120          
+##    Detection Prevalence : 0.8280          
+##       Balanced Accuracy : 0.6394          
+##                                           
+##        &#39;Positive&#39; Class : good            
+## </code></pre>
+<p>NOTA: En principio también se podría utilizar la regla de “un error estándar” seleccionando <code>method = "rpart1SE"</code> (pero <code>caret</code> implementa internamente este método y en ocasiones no se obtienen los resultados esperados).</p>
+<div class="sourceCode" id="cb1724"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1724-1"><a href="G-3-cart-con-el-paquete-rpart.html#cb1724-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb1724-2"><a href="G-3-cart-con-el-paquete-rpart.html#cb1724-2" aria-hidden="true" tabindex="-1"></a>caret.rpart <span class="ot">&lt;-</span> <span class="fu">train</span>(taste <span class="sc">~</span> ., <span class="at">method =</span> <span class="st">&quot;rpart1SE&quot;</span>, <span class="at">data =</span> train) </span>
+<span id="cb1724-3"><a href="G-3-cart-con-el-paquete-rpart.html#cb1724-3" aria-hidden="true" tabindex="-1"></a>caret.rpart</span>
+<span id="cb1724-4"><a href="G-3-cart-con-el-paquete-rpart.html#cb1724-4" aria-hidden="true" tabindex="-1"></a><span class="fu">printcp</span>(caret.rpart<span class="sc">$</span>finalModel)</span>
+<span id="cb1724-5"><a href="G-3-cart-con-el-paquete-rpart.html#cb1724-5" aria-hidden="true" tabindex="-1"></a>caret.rpart<span class="sc">$</span>finalModel</span>
+<span id="cb1724-6"><a href="G-3-cart-con-el-paquete-rpart.html#cb1724-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(caret.rpart<span class="sc">$</span>finalModel, <span class="at">main =</span> <span class="st">&quot;Classification tree winetaste&quot;</span>)</span>
+<span id="cb1724-7"><a href="G-3-cart-con-el-paquete-rpart.html#cb1724-7" aria-hidden="true" tabindex="-1"></a><span class="fu">varImp</span>(caret.rpart)</span></code></pre></div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="14">
+<li id="fn14"><p>El paquete <a href="https://CRAN.R-project.org/package=tree"><code>tree</code></a> es una traducción del original en S.<a href="G-3-cart-con-el-paquete-rpart.html#fnref14" class="footnote-back">↩︎</a></p></li>
+<li id="fn15"><p>Los parámetros <code>maxsurrogate</code>, <code>usesurrogate</code> y <code>surrogatestyle</code> serían de utilidad si hay datos faltantes.<a href="G-3-cart-con-el-paquete-rpart.html#fnref15" class="footnote-back">↩︎</a></p></li>
+<li id="fn16"><p>Realmente en la tabla de texto se muestra el valor mínimo de CP, ya que se obtendría la misma solución para un rango de valores de CP (desde ese valor hasta el anterior, sin incluirlo), mientras que en el gráfico generado por <code>plotcp()</code> se representa la media geométrica de los extremos de ese intervalo.<a href="G-3-cart-con-el-paquete-rpart.html#fnref16" class="footnote-back">↩︎</a></p></li>
+<li id="fn17"><p>Otra opción, más interesante para regresión, sería considerar estos valores como hiperparámetros.<a href="G-3-cart-con-el-paquete-rpart.html#fnref17" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="G-2-árboles-de-clasificación-cart.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="G-4-alternativas-a-los-árboles-cart.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": true,
+"weibo": false,
+"instapaper": false,
+"vk": true,
+"whatsapp": false,
+"all": ["vk", "linkedin", "twitter", "facebook"],
+"tumblr": false,
+"youtube": false,
+"instagram": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "serif",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/Jeshua-Romero-Guadarrama/CienciaPolitica/edit/master/33-arboles.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R_grupo_de_estudios_economicos.pdf", "R_grupo_de_estudios_economicos.epub"],
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

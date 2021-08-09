@@ -1,0 +1,1 @@
+"0","legend(""topright"", colnames(rf$err.rate), lty = 1:5, col = 1:6)"

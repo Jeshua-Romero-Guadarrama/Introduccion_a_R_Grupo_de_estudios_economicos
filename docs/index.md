@@ -2,7 +2,7 @@
 title: "R Grupo de estudios económicos"
 cover-image: "images/cover.png"
 author: "Jeshua Romero Guadarrama, Kevin Fernández, Apocryfo, Jenn, Daniel, Tifany Jiménez, Ernesto, Ezequiel, Rich Conejo, Angiebaram, Jesmarth, Adolfo Robles, Isaac Flores, Abdeel, Roberto Daniel"
-date: "2021-08-07"
+date: "2021-08-08"
 site: bookdown::bookdown_site
 output:
   bookdown::word_document2: default 
@@ -52,11 +52,11 @@ favicon: "images/logo.png"
 
 
 
-
+<hr style="background-color:#03193b;height:2px">
 
 <center><img style = 'width:60%;' src='images/R_grupo_de_estudios_economicos.png'></center>
 
-
+<hr style="background-color:#03193b;height:2px">
 
 <center><img style = 'width:30%;' src='images/cover.jpg'></center>
 <br><center><img style='float: center; width:50%' src='images/logo_claim_en_rgb.png'/></center>
@@ -72,10 +72,10 @@ favicon: "images/logo.png"
 
 <br> Jeshua Romero Guadarrama es economista y actuario por la <a href="http://www.economia.unam.mx/">Universidad Nacional Autónoma de México</a>, quien ha construido el presente proyecto en colaboración con <a href="https://www.jeshuanomics.com">JeshuaNomics</a>, ubicado en la Ciudad de México, se puede contactar mediante el siguiente correo electrónico: jeshuanomics@gmail.com.
 <br>
-<br> Última actualización el sábado 07 del 08 de 2021
+<br> Última actualización el domingo 08 del 08 de 2021
 <br>
 
-
+<hr style="background-color:#03193b;height:2px">
 
 Los estudiantes con poca experiencia en el análisis avanzado de estadísticas a menudo tienen dificultades para entender los beneficios de desarrollar habilidades de programación al momento de aplicar diversos métodos descriptivos e inferenciales. <i>Análisis estadístico con R para principiantes</i> por Jeshua Romero Guadarrama (2021), ofrece una introducción interactiva a los aspectos esenciales de la programación por medio del lenguaje y software estadístico R, así como una guía para la aplicación de la teoría económica y econométrica en entornos específicos. En otras palabras, el objetivo es que los estudiantes se adentren al mundo de la economía aplicada mediante ejemplos empíricos presentados en la vida diaria y haciendo uso de las habilidades de programación recién adquiridas. Dicho objetivo se encuentra respaldado por ejercicios de programación interactivos y la incorporación de visualizaciones dinámicas de conceptos fundamentales mediante la flexibilidad de JavaScript, a través de la biblioteca D3.js.
 
@@ -95,7 +95,10 @@ En lugar de confrontar a los estudiantes con ejercicios de codificación puros y
 
 A mi alma máter: Universidad Nacional Autónoma de México (Facultad de Economía y Facultad de Ciencias). Por brindarme valiosas oportunidades que coadyuvaron a mi formación.
 
+<br>
+![Creative Commons License](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.eu.svg)
 
+Esta obra está autorizado bajo la [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 ## Contenido {-}
 

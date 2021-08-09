@@ -26,4 +26,9 @@ gbm
 kernlab
 MASS
 e1071
-plot3D
+KernSmooth
+nlme
+mgcv
+earth
+np
+NeuralNetTools

@@ -268,16 +268,16 @@ y serán utilizados por la función `plot`.
 
 ```r
 data(cars)
-Density.Plot(cars$speed)
+Density.Plot(cars[,1])
 ```
 
-<img src="24-Programacion_files/figure-epub3/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="24-Programacion_files/figure-html/unnamed-chunk-14-1.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
-Density.Plot(cars$speed, col = 'red', xlab = "velocidad", ylab = "distancia")
+Density.Plot(cars[,1], col = 'red', xlab = "velocidad", ylab = "distancia")
 ```
 
-<img src="24-Programacion_files/figure-epub3/unnamed-chunk-14-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="24-Programacion_files/figure-html/unnamed-chunk-14-2.png" width="80%" style="display: block; margin: auto;" />
 
 Los argumentos de entrada de una función se obtienen ejecutando `args(funcion)`:
 
@@ -318,7 +318,7 @@ an
 ## function(a1, r, n) {
 ##         a1 * r^(n - 1)
 ##       }
-## <bytecode: 0x000000001990d488>
+## <bytecode: 0x0000000015f5fb70>
 ```
 
 
@@ -476,36 +476,36 @@ varias simulaciones:
 dado(100)
 ```
 
-<img src="24-Programacion_files/figure-epub3/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="24-Programacion_files/figure-html/unnamed-chunk-23-1.png" width="80%" style="display: block; margin: auto;" />
 
 ```
 ## lanzamientos
 ##    1    2    3    4    5    6 
-## 0.08 0.22 0.14 0.18 0.25 0.13
+## 0.20 0.11 0.10 0.14 0.21 0.24
 ```
 
 ```r
 dado(500)
 ```
 
-<img src="24-Programacion_files/figure-epub3/unnamed-chunk-23-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="24-Programacion_files/figure-html/unnamed-chunk-23-2.png" width="80%" style="display: block; margin: auto;" />
 
 ```
 ## lanzamientos
 ##     1     2     3     4     5     6 
-## 0.190 0.152 0.174 0.154 0.160 0.170
+## 0.186 0.172 0.152 0.164 0.178 0.148
 ```
 
 ```r
 dado(10000)
 ```
 
-<img src="24-Programacion_files/figure-epub3/unnamed-chunk-23-3.png" width="70%" style="display: block; margin: auto;" />
+<img src="24-Programacion_files/figure-html/unnamed-chunk-23-3.png" width="80%" style="display: block; margin: auto;" />
 
 ```
 ## lanzamientos
 ##      1      2      3      4      5      6 
-## 0.1721 0.1618 0.1675 0.1720 0.1582 0.1684
+## 0.1711 0.1604 0.1688 0.1667 0.1683 0.1647
 ```
 
 Se puede comprobar que al aumentar el valor de $n$ las frecuencias se
@@ -1007,7 +1007,7 @@ library(car)
 plot(prestige ~ income, data = Prestige, col = 'darkgray')
 ```
 
-<img src="24-Programacion_files/figure-epub3/unnamed-chunk-42-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="24-Programacion_files/figure-html/unnamed-chunk-42-1.png" width="80%" style="display: block; margin: auto;" />
 
 Representemos, gráficamente, los ajustes lineal, cuadrático y cúbico.
 
@@ -1028,7 +1028,7 @@ lines(valores, pred, lty = 3)
 legend("bottomright", c("Lineal","Cuadrático","Cúbico"), lty = 1:3)
 ```
 
-<img src="24-Programacion_files/figure-epub3/unnamed-chunk-43-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="24-Programacion_files/figure-html/unnamed-chunk-43-1.png" width="80%" style="display: block; margin: auto;" />
 
 Vamos a escribir una función que nos devuelva, para cada dato (fila) de 
 *Prestige*, la predicción en ese punto ajustando el modelo con todos los demás puntos.
@@ -1060,7 +1060,7 @@ for(p in grado){
 plot(grado, cv.error, pch=16)
 ```
 
-<img src="24-Programacion_files/figure-epub3/unnamed-chunk-45-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="24-Programacion_files/figure-html/unnamed-chunk-45-1.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 grado[which.min(cv.error)]
@@ -1096,7 +1096,7 @@ pred <- predict(fit, newdata = data.frame(income = valores))
 lines(valores, pred)
 ```
 
-<img src="24-Programacion_files/figure-epub3/unnamed-chunk-46-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="24-Programacion_files/figure-html/unnamed-chunk-46-1.png" width="80%" style="display: block; margin: auto;" />
 
 Si utilizamos `span=0.5`:
 
@@ -1109,7 +1109,7 @@ pred <- predict(fit, newdata = data.frame(income = valores))
 lines(valores, pred)
 ```
 
-<img src="24-Programacion_files/figure-epub3/unnamed-chunk-47-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="24-Programacion_files/figure-html/unnamed-chunk-47-1.png" width="80%" style="display: block; margin: auto;" />
 
 Nuestro objetivo es seleccionar un valor razonable para `span`, y lo vamos a 
 hacer utilizando validación cruzada y minimizando el error cuadrático medio 
@@ -1146,7 +1146,7 @@ for(p in 1:np){
 plot(ventanas, cv.error)
 ```
 
-<img src="24-Programacion_files/figure-epub3/unnamed-chunk-49-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="24-Programacion_files/figure-html/unnamed-chunk-49-1.png" width="80%" style="display: block; margin: auto;" />
 
 obtenemos la ventana "óptima" (en este caso el valor máximo):
 
@@ -1169,4 +1169,4 @@ pred <- predict(fit, newdata = data.frame(income = valores))
 lines(valores, pred)
 ```
 
-<img src="24-Programacion_files/figure-epub3/unnamed-chunk-51-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="24-Programacion_files/figure-html/unnamed-chunk-51-1.png" width="80%" style="display: block; margin: auto;" />

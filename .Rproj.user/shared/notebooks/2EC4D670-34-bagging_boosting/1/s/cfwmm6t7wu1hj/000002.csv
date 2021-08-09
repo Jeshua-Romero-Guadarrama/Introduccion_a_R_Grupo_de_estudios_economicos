@@ -1,0 +1,4 @@
+"0","# install.packages(""pdp"")"
+"0","library(""pdp"")"
+"0","pdp1 <- partial(rf, ""alcohol"")"
+"0","plotPartial(pdp1)"

@@ -1,0 +1,16 @@
+"0","library(caret)"
+"2","Loading required package: lattice
+"
+"2","Loading required package: ggplot2
+"
+"2","
+Attaching package: ‘ggplot2’
+
+"
+"2","The following object is masked from ‘package:randomForest’:
+
+    margin
+
+"
+"0","# str(getModelInfo(""rf"", regex = FALSE))"
+"0","modelLookup(""rf"")"

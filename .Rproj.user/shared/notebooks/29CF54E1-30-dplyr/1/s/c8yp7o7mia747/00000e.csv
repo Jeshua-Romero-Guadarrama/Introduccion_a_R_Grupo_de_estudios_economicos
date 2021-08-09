@@ -1,0 +1,2 @@
+"0","emplea2 <- mutate(emplea2, incsal = empleados[,""salario""] - empleados[,""salini""]) "
+"0","head(emplea2)"

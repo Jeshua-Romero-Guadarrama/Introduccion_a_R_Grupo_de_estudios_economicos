@@ -82,7 +82,7 @@ por ejemplo `` `r 2 + 2` `` produce 4.
 ### Inclusión de gráficos
 
 Se pueden generar gráficos:
-<img src="25-Informes_files/figure-epub3/figura1-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="25-Informes_files/figure-html/figura1-1.png" width="80%" style="display: block; margin: auto;" />
 
 Los trozos de código pueden tener nombre y opciones, se establecen en la cabecera de la forma 
 ` ```{r nombre, op1, op2} ` 

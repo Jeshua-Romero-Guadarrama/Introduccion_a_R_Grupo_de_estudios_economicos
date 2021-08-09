@@ -1,0 +1,8 @@
+"0",""
+"0","# load(""datos/winetaste.RData"")"
+"0","# set.seed(1)"
+"0","# df <- winetaste"
+"0","# nobs <- nrow(df)"
+"0","# itrain <- sample(nobs, 0.8 * nobs)"
+"0","# train <- df[itrain, ]"
+"0","# test <- df[-itrain, ]"

@@ -49,8 +49,8 @@ Operaciones con variables (columnas)
 ------------------------------------
 ### Seleccionar variables con **select()**
 
-```{r }
-emplea2 <- select(empleados, id, sexo, minoria, tiempemp, salini, salario)
+```{r}
+emplea2 <- select(empleados, c("id", "sexo", "fechnac", "educ", "catlab", "salario", "salini", "tiempemp"))
 head(emplea2)
 ```
 
@@ -77,7 +77,12 @@ head(select(empleados, starts_with("s")))
 ### Generar nuevas variables con **mutate()**
 
 ```{r }
-head(mutate(emplea2, incsal = salario - salini, tsal = incsal/tiempemp ))
+emplea2 <- mutate(emplea2, incsal = empleados[,"salario"] - empleados[,"salini"]) 
+head(emplea2)
+```  
+
+```{r }
+head(mutate(emplea2, tsal = empleados[,"salario"] - empleados[,"salini"]/emplea2[,"tiempemp"]))
 ```
 
 
@@ -86,7 +91,7 @@ Operaciones con casos (filas)
 ### Seleccionar casos con **filter()**
 
 ```{r }
-head(filter(emplea2, sexo == "Mujer", minoria == "Sí"))
+head(filter(emplea2, sexo == "Mujer", empleados[,"minoria"] == "Sí"))
 ```
 
 ### Organizar casos con **arrange()**

@@ -1,0 +1,21 @@
+"0","load(""datos/winetaste.RData"")"
+"2","Warning messages:
+"
+"2","1: "
+"2","In readLines(index, encoding = encoding) :"
+"2","
+ "
+"2"," incomplete final line found on 'D:/# Libros/# Libros-GitHub/R_grupo_de_estudios_economicos/index.Rmd'
+"
+"2","2: "
+"2","In readLines(index, encoding = encoding) :"
+"2","
+ "
+"2"," incomplete final line found on 'D:/# Libros/# Libros-GitHub/R_grupo_de_estudios_economicos/index.Rmd'
+"
+"0","set.seed(1)"
+"0","df <- winetaste"
+"0","nobs <- nrow(df)"
+"0","itrain <- sample(nobs, 0.8 * nobs)"
+"0","train <- df[itrain, ]"
+"0","test <- df[-itrain, ]"

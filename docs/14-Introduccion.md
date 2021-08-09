@@ -1,4 +1,5 @@
-Introducción
+# (PART) Introducción a la Ciencia de Datos con R {-}
+# Introducción
 ============
 
 Este es un libro introductorio al análisis de datos con R. 
@@ -47,7 +48,7 @@ para lo que se recomendaría consultar el libro de ["Escritura de libros con boo
 Este obra está bajo una licencia de [Creative Commons Reconocimiento-NoComercial-SinObraDerivada 4.0 Internacional ](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es_ES) 
 (esperamos poder liberarlo bajo una licencia menos restrictiva más adelante...).
 
-<img src="by-nc-nd-88x31.png" width="88" />
+<img src="by-nc-nd-88x31.png" width="44" />
 
 
 
@@ -61,7 +62,7 @@ utilidad a lo largo de todo el proceso de obtención de información
 a partir de datos (normalmente con el objetivo final de ayudar a tomar decisiones). 
 
 <div class="figure" style="text-align: center">
-<img src="images/esquema2.png" alt="Etapas del proceso" width="70%" />
+<img src="images/esquema2.png" alt="Etapas del proceso" width="80%" />
 <p class="caption">(\#fig:esquema)Etapas del proceso</p>
 </div>
 
@@ -181,7 +182,7 @@ modo interactivo en modo comando (ver Figura \@ref(fig:consola)).
 
 
 <div class="figure" style="text-align: center">
-<img src="images/consola.png" alt="Consola de `R` en Windows (modo MDI)." width="70%" />
+<img src="images/consola.png" alt="Consola de `R` en Windows (modo MDI)." width="80%" />
 <p class="caption">(\#fig:consola)Consola de `R` en Windows (modo MDI).</p>
 </div>
 
@@ -244,7 +245,7 @@ combinación de teclas Ctrl+N.
 
 
 <div class="figure" style="text-align: center">
-<img src="images/script.png" alt="Ventanas de la consola y de *script* en Windows (modo MDI)." width="70%" />
+<img src="images/script.png" alt="Ventanas de la consola y de *script* en Windows (modo MDI)." width="80%" />
 <p class="caption">(\#fig:script)Ventanas de la consola y de *script* en Windows (modo MDI).</p>
 </div>
 
@@ -439,20 +440,20 @@ siguiente código
     
     ```
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   99.93  103.76  104.97  104.95  106.10  110.55
+    ##   99.15  103.63  104.93  104.94  106.37  111.34
     ```
     
     ```r
     hist(x) # histograma
     ```
     
-    <img src="14-Introduccion_files/figure-epub3/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" />
+    <img src="14-Introduccion_files/figure-html/unnamed-chunk-17-1.png" width="80%" style="display: block; margin: auto;" />
     
     ```r
     boxplot(x) # gráfico de cajas
     ```
     
-    <img src="14-Introduccion_files/figure-epub3/unnamed-chunk-17-2.png" width="70%" style="display: block; margin: auto;" />
+    <img src="14-Introduccion_files/figure-html/unnamed-chunk-17-2.png" width="80%" style="display: block; margin: auto;" />
 
 
 Es importante señalar que `R` diferencia entre mayúsculas y

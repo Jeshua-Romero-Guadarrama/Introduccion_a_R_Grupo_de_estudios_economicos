@@ -43,7 +43,7 @@ Ahora, sólo tenemos que ejecutar `hist()` con el argumento `x` igual a nuestro 
 hist(x = edades)
 ```
 
-![](08-funciones_files/figure-epub3/primer_hist-1.png)<!-- -->
+<img src="08-funciones_files/figure-html/primer_hist-1.png" width="672" />
 
 Estupendo. Hemos logrado nuestro objetivo.
 
@@ -68,7 +68,7 @@ abline(v = media, col = "red")
 abline(v = media + (desv_est * c(1, -1)), col = "blue")
 ```
 
-![](08-funciones_files/figure-epub3/hist-1.png)<!-- -->
+<img src="08-funciones_files/figure-html/hist-1.png" width="672" />
 
 Con esto nuestro jefe ahora sí ha quedado complacido. Tanto, que nos pide que hagamos un histograma igual para todas las variables numéricas de esa encuesta. Que son cincuenta en total.
 
@@ -275,7 +275,7 @@ Corremos nuestra función.
 crear_histograma(ingreso, "Ingreso")
 ```
 
-![](08-funciones_files/figure-epub3/crear_histograma ingreso-1.png)<!-- -->
+<img src="08-funciones_files/figure-html/crear_histograma ingreso-1.png" width="672" />
 
 Luce bien. Probemos ahora con datos sobre el peso de las personas. siguiendo el mismo procedimiento.
 
@@ -285,7 +285,7 @@ peso <- rnorm(75, mean = 60, sd = 15)
 crear_histograma(peso, "Peso")
 ```
 
-![](08-funciones_files/figure-epub3/crear_hist peso-1.png)<!-- -->
+<img src="08-funciones_files/figure-html/crear_hist peso-1.png" width="672" />
 
 Las funciones definidas por el usuario pueden devolvernos errores. Por ejemplo, si introducimos datos que no son apropiados para las operaciones a realizar, nuestra función no se ejecutará correctamente.
 
@@ -343,6 +343,6 @@ crear_histograma <- function(datos, nombre) {
 crear_histograma(peso, "Peso con mediana")
 ```
 
-![](08-funciones_files/figure-epub3/crear_hist_naranja-1.png)<!-- -->
+<img src="08-funciones_files/figure-html/crear_hist_naranja-1.png" width="672" />
 
 Quizás estés pensando que escribir una función cincuenta veces de todos modos es demasiada repetición y aún se presta a cometer errores. Lo cual es cierto, pero podemos hacer más breve nuestro código y menos susceptible a equivocaciones con la familia de funciones **apply**, que revisaremos en el [capítulo 10](#la-familia-apply).

@@ -59,13 +59,13 @@ simétricos y si se pueden ajustar por una distribución normal
 hist(hatco$satisfac)
 ```
 
-<img src="19-Inferencia_files/figure-epub3/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="19-Inferencia_files/figure-html/unnamed-chunk-4-1.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 qqnorm(hatco$satisfac)
 ```
 
-<img src="19-Inferencia_files/figure-epub3/unnamed-chunk-4-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="19-Inferencia_files/figure-html/unnamed-chunk-4-2.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 shapiro.test(hatco$satisfac)
@@ -262,7 +262,7 @@ Comparemos visualmente las varianzas
 boxplot(fidelida ~ nsatisfa, data = hatco)
 ```
 
-<img src="19-Inferencia_files/figure-epub3/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="19-Inferencia_files/figure-html/unnamed-chunk-13-1.png" width="80%" style="display: block; margin: auto;" />
 
 La comparación de las varianzas puede hacerse con el test *F*
 
@@ -412,7 +412,7 @@ plot(hatco$fidelida, hatco$satisfac)      # Cuidado con el orden de las variable
 abline(modelo)
 ```
 
-<img src="19-Inferencia_files/figure-epub3/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="19-Inferencia_files/figure-html/unnamed-chunk-19-1.png" width="80%" style="display: block; margin: auto;" />
 
 Valores ajustados
 
@@ -466,7 +466,7 @@ head(resid(modelo))
 qqnorm(resid(modelo))
 ```
 
-<img src="19-Inferencia_files/figure-epub3/unnamed-chunk-21-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="19-Inferencia_files/figure-html/unnamed-chunk-21-1.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 shapiro.test(resid(modelo))
@@ -488,13 +488,13 @@ abline(modelo)
 with(hatco, segments(fidelida, fitted(modelo), fidelida, satisfac))
 ```
 
-<img src="19-Inferencia_files/figure-epub3/unnamed-chunk-21-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="19-Inferencia_files/figure-html/unnamed-chunk-21-2.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 plot(fitted(modelo), resid(modelo))
 ```
 
-<img src="19-Inferencia_files/figure-epub3/unnamed-chunk-21-3.png" width="70%" style="display: block; margin: auto;" />
+<img src="19-Inferencia_files/figure-html/unnamed-chunk-21-3.png" width="80%" style="display: block; margin: auto;" />
 
 Banda de confianza
 
@@ -636,7 +636,7 @@ matlines(bandas.frame$fidelida, bc, lty=c(1,2,2), col='black')
 matlines(bandas.frame$fidelida, bp, lty=c(0,3,3), col='red')
 ```
 
-<img src="19-Inferencia_files/figure-epub3/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="19-Inferencia_files/figure-html/unnamed-chunk-24-1.png" width="80%" style="display: block; margin: auto;" />
 
 
 ### Correlación
@@ -865,7 +865,7 @@ arrows(1:3, medias+errores, 1:3, medias-errores, angle=90, code=3, lwd=2, col='o
 points(1:3, medias, pch=4, lwd=2, cex=2, col='orange')
 ```
 
-<img src="19-Inferencia_files/figure-epub3/unnamed-chunk-33-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="19-Inferencia_files/figure-html/unnamed-chunk-33-1.png" width="80%" style="display: block; margin: auto;" />
 
 
 ### Test de Kruskal-Wallis

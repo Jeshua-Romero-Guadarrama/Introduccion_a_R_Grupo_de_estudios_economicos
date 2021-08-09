@@ -1,0 +1,1 @@
+"0","summarise(empleados, sal.med = mean(salario), n = n())"

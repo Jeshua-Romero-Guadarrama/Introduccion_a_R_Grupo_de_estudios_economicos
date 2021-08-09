@@ -76,7 +76,7 @@ datos <- hatco[-100, c(6:12, 16)]
 plot(datos, pch = as.numeric(datos$nsatisfa), col = as.numeric(datos$nsatisfa))
 ```
 
-![](22-ModelosGLM_files/figure-epub3/unnamed-chunk-3-1.png)<!-- -->
+<img src="22-ModelosGLM_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 ### Ajuste de un modelo de regresión logística
 
@@ -426,7 +426,7 @@ oldpar <- par( mfrow=c(2,2))
 plot(modelo)
 ```
 
-![](22-ModelosGLM_files/figure-epub3/unnamed-chunk-12-1.png)<!-- -->
+<img src="22-ModelosGLM_files/figure-html/unnamed-chunk-12-1.png" width="672" />
 
 ```r
 par(oldpar)
@@ -442,7 +442,7 @@ Se pueden generar gráficos parciales de residuos (p.e. `crPlots()` del paquete 
 crPlots(modelo)
 ```
 
-![](22-ModelosGLM_files/figure-epub3/unnamed-chunk-13-1.png)<!-- -->
+<img src="22-ModelosGLM_files/figure-html/unnamed-chunk-13-1.png" width="672" />
 
 ### Estadísticos
 

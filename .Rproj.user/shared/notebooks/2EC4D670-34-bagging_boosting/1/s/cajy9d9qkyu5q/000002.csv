@@ -1,0 +1,6 @@
+"0","mtry.class <- sqrt(ncol(train) - 1)"
+"0","tuneGrid <- data.frame(mtry = floor(c(mtry.class/2, mtry.class, 2*mtry.class)))"
+"0","set.seed(1)"
+"0","rf.caret <- train(taste ~ ., data = train,"
+"0","                  method = ""rf"", tuneGrid = tuneGrid)"
+"0","plot(rf.caret)"

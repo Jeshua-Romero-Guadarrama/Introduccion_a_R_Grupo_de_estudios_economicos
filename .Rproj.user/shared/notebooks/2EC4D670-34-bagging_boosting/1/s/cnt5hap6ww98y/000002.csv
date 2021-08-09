@@ -1,0 +1,3 @@
+"0","# View(getTree(bagtrees, 1, labelVar=TRUE))"
+"0","split_var_1 <- sapply(seq_len(bagtrees$ntree),"
+"0","                      function(i) getTree(bagtrees, i, labelVar=TRUE)[1, ""split var""])"

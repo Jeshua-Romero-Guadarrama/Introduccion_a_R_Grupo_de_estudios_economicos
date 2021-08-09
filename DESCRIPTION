@@ -1,6 +1,6 @@
 Package: placeholder
 Type: Book
-Title: R Grupo de estudios económicos
+Title: Introducción a R: Grupo de estudios económicos
 Version: 0.0.1
 Imports: bookdown
 Remotes: rstudio/bookdown

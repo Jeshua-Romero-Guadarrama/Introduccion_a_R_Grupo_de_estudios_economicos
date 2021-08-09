@@ -224,7 +224,7 @@ Daremos como argumento a `hist()` la columna **age** como un vector, extraído d
 hist(x = banco$age)
 ```
 
-![](12-graficas_files/figure-epub3/hist_age-1.png)<!-- -->
+<img src="12-graficas_files/figure-html/hist_age-1.png" width="672" />
 
 Nuestro histograma luce bastante bien para habernos costado tan poco trabajo crearlo, aunque puede mejorar su presentación.
 
@@ -239,7 +239,7 @@ hist(x = banco$age, main = "Histograma de Edad",
      xlab = "Edad", ylab = "Frecuencia")
 ```
 
-![](12-graficas_files/figure-epub3/hist_main-1.png)<!-- -->
+<img src="12-graficas_files/figure-html/hist_main-1.png" width="672" />
 
 Probemos cambiando el color de las barras del histograma agregando el argumento `col`. Este argumento acepta nombres de colores genéricos en inglés como "red", "blue" o "purple"; y también acepta colores hexadecimales, como "#00FFFF", "#08001a" o "#1c48b5".
 
@@ -259,7 +259,7 @@ hist(x = banco$age, main = "Histograma de Edad",
      col = "purple")
 ```
 
-![](12-graficas_files/figure-epub3/hist_color-1.png)<!-- -->
+<img src="12-graficas_files/figure-html/hist_color-1.png" width="672" />
 
 Nuestro histograma ya luce presentable.
 
@@ -271,7 +271,7 @@ hist(x = banco$duration, main = "Histograma de Duration",
      col = "ivory")
 ```
 
-![](12-graficas_files/figure-epub3/unnamed-chunk-1-1.png)<!-- -->
+<img src="12-graficas_files/figure-html/unnamed-chunk-1-1.png" width="672" />
 
 Como es usual, puedes consultar los demás argumentos de esta función llamando `?hist()`.
 
@@ -341,7 +341,7 @@ Damos como argumento `tab_banco` a `barplot()` y nos devuelve una gráfica de ba
 barplot(tab_banco)
 ```
 
-![](12-graficas_files/figure-epub3/bar-1.png)<!-- -->
+<img src="12-graficas_files/figure-html/bar-1.png" width="672" />
 
 Si deseamos graficar proporciones en lugar de conteos, usamos la función `prop.table()`. 
 
@@ -401,7 +401,7 @@ Damos el resultado de la operación anterior a `barplot()`.
 barplot(ptab_banco)
 ```
 
-![](12-graficas_files/figure-epub3/proptable_barplot-1.png)<!-- -->
+<img src="12-graficas_files/figure-html/proptable_barplot-1.png" width="672" />
 
 Hemos obtenido el resultado esperado, pero podemos mejorar la presentación. Nota que con barras apiladas el argumento `col` se puede usar para colorear las categorías al interior de las barras.
 
@@ -411,7 +411,7 @@ barplot(ptab_banco,  main = "Préstamos por nivel educativo",
      col = c("royalblue", "grey"))
 ```
 
-![](12-graficas_files/figure-epub3/barplot_legend-1.png)<!-- -->
+<img src="12-graficas_files/figure-html/barplot_legend-1.png" width="672" />
 
 Luce bien, pero tenemos un problema: no sabemos qué representan las categorías en nuestras barras apiladas viendo solamente nuestra gráfica. 
 
@@ -463,7 +463,7 @@ legend(x = "topright", legend = c("No", "Yes"), fill = c("royalblue", "grey"),
        title = "Loan")
 ```
 
-![](12-graficas_files/figure-epub3/leyenda-1.png)<!-- -->
+<img src="12-graficas_files/figure-html/leyenda-1.png" width="672" />
 
 Se ve mucho más clara la información, pues ahora estamos mostrando a qué categoría corresponden los colores que hemos empleado en el gráfico.
 
@@ -480,7 +480,7 @@ Veamos la relación entre las variables **age** y **balance** de `banco`.
 plot(x = banco$age, y = banco$balance)
 ```
 
-![](12-graficas_files/figure-epub3/scatter-1.png)<!-- -->
+<img src="12-graficas_files/figure-html/scatter-1.png" width="672" />
 
 Tenemos algunos datos extremos tanto en **balance**. Para fines de tener una gráfica más informativa, vamos a recodificarlos usando `ifelse()`, cambiando todos los valores mayores a 15 000.
 
@@ -493,7 +493,7 @@ banco$balance <- ifelse(banco$balance > 15000, 15000, banco$balance)
 plot(x = banco$age, y = banco$balance)
 ```
 
-![](12-graficas_files/figure-epub3/scatter_recode-1.png)<!-- -->
+<img src="12-graficas_files/figure-html/scatter_recode-1.png" width="672" />
 
 En los diagramas de dispersión, podemos usar el argumento `col` para camiar el color de los puntos usando como referencia una tercera variable.
 
@@ -526,7 +526,7 @@ legend(x = "topleft", legend = c("Setosa", "Versicolor", "Virginica"),
        fill = c("black", "red", "green"), title = "Especie")
 ```
 
-![](12-graficas_files/figure-epub3/irisscatter-1.png)<!-- -->
+<img src="12-graficas_files/figure-html/irisscatter-1.png" width="672" />
 
 ## Diagramas de caja
 Los diagrama de caja, también conocidos como de caja y bigotes son gráficos que muestra la distribución de una variable usando cuartiles, de modo que de manera visual podemos inferir algunas cosas sobre su dispersión, ubicación y simetría.
@@ -563,7 +563,7 @@ En la primera manera, si damos como argumento `x` un vector numérico, nos dará
 boxplot(x = banco$age)
 ```
 
-![](12-graficas_files/figure-epub3/boxplot_x-1.png)<!-- -->
+<img src="12-graficas_files/figure-html/boxplot_x-1.png" width="672" />
 
 En la segunda manera necesitamos dar dos argumentos:
 
@@ -576,7 +576,7 @@ Por ejemplo, para mostrar diagramas de caja por nivel educativo, nuestra variabl
 boxplot(formula = age ~ education, data =  banco)
 ```
 
-![](12-graficas_files/figure-epub3/boxplot_formula-1.png)<!-- -->
+<img src="12-graficas_files/figure-html/boxplot_formula-1.png" width="672" />
 
 
 ## Gráficos de mosaico

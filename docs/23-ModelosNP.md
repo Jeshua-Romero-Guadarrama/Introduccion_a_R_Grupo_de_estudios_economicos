@@ -111,7 +111,7 @@ par.old <- par(mfrow = c(1, 2))
 plot(modelo, shade = TRUE) # 
 ```
 
-![](23-ModelosNP_files/figure-epub3/unnamed-chunk-7-1.png)<!-- -->
+<img src="23-ModelosNP_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
 ```r
 par(par.old)
@@ -139,7 +139,7 @@ plot(income ~ education, Prestige, pch = 16)
 abline(h = inc, v = ed, col = "grey")
 ```
 
-![](23-ModelosNP_files/figure-epub3/unnamed-chunk-9-1.png)<!-- -->
+<img src="23-ModelosNP_files/figure-html/unnamed-chunk-9-1.png" width="672" />
 
 ```r
 # Se calculan las predicciones
@@ -149,7 +149,7 @@ pred <- matrix(pred, nrow = 25)
 persp(inc, ed, pred, theta = -40, phi = 30)
 ```
 
-![](23-ModelosNP_files/figure-epub3/unnamed-chunk-9-2.png)<!-- -->
+<img src="23-ModelosNP_files/figure-html/unnamed-chunk-9-2.png" width="672" />
 
 Alternativamente se podría emplear la función `contour` o `filled.contour`:
 
@@ -158,7 +158,7 @@ Alternativamente se podría emplear la función `contour` o `filled.contour`:
 filled.contour(inc, ed, pred, xlab = "Income", ylab = "Education", key.title = title("Prestige"))
 ```
 
-![](23-ModelosNP_files/figure-epub3/unnamed-chunk-10-1.png)<!-- -->
+<img src="23-ModelosNP_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 
 Puede ser más cómodo emplear el paquete [`modelr`](https://github.com/hadley/modelr) junto a los gráficos `ggplot2` para trabajar con modelos y predicciones.
@@ -260,7 +260,7 @@ La función `gam.check` realiza una diagnosis del modelo:
 gam.check(modelo)
 ```
 
-![](23-ModelosNP_files/figure-epub3/unnamed-chunk-13-1.png)<!-- -->
+<img src="23-ModelosNP_files/figure-html/unnamed-chunk-13-1.png" width="672" />
 
 ```
 ## 
@@ -274,7 +274,7 @@ gam.check(modelo)
 ## indicate that k is too low, especially if edf is close to k'.
 ## 
 ##                k'  edf k-index p-value
-## s(income)    9.00 3.12    0.98    0.40
+## s(income)    9.00 3.12    0.98    0.33
 ## s(education) 9.00 3.18    1.03    0.56
 ```
 Lo ideal sería observar normalidad en los dos gráficos de la izquierda, falta de patrón en el superior derecho, y ajuste a una recta en el inferior derecho. En este caso parece que el modelo se comporta adecuadamente.

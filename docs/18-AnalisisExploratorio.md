@@ -229,7 +229,7 @@ text(mean(consumo),2.5, pos=3,expression(bar(X)==6.53))
 arrows(mean(consumo),0,mean(consumo),2.5,length = 0.15,col='red')
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-7-1.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 mean(salario)
@@ -385,7 +385,7 @@ legend("bottomright",c("media","mediana"),
        col=c("red","blue"),lty=c(1,2),lwd=c(2,2),box.lty=0,cex=1.5)
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-15-1.png" width="80%" style="display: block; margin: auto;" />
 
 Podemos comprobar que la variable *salario* presenta una
 asimetría derecha
@@ -595,7 +595,7 @@ barplot(100*prop.table(table(catlab)),main="frecuencia relativa (%)")
 pie(table(catlab))
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-23-1.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 nj <- table(educ)
@@ -610,7 +610,7 @@ barplot(Fj,main="frecuencia relativas acumuladas",xlab='años de estudio')
 pie(nj,col=rainbow(6),main='años de estudio')
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-23-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-23-2.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 par(mfrow = c(1, 1))
@@ -635,7 +635,7 @@ barplot(table(cut(expprev,breaks=5)),xlab="Experiencia previa",
         main="Categorización en 5 clases")
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-24-1.png" width="80%" style="display: block; margin: auto;" />
 
 Debemos ser muy cuidadosos a la hora de valorar gráficas como la siguiente
 
@@ -645,7 +645,7 @@ tt <- table(cut(expprev, breaks=c(0,40,80,150,250,400)))
 barplot(tt,xlab="Experiencia previa", main="Categorización en 5 clases")
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-25-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-25-1.png" width="80%" style="display: block; margin: auto;" />
 
 
 ### Gráfico de puntos
@@ -655,13 +655,13 @@ barplot(tt,xlab="Experiencia previa", main="Categorización en 5 clases")
 dotchart(salario, xlab='salarios')
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-26-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-26-1.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 stripchart(salario~sexo, method='jitter')
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-26-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-26-2.png" width="80%" style="display: block; margin: auto;" />
 
 
 ### Árbol de tallo y hojas
@@ -729,19 +729,19 @@ Este gráfico es uno de los más habituales para representar datos continuos
 hist(salario, main='número de clases por defecto')
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-28-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-28-1.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 hist(salario, breaks=3, main='3 intervalos de clase')
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-28-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-28-2.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 hist(salario, breaks=100, main='100 intervalos de clase')
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-28-3.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-28-3.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 cl1 <- seq(15000,40000,5000)
@@ -750,7 +750,7 @@ cl3 <- seq(100000,140000,20000)
 hist(salario, breaks=c(cl1,cl2,cl3),main='intervalos de clase de distinta amplitud')
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-28-4.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-28-4.png" width="80%" style="display: block; margin: auto;" />
 
 
 ### Gráfico de densidad
@@ -761,14 +761,14 @@ Es una versión suavizada del histograma.
 plot(density(salario))
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-29-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-29-1.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 hist(salario, freq=F, main='')
 lines(density(salario), lwd=3, col='red')
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-29-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-29-2.png" width="80%" style="display: block; margin: auto;" />
 
 El paquete *car* nos da acceso a la instrucción *densityPlot*:
 
@@ -778,7 +778,7 @@ library(car)  # help(car)
 densityPlot(salario~sexo)
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-30-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-30-1.png" width="80%" style="display: block; margin: auto;" />
 
 
 ### Diagrama de cajas
@@ -790,7 +790,7 @@ boxplot(salario, horizontal=T, axes=F)
 axis(1)
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-31-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-31-1.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 par(mfrow=c(1,2))
@@ -798,20 +798,20 @@ boxplot(salario~catlab)
 boxplot(salario~sexo)
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-31-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-31-2.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 par(mfrow=c(1,1))
 boxplot(salario~sexo*catlab)
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-31-3.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-31-3.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 boxplot(salini, salario)
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-31-4.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-31-4.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 hist(salario,probability=T,ylab="",col='grey',axes=F,main=""); axis(1)
@@ -820,7 +820,7 @@ par(new=T)
 boxplot(salario,horizontal=T,axes=F,lwd=2)
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-31-5.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-31-5.png" width="80%" style="display: block; margin: auto;" />
 
 
 ### Gráfica de dispersión
@@ -831,19 +831,19 @@ Permite ver la relación entre dos variables:
 plot(educ,salario)
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-32-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-32-1.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 plot(tiempemp,salario)
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-32-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-32-2.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 plot(salini,salario)
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-32-3.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-32-3.png" width="80%" style="display: block; margin: auto;" />
 
 En el caso de una serie temporal
 
@@ -872,7 +872,7 @@ AirPassengers
 plot(AirPassengers)
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-33-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-33-1.png" width="80%" style="display: block; margin: auto;" />
 
 Y un último ejemplo utilizando los datos *iris* de Fisher:
 
@@ -882,7 +882,7 @@ plot(iris[,3],iris[,4],main="Longitud y anchura de pétalos de lirios",
      xlab="Longitud de pétalo",ylab="Anchura de pétalo")
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-34-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-34-1.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 iris.color<-c("red","green","blue")[iris$Species]
@@ -893,11 +893,11 @@ legend("topleft",c("Setosa","Versicolor","Virginica"),pch=1,
        col=c("red","green","blue"),box.lty=0)
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-34-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-34-2.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
 pairs(iris[,1:4],col=iris.color)
 ```
 
-<img src="18-AnalisisExploratorio_files/figure-epub3/unnamed-chunk-34-3.png" width="70%" style="display: block; margin: auto;" />
+<img src="18-AnalisisExploratorio_files/figure-html/unnamed-chunk-34-3.png" width="80%" style="display: block; margin: auto;" />
 
