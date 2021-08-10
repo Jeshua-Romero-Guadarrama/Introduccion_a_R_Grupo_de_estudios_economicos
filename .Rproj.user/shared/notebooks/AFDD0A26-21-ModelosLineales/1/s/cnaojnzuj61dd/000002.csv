@@ -1,2 +1,0 @@
-"0","fit.lasso <- glmnet(x,y)"
-"0","plot(fit.lasso, xvar = ""lambda"", label = TRUE)"

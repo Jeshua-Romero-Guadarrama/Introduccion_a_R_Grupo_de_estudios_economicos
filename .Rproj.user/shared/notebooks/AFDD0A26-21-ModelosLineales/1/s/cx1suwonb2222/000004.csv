@@ -1,5 +1,0 @@
-"0","# Ajuste cúbico"
-"0","modelo <- lm(prestige ~ poly(income, 3), data = Prestige)"
-"0","valores <- seq(0, 26000, len = 100)"
-"0","pred <- predict(modelo, newdata = data.frame(income = valores))"
-"0","lines(valores, pred, lty = 3) "

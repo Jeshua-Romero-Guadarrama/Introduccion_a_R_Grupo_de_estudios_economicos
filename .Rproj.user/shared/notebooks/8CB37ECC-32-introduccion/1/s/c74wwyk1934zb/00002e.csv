@@ -1,3 +1,0 @@
-"0","fit3 <- lm(y ~ poly(x, 20)) "
-"0","# NOTA: poly(x, degree, raw = FALSE) tiene un problema de desbordamiento si degree > 25"
-"0","lines(x, fitted(fit3), lty = 3)"

@@ -1,7 +1,0 @@
-"0","data(Boston, package = ""MASS"")"
-"0","# ?Boston"
-"0","set.seed(1)"
-"0","nobs <- nrow(Boston)"
-"0","itrain <- sample(nobs, 0.8 * nobs)"
-"0","train <- Boston[itrain, ]"
-"0","test <- Boston[-itrain, ]"

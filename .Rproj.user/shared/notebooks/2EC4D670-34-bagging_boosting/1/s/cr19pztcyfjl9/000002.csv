@@ -1,3 +1,0 @@
-"0","set.seed(1)"
-"0","rf.caret <- train(taste ~ ., data = train, method = ""rf"")"
-"0","plot(rf.caret)"

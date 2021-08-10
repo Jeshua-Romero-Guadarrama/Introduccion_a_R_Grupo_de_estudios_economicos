@@ -1,2 +1,0 @@
-"0","par.old <- par(mfrow = c(1, 2))"
-"0","plot(modelo, shade = TRUE) # "

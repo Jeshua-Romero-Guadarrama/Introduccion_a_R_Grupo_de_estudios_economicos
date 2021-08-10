@@ -1,2 +1,0 @@
-"0","load(""datos/empleados.RData"")"
-"0","datos <- with(empleados, data.frame(lnsal = log(salario), lnsalini = log(salini), catlab, sexo))"

@@ -1,1 +1,0 @@
-"0","curve(1 - 0.9^x, 0, 200, ylab = 'Proporción de ""frontera""', xlab = 'Número de dimensiones')"

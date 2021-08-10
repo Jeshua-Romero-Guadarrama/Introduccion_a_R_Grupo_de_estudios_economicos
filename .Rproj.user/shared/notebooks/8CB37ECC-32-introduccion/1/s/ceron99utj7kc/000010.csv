@@ -1,4 +1,0 @@
-"0","# Valor óptimo"
-"0","imin.mse <- which.min(cv.mse)"
-"0","grado.op <- grados[imin.mse]"
-"0","points(grado.op, cv.mse[imin.mse], pch = 16)"

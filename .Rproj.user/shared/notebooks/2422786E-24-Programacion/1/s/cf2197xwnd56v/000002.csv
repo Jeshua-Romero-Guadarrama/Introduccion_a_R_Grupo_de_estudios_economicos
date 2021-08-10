@@ -1,7 +1,0 @@
-"0","grado <- 1:5"
-"0","cv.error <- numeric(5)"
-"0","for(p in grado){"
-"0","  cv.pred <- cv.lm(prestige ~ poly(income, p), Prestige)"
-"0","  cv.error[p] <- mean((cv.pred - Prestige$prestige)^2)"
-"0","}"
-"0","plot(grado, cv.error, pch=16)"

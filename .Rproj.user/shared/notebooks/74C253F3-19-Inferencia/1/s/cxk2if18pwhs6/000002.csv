@@ -1,5 +1,0 @@
-"0","medias <- tapply(hatco$satisfac, hatco$nfidelid, mean, na.rm = TRUE)"
-"0","desviaciones <- tapply(hatco$satisfac, hatco$nfidelid, sd, na.rm = TRUE)"
-"0","n <- tapply(hatco$satisfac[!is.na(hatco$satisfac)], hatco$nfidelid[!is.na(hatco$satisfac)], length)"
-"0","errores <- desviaciones/sqrt(n)"
-"0","stripchart(hatco$satisfac~hatco$nfidelid, method='jitter', jit=0.01, pch=18, col='grey', vertical = TRUE)"

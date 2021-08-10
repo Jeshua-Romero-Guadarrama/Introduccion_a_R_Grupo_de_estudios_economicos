@@ -1,3 +1,0 @@
-"0","summarise(group_by(empleados, sexo, minoria), sal.med = mean(salario), n = n())"
-"1","`summarise()` has grouped output by 'sexo'. You can override using the `.groups` argument.
-"

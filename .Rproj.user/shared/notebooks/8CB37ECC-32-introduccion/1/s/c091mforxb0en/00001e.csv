@@ -1,2 +1,0 @@
-"0","newdata <- data.frame(x = x)"
-"0","lines(x, predict(fit1, newdata), lwd = 2, lty = 3)"

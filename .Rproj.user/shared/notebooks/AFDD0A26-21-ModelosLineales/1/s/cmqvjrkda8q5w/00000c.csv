@@ -1,1 +1,0 @@
-"0","plot(lnsal ~ lnsalini, data = datos, pch = as.numeric(catlab), col = 'darkgray')"

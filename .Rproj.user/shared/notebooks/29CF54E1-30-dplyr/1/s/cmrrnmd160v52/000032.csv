@@ -1,2 +1,0 @@
-"0","emplea2 <- select(empleados, c(""id"", ""sexo"", ""fechnac"", ""educ"", ""catlab"", ""salario"", ""salini"", ""tiempemp""))"
-"0","head(emplea2)"

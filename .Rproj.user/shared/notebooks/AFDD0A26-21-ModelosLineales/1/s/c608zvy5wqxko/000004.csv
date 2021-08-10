@@ -1,3 +1,0 @@
-"0",""
-"0","# Ajuste lineal"
-"0","abline(lm(salario ~ salini, data = empleados)) "

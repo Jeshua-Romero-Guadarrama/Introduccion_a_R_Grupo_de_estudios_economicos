@@ -1,3 +1,0 @@
-"0","ii <- order(cars$dist) # Vector de índices de ordenación"
-"0","cars2 <- cars[ii, ]    # Datos ordenados por dist"
-"0","head(cars2)"

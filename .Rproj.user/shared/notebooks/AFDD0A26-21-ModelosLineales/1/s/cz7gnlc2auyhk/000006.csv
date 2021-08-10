@@ -1,4 +1,0 @@
-"0","# Ajuste cuadrático"
-"0","modelo <- lm(prestige ~ income + I(income^2), data = Prestige)"
-"0","parest <- coef(modelo)"
-"0","curve(parest[1] + parest[2]*x + parest[3]*x^2, lty = 2, add = TRUE)"

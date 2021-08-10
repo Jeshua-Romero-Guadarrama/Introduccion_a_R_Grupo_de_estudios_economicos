@@ -1,6 +1,0 @@
-"0","matriz <- matrix(1:14, nrow = 4) "
-"2","Warning in matrix(1:14, nrow = 4) :"
-"2","
- "
-"2"," data length [14] is not a sub-multiple or multiple of the number of rows [4]
-"

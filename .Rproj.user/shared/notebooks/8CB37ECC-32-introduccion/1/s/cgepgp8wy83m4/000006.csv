@@ -1,8 +1,0 @@
-"0","library(pROC)"
-"0","roc_glm <- roc(response = obs, predictor = p.est)"
-"2","Setting levels: control = Bajo, case = Alto
-"
-"2","Setting direction: controls < cases
-"
-"0","# View((as.data.frame(roc_glm[2:4])))"
-"0","plot(roc_glm)"

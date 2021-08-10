@@ -1,4 +1,0 @@
-"0","fit <- loess(prestige ~ income, Prestige, span = 0.5)"
-"0","valores <- seq(0, 25000, 100)"
-"0","pred <- predict(fit, newdata = data.frame(income = valores))"
-"0","lines(valores, pred)"

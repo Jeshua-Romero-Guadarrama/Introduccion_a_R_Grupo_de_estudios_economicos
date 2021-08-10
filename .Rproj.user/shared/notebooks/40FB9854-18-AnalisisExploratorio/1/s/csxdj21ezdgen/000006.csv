@@ -1,2 +1,0 @@
-"0","data.frame(Rango=max(salario)-min(salario),"
-"0","           RI=as.numeric(quantile(salario, 0.75) - quantile(salario, 0.25)))"

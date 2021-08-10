@@ -1,1 +1,0 @@
-"0","Density.Plot <- function(datos, ...) { plot(density(datos), ...) }"

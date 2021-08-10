@@ -1,2 +1,0 @@
-"0","x <- as.matrix(hatco[-100, 6:12])"
-"0","y <- hatco$fidelida[-100]"

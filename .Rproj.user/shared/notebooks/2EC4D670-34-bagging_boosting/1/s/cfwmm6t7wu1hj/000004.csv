@@ -1,2 +1,0 @@
-"0","pdp2 <- partial(rf, c(""alcohol"", ""density""))"
-"0","plotPartial(pdp2)"

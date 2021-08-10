@@ -1,4 +1,0 @@
-"0","# Global"
-"0","precision <- rowMeans(mse)"
-"0","precision.new <- rowMeans(mse.new)"
-"0","lines(grados, precision, lwd = 2)"

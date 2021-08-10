@@ -1,3 +1,0 @@
-"0","knitr::kable(t(sapply(list(fit1 = fit1, fit2 = fit2, fit3 = fit3), "
-"0","       function(x) with(summary(x), "
-"0","                        c(MSE = mean(residuals^2), R2 = r.squared, R2adj = adj.r.squared)))), digits = 2)"

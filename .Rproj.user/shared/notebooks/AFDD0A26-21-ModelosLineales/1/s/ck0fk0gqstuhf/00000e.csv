@@ -1,2 +1,0 @@
-"0","parest <- coef(modelo)"
-"0","abline(a = parest[1], b = parest[2], lty = 1)"

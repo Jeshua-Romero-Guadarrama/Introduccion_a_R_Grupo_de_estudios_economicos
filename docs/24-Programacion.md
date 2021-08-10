@@ -318,7 +318,7 @@ an
 ## function(a1, r, n) {
 ##         a1 * r^(n - 1)
 ##       }
-## <bytecode: 0x0000000015f5fb70>
+## <bytecode: 0x0000000029aa8b00>
 ```
 
 
@@ -481,7 +481,7 @@ dado(100)
 ```
 ## lanzamientos
 ##    1    2    3    4    5    6 
-## 0.20 0.11 0.10 0.14 0.21 0.24
+## 0.20 0.15 0.19 0.15 0.18 0.13
 ```
 
 ```r
@@ -493,7 +493,7 @@ dado(500)
 ```
 ## lanzamientos
 ##     1     2     3     4     5     6 
-## 0.186 0.172 0.152 0.164 0.178 0.148
+## 0.148 0.190 0.162 0.164 0.164 0.172
 ```
 
 ```r
@@ -505,7 +505,7 @@ dado(10000)
 ```
 ## lanzamientos
 ##      1      2      3      4      5      6 
-## 0.1711 0.1604 0.1688 0.1667 0.1683 0.1647
+## 0.1686 0.1657 0.1749 0.1614 0.1673 0.1621
 ```
 
 Se puede comprobar que al aumentar el valor de $n$ las frecuencias se
@@ -893,6 +893,7 @@ head(ChickWeight)
 ```
 
 ```
+## Grouped Data: weight ~ Time | Chick
 ##   weight Time Chick Diet
 ## 1     42    0     1    1
 ## 2     51    2     1    1

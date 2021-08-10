@@ -1,4 +1,0 @@
-"0","fit.op <- lm(medv ~ poly(lstat, grado.op), train)"
-"0","fit.1se <- lm(medv ~ poly(lstat, grado.1se), train)"
-"0","newdata <- data.frame(lstat = seq(0, 40, len = 100))"
-"0","lines(newdata$lstat, predict(fit.op, newdata = newdata))"

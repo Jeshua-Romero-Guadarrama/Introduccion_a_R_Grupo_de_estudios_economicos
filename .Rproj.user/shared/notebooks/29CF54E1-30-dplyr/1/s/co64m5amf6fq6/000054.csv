@@ -1,1 +1,0 @@
-"0","head(mutate(emplea2, tsal = empleados[,""salario""] - empleados[,""salini""]/emplea2[,""tiempemp""]))"

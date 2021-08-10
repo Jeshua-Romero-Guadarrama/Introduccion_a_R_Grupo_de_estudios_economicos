@@ -1,3 +1,0 @@
-"0","obs <- test$fmedv"
-"0","p.est <- predict(modelo, type = ""response"", newdata = test)"
-"0","pred <- factor(p.est > 0.5, labels = c(""Bajo"", ""Alto"")) # levels = c('FALSE', 'TRUE')"

@@ -1,3 +1,0 @@
-"0","# Imitamos la función caret::plotClassProbs()"
-"0","library(lattice) "
-"0","histogram(~ p.est | obs, xlab = ""Probabilidad estimada de 'Alto'"")"

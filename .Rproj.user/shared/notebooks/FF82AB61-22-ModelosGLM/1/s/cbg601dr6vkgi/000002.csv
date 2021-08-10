@@ -1,2 +1,0 @@
-"0","datos <- hatco[-100, c(6:12, 16)]"
-"0","plot(datos, pch = as.numeric(datos$nsatisfa), col = as.numeric(datos$nsatisfa))"

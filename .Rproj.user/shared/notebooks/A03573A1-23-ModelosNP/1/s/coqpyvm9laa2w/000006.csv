@@ -1,5 +1,0 @@
-"0","# Se calculan las predicciones"
-"0","pred <- predict(modelo, newdata)"
-"0","# Se representan"
-"0","pred <- matrix(pred, nrow = 25)"
-"0","persp(inc, ed, pred, theta = -40, phi = 30)"

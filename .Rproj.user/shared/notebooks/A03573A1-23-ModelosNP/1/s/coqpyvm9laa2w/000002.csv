@@ -1,5 +1,0 @@
-"0","inc <- with(Prestige, seq(min(income), max(income), len = 25))"
-"0","ed <- with(Prestige, seq(min(education), max(education), len = 25))"
-"0","newdata <- expand.grid(income = inc, education = ed)"
-"0","# Representamos la rejilla"
-"0","plot(income ~ education, Prestige, pch = 16)"

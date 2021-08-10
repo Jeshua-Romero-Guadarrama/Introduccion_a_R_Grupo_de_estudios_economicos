@@ -1,5 +1,0 @@
-"0",""
-"0","# Modelo logarítmico"
-"0","modelo2 <- lm(log(salario) ~ log(salini), data = empleados)"
-"0","parest <- coef(modelo2)"
-"0","curve(exp(parest[1]) * x^parest[2], lty = 3, add = TRUE)"
