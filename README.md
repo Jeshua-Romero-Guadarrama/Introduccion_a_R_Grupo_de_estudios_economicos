@@ -4,7 +4,7 @@
 
 # Introducción a R: Grupo de estudios económicos
 
-<br/>
+___
 
 ## 📖 Sobre el curso
 
