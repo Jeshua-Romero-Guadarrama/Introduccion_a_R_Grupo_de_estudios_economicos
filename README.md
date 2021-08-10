@@ -1,9 +1,9 @@
-<p align="center"><img align="center" src="https://github.com/Jeshua-Romero-Guadarrama/R_grupo_de_estudios_economicos/blob/main/docs/images/R_grupo_de_estudios_economicos.png" width="30%" height="30%"></p>
-
-<br/>
-<br/>
-
 # Introducción a R: Grupo de estudios económicos
+
+<br/>
+<br/>
+
+<p align="center"><img align="center" src="https://github.com/Jeshua-Romero-Guadarrama/R_grupo_de_estudios_economicos/blob/main/docs/images/R_grupo_de_estudios_economicos.png" width="30%" height="30%"></p>
 
 <br/>
 <br/>
@@ -14,6 +14,13 @@
 Los estudiantes con poca experiencia en el análisis avanzado de estadísticas a menudo tienen dificultades para entender los beneficios de desarrollar habilidades de programación al momento de aplicar diversos métodos descriptivos e inferenciales. <i>Introducción a R: Grupo de estudios económicos</i> por Jeshua Romero Guadarrama (2021), ofrece una introducción interactiva a los aspectos esenciales de la programación por medio del lenguaje y software estadístico R, así como una guía para la aplicación de la teoría económica y econométrica en entornos específicos. En otras palabras, el objetivo es que los estudiantes se adentren al mundo de la economía aplicada mediante ejemplos empíricos presentados en la vida diaria y haciendo uso de las habilidades de programación recién adquiridas en la probabilidad y estadística. Dicho objetivo se encuentra respaldado por ejercicios de programación interactivos y la incorporación de visualizaciones dinámicas de conceptos fundamentales mediante la flexibilidad de JavaScript, a través de la biblioteca D3.js.</p>
 
 El curso se puede consultar aquí: [Introducción a R: Grupo de estudios económicos](http://rgrupodeestudioseconomicos.jeshuanomics.com/)
+
+<br/>
+<br/>
+
+## ✍🏻 Referencia bibliográfica
+
+Romero, G. J. (2021). *Introducción a R: Grupo de estudios económicos*. JeshuaNomics.
 
 <br/>
 <br/>
@@ -45,16 +52,6 @@ pkgs <- c("lattice", "ggplot2", "foreign", "car", "leaps", "MASS", "RcmdrMisc",
 
 install.packages(setdiff(pkgs, installed.packages()[,"Package"]), dependencies = TRUE)
 ```
-
-<br/>
-<br/>
-
-## ✍🏻 Referencia bibliográfica
-
-Romero, G. J. (2021). *Introducción a R: Grupo de estudios económicos*. JeshuaNomics.
-
-<br/>
-<br/>
 
 ___
 
