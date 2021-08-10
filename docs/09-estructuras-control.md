@@ -510,7 +510,7 @@ valor
 ```
 
 ```
-## [1] 53
+## [1] 51
 ```
 
 ```r
@@ -518,7 +518,7 @@ conteo
 ```
 
 ```
-## [1] 9
+## [1] 13
 ```
 
 Por último, si intentamos ejecutar un `while` para el que la condición nunca es igual a `TRUE`, este no realizará ninguna operación.

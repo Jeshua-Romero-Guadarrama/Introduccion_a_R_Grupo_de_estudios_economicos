@@ -691,7 +691,7 @@ través de la función <code>c()</code> que se usa para combinar (concatenar) va
 <h3><span class="header-section-number">15.1.2</span> Generación secuencias aleatorias</h3>
 <p>A continuación se obtiene una simulación de 10 lanzamientos de un dado</p>
 <div class="sourceCode" id="cb829"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb829-1"><a href="15-1-vectores-2.html#cb829-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">replace =</span> T) <span class="co">#lanzamiento de un dado</span></span></code></pre></div>
-<pre><code>##  [1] 6 5 5 3 3 6 4 2 4 3</code></pre>
+<pre><code>##  [1] 2 3 6 2 6 6 4 6 3 2</code></pre>
 <p>Para simular el lanzamiento de una moneda podemos escribir</p>
 <div class="sourceCode" id="cb831"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb831-1"><a href="15-1-vectores-2.html#cb831-1" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">cara=</span><span class="dv">1</span>,<span class="at">cruz=</span><span class="dv">0</span>) <span class="co"># se le han asignado nombres al objeto</span></span>
 <span id="cb831-2"><a href="15-1-vectores-2.html#cb831-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(resultado)</span></code></pre></div>
@@ -706,19 +706,19 @@ través de la función <code>c()</code> que se usa para combinar (concatenar) va
 <pre><code>## [1] &quot;cara&quot; &quot;cruz&quot;</code></pre>
 <div class="sourceCode" id="cb839"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb839-1"><a href="15-1-vectores-2.html#cb839-1" aria-hidden="true" tabindex="-1"></a>lanz <span class="ot">&lt;-</span> <span class="fu">sample</span>(resultado, <span class="at">size=</span><span class="dv">10</span>, <span class="at">replace =</span> T)</span>
 <span id="cb839-2"><a href="15-1-vectores-2.html#cb839-2" aria-hidden="true" tabindex="-1"></a>lanz</span></code></pre></div>
-<pre><code>## cara cara cara cruz cara cruz cruz cruz cara cara 
-##    1    1    1    0    1    0    0    0    1    1</code></pre>
+<pre><code>## cara cruz cruz cara cara cruz cara cruz cruz cruz 
+##    1    0    0    1    1    0    1    0    0    0</code></pre>
 <div class="sourceCode" id="cb841"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb841-1"><a href="15-1-vectores-2.html#cb841-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(lanz)</span></code></pre></div>
 <pre><code>## lanz
 ## 0 1 
-## 4 6</code></pre>
+## 6 4</code></pre>
 <p>Otros ejemplos</p>
 <div class="sourceCode" id="cb843"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb843-1"><a href="15-1-vectores-2.html#cb843-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">10</span>)  <span class="co"># rnorm(10, mean = 0, sd = 1)</span></span></code></pre></div>
-<pre><code>##  [1]  0.67852527  0.90038793  0.01983334  0.40796772 -0.73452987  0.68880654
-##  [7]  0.37941910  2.54766745  1.01005736 -1.13007835</code></pre>
+<pre><code>##  [1]  0.49970320  0.85600027  0.22348053 -1.04091214 -0.09096274  0.38241536
+##  [7] -0.98295854  1.27289321  0.28518504  0.51844945</code></pre>
 <div class="sourceCode" id="cb845"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb845-1"><a href="15-1-vectores-2.html#cb845-1" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">15</span>, <span class="at">min =</span> <span class="dv">2</span>, <span class="at">max =</span> <span class="dv">10</span>)</span></code></pre></div>
-<pre><code>##  [1] 9.243210 7.389241 8.436268 5.127112 7.959781 9.012487 2.135394 8.660499
-##  [9] 2.237935 7.448763 4.026265 8.903264 3.405023 2.515195 6.358308</code></pre>
+<pre><code>##  [1] 4.033063 7.943182 7.190573 8.566533 3.625957 3.171083 7.570823 6.856241
+##  [9] 6.811864 7.370427 7.401901 7.852309 3.311199 4.622022 2.411340</code></pre>
 <p>El lector puede utilizar la función <code>help()</code> para obtener la ayuda de las funciones
 anteriores.</p>
 </div>
